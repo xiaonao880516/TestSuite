@@ -1,0 +1,8 @@
+{
+  "test_hello.py::TestHello::test": true,
+  "test_hello.py::TestHello::test_add": true,
+  "test_hello.py::TestHello::test_say_hello": true,
+  "test_lanchao_app.py::TestHello::test": true,
+  "test_lanchao_app.py::TestHello::test_add": true,
+  "test_lanchao_app.py::TestHello::test_say_hello": true
+}
