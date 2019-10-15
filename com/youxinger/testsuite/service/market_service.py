@@ -13,8 +13,6 @@ def pos_order(order_parms):
     headers = {'Accept': 'application/json, text/plain, */*',
                'tid': variables.foregroundTID}
     resp = requests.post(url, order_parms, headers)
-
-
     json_data = resp.json()
 
 
