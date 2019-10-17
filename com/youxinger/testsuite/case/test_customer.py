@@ -64,7 +64,7 @@ class TestCustomer(BaseCase):
         customer_verify_data = CustomerVerifyData()
         customer_verify_data.i_remainder = 40000
         customer_verify_data.i_card_level = 2
-        customer_verify_data.i_swap_score = 40500
+        customer_verify_data.i_swap_score = 40000
         customer_verify_data.i_total_consume = 0
         self.customer.expectedData = customer_verify_data
         # 验证数据

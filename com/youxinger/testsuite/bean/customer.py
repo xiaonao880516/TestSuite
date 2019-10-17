@@ -19,6 +19,16 @@ class Customer(IDataVerify):
     member_number = ""  # 会员编号
     name = ""  # 姓名
     phone = ""  # 手机号
+    sex = ""
+    birthday = ""
+    openid = ""
+    employee_number = ""
+    platform_number = ""
+    address = ""
+    area = ""
+    city = ""
+    province = ""
+    consignee = ""
     preVerifyData: CustomerVerifyData = None
     postVerifyData: CustomerVerifyData = None
     expectedData: CustomerVerifyData = None
