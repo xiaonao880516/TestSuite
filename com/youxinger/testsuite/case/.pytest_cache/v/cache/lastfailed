@@ -1,4 +1,5 @@
 {
+  "test_customer.py::TestCustomer::test_after_customer_register": true,
   "test_hello.py::TestHello::test": true,
   "test_hello.py::TestHello::test_add": true,
   "test_hello.py::TestHello::test_say_hello": true,

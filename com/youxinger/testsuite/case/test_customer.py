@@ -2,7 +2,6 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData, Customer
 from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.case.base_case import BaseCase
-from com.youxinger.testsuite.case.base_case import TestData
 import logging
 from com.youxinger.testsuite.service import customer_service
 from com.youxinger.testsuite.utils.constant import CUSTOMER, EMPLOYEE, PLATFORM
@@ -17,28 +16,34 @@ class TestCustomer(BaseCase):
     employee: Employee = None
     platform: Platform = None
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # 注册新会员
+        cls.employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
+        cls.platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
+        cls.customer = customer_service.register_customer(CUSTOMER, cls.employee, cls.platform)
+        cls._test_data.customers.append(cls.customer)
+
+    @classmethod
+    def tearDownClass(cls):
+        # 删除会员
+        customer_service.del_customer(cls.customer)
+        cls.customer = None
+        super().tearDownClass()
+
     def setUp(self):
         super().setUp()
-        # 注册新会员
-        self.employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
-        self.platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
-        self.customer = customer_service.register_customer(CUSTOMER, self.employee, self.platform)
 
     def tearDown(self):
         super().tearDown()
-        # 删除会员
-        customer_service.del_customer(self.customer)
-        self.customer = None
 
-    def test_after_customer_register(self):
+    def test_1_after_customer_register(self):
         """
         注册会员测试
         :return:
         """
         logging.debug(u"test_after_customer_register")
-        # 封装测试数据
-        test_data = TestData()
-        test_data.customers.append(self.customer)
         # 更新注册后的验证数据
         customer_service.update_customer_verify_data(True, self.customer)
         # 封装验证值
@@ -49,17 +54,14 @@ class TestCustomer(BaseCase):
         customer_verify_data.i_total_consume = 0
         self.customer.expectedData = customer_verify_data
         # 验证数据
-        super()._data_assertion(test_data)
+        super()._data_assertion()
 
-    def test_after_customer_recharge(self):
+    def test_2_after_customer_recharge(self):
         """
         会员充值测试
         :return:
         """
         logging.debug(u"test_after_customer_recharge")
-        # 封装测试数据
-        test_data = TestData()
-        test_data.customers.append(self.customer)
         # 更新充值前的验证数据
         customer_service.update_customer_verify_data(False, self.customer)
         # 充值操作
@@ -74,4 +76,4 @@ class TestCustomer(BaseCase):
         customer_verify_data.i_total_consume = 0
         self.customer.expectedData = customer_verify_data
         # 验证数据
-        super()._data_assertion(test_data)
+        super()._data_assertion()

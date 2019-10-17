@@ -1,6 +1,7 @@
 from com.youxinger.testsuite.bean.customer import Customer, CustomerVerifyData
 from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.platform import Platform
+from com.youxinger.testsuite.bean.group import Group
 from com.youxinger.testsuite.case.base_case import BaseCase, TestData
 import logging
 
@@ -15,14 +16,18 @@ class TestGeneralGoods(BaseCase):
     customer: Customer = None
     employee: Employee = None
     platform: Platform = None
+    group: Group = None
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         # 注册新会员
+        cls.group = Group()
         cls.employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls.platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls.customer = customer_service.register_customer(CUSTOMER, cls.employee, cls.platform)
+        cls._test_data.customers.append(cls.customer)
+        cls._test_data.group = cls.group
         customer_service.recharge_customer(cls.customer, 40000)
 
     @classmethod
@@ -38,16 +43,13 @@ class TestGeneralGoods(BaseCase):
     def tearDown(self):
         super().tearDown()
 
-    def test_pos_shopping_order(self):
+    def test_1_pos_shopping_order(self):
         """
         pos门店总仓混合下单单购物成功检测
         腰背夹M216C237，深蓝色，58 总仓5个，门店5个
         :return:
         """
         logging.debug("test_pos_shopping_order")
-        # 封装测试数据
-        test_data = TestData()
-        test_data.customers.append(self.customer)
         # 更新充值前的验证数据
         customer_service.update_customer_verify_data(False, self.customer)
         order_param = {'price': '33800.00', 'discount_money': '2704.00', 'real_pay': '31096.00', 'receive_name': self.customer.consignee, 'receive_phone': self.customer.phone,
@@ -73,10 +75,10 @@ class TestGeneralGoods(BaseCase):
         customer_verify_data.i_total_consume = 31096
         self.customer.expectedData = customer_verify_data
         # 验证数据
-        super()._data_assertion(test_data)
+        super()._data_assertion()
         pass
 
-    def test_return_2pieces(self):
+    def test_2_return_2pieces(self):
         """
         退货2件商品数据
         腰背夹M216C237，深蓝色，58 退2个
