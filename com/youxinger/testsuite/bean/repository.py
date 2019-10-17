@@ -21,7 +21,7 @@ class Repository(IDataVerify):
     仓库数据验证类
     """
     repo_name: str = None  # 仓库名称
-    goods: [GoodVerifyData] = None  # 要验证的会员列表
+    goods: [GoodVerifyData] = None  # 要验证的商品列表
 
     def __init__(self, repo_name):
         self.repo_name = repo_name

@@ -24,3 +24,9 @@ class Platform(IDataVerify):
         self.preVerifyData = PlatVerifyData()
         self.postVerifyData = PlatVerifyData()
         self.expectedData = PlatVerifyData()
+
+    def data_verify(self):
+        assert abs(
+            self.postVerifyData.i_platform1_sale_num - self.expectedData.i_platform1_sale_num - self.preVerifyData.i_platform1_sale_num) == 0, \
+            "平台业绩检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                self.expectedData.i_platform1_sale_num, self.postVerifyData.i_platform1_sale_num, self.preVerifyData.i_platform1_sale_num)
