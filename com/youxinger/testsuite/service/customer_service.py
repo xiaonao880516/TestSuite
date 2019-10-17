@@ -1,26 +1,36 @@
 import requests
 
 from com.youxinger.testsuite.bean.customer import Customer, CustomerVerifyData
+from com.youxinger.testsuite.bean.employee import Employee
+from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.utils import constant
 from com.youxinger.testsuite.utils import variables
 import logging
+import copy
 
 
-def register_customer(customer_info):
+def register_customer(customer_info, employee: Employee, platform: Platform):
     """
     注册用户
     :param customer_info: 配置会员对象
+    :param employee: 员工信息
+    :param platform: 平台信息
     :return: 会员对象
     """
     customer = get_customer_by_phone(customer_info['phone'])
     if customer is not None:
         del_customer(customer)
-        return register_customer(customer_info)
+        return register_customer(customer_info, employee, platform)
     else:
         logging.info(u"注册会员")
         url = constant.WX_DOMAIN + "/api/lchmpFrontStage/reg"
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        resp = requests.post(url, customer_info, headers=headers)
+        data = copy.deepcopy(customer_info)
+        if employee is not None:
+            data['employee_number'] = employee.employee_id
+            if platform is not None:
+                data['platform_number'] = platform.platform_id
+        resp = requests.post(url, data, headers=headers)
         json_data = resp.json()
         if json_data['msg'] == '注册成功!':
             customer = get_customer_by_phone(customer_info['phone'])
@@ -28,14 +38,14 @@ def register_customer(customer_info):
             customer.sex = customer_info['sex']
             customer.birthday = customer_info['birthday']
             customer.openid = customer_info['openid']
-            customer.employee_number = customer_info['employee_number']
-            customer.platform_number = customer_info['platform_number']
             customer.address = customer_info['address']
             customer.area = customer_info['area']
             customer.city = customer_info['city']
             customer.province = customer_info['province']
             customer.consignee = customer_info['consignee']
             customer.consignee_phone = customer_info['phone']
+            customer.employee = employee
+            customer.platform = platform
             return customer
         else:
             raise Exception('会员注册失败')

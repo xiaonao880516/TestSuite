@@ -1,9 +1,11 @@
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData, Customer
+from com.youxinger.testsuite.bean.employee import Employee
+from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.case.base_case import BaseCase
 from com.youxinger.testsuite.case.base_case import TestData
 import logging
 from com.youxinger.testsuite.service import customer_service
-from com.youxinger.testsuite.utils.constant import CUSTOMER
+from com.youxinger.testsuite.utils.constant import CUSTOMER, EMPLOYEE, PLATFORM
 
 
 class TestCustomer(BaseCase):
@@ -12,11 +14,15 @@ class TestCustomer(BaseCase):
     """
 
     customer: Customer = None
+    employee: Employee = None
+    platform: Platform = None
 
     def setUp(self):
         super().setUp()
         # 注册新会员
-        self.customer = customer_service.register_customer(CUSTOMER)
+        self.employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
+        self.platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
+        self.customer = customer_service.register_customer(CUSTOMER, self.employee, self.platform)
 
     def tearDown(self):
         super().tearDown()
