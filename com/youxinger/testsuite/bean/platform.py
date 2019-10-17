@@ -18,7 +18,9 @@ class Platform(IDataVerify):
     postVerifyData: PlatVerifyData = None  # 操作后数据
     expectedData: PlatVerifyData = None  # 期待增加值
 
-    def __init__(self):
+    def __init__(self, platform_name, platform_id):
+        self.platform_name = platform_name
+        self.platform_id = platform_id
         self.preVerifyData = PlatVerifyData()
         self.postVerifyData = PlatVerifyData()
         self.expectedData = PlatVerifyData()

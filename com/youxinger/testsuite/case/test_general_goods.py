@@ -1,9 +1,11 @@
 from com.youxinger.testsuite.bean.customer import Customer, CustomerVerifyData
+from com.youxinger.testsuite.bean.employee import Employee
+from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.case.base_case import BaseCase, TestData
 import logging
 
 from com.youxinger.testsuite.service import customer_service, market_service
-from com.youxinger.testsuite.utils.constant import CUSTOMER
+from com.youxinger.testsuite.utils.constant import CUSTOMER, EMPLOYEE, PLATFORM
 
 
 class TestGeneralGoods(BaseCase):
@@ -11,12 +13,16 @@ class TestGeneralGoods(BaseCase):
     一般商品测试
     """
     customer: Customer = None
+    employee: Employee = None
+    platform: Platform = None
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         # 注册新会员
-        cls.customer = customer_service.register_customer(CUSTOMER)
+        cls.employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
+        cls.platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
+        cls.customer = customer_service.register_customer(CUSTOMER, cls.employee, cls.platform)
         customer_service.recharge_customer(cls.customer, 40000)
 
     @classmethod
@@ -47,7 +53,7 @@ class TestGeneralGoods(BaseCase):
         order_param = {'price': '33800.00', 'discount_money': '2704.00', 'real_pay': '31096.00', 'receive_name': self.customer.consignee, 'receive_phone': self.customer.phone,
                        'receive_sheng': self.customer.province, 'receive_shi': self.customer.city, 'receive_diqu': self.customer.area, 'receive_address': self.customer.address,
                        'member_id': self.customer.member_number, 'member_name': self.customer.name, 'member_phone': self.customer.phone,
-                       'plateform_id': self.customer.platform_number, 'special_employee_id': self.customer.employee_number, 'discount_rate': '0.92',
+                       'plateform_id': self.customer.platform.platform_id, 'special_employee_id': self.customer.employee.employee_id, 'discount_rate': '0.92',
                        'goods_list[0][danjia]': '3380.00', 'goods_list[0][sku_num]': '10', 'goods_list[0][sku_name]': '腰背夹',
                        'goods_list[0][price]': '33800.00', 'goods_list[0][real_pay_price]': '31096.00', 'goods_list[0][discount_price]': '2704.00',
                        'goods_list[0][sku_id]': '4878', 'goods_list[0][tiaoma]': 'M216C237C0458', 'goods_list[0][kuanhao]': 'M216C237',

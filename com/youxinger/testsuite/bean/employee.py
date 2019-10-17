@@ -21,7 +21,11 @@ class Employee(IDataVerify):
     postVerifyData: EmployeeVerifyData = None  # 操作后数据
     expectedData: EmployeeVerifyData = None  # 期待增加值
 
-    def __init__(self):
+    def __init__(self, employee_name, employee_id, employee_phone, employee_password):
+        self.employee_name = employee_name
+        self.employee_id = employee_id
+        self.employee_phone = employee_phone
+        self.employee_password = employee_password
         self.preVerifyData = EmployeeVerifyData()
         self.postVerifyData = EmployeeVerifyData()
         self.expectedData = EmployeeVerifyData()

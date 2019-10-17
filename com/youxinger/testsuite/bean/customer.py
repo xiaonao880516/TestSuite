@@ -22,13 +22,13 @@ class Customer(IDataVerify):
     sex = ""  # 性别
     birthday = ""  # 生日
     openid = ""  # 微信openid
-    employee_number = ""  # 顾问编号
-    platform_number = ""  # 平台编号
     address = ""  # 收货地址
     area = ""  # 收货地区
     city = ""  # 收货城市
     province = ""  # 收货省
     consignee = ""  # 收货人
+    employee = None  # 员工信息
+    platform = None  # 平台信息
     preVerifyData: CustomerVerifyData = None  # 操作前数据
     postVerifyData: CustomerVerifyData = None  # 操作后数据
     expectedData: CustomerVerifyData = None  # 期待增加值
