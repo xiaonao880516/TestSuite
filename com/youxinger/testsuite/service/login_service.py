@@ -25,7 +25,7 @@ def background_login():
     if variables.backgroundTID == "":
         logging.info(u"后台登录")
         url = constant.DOMAIN + "/backStage/login/login"
-        data = {'username': constant.BACKGROUND_USER1.get('username'), 'password': constant.BACKGROUND_USER1.get('password')}
+        data = {'username': constant.BACKGROUND_USER.get('username'), 'password': constant.BACKGROUND_USER.get('password')}
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         resp = requests.post(url, data, headers)
         variables.backgroundTID = resp.headers.get('tid')

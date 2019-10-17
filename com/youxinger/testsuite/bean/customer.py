@@ -19,19 +19,19 @@ class Customer(IDataVerify):
     member_number = ""  # 会员编号
     name = ""  # 姓名
     phone = ""  # 手机号
-    sex = ""
-    birthday = ""
-    openid = ""
-    employee_number = ""
-    platform_number = ""
-    address = ""
-    area = ""
-    city = ""
-    province = ""
-    consignee = ""
-    preVerifyData: CustomerVerifyData = None
-    postVerifyData: CustomerVerifyData = None
-    expectedData: CustomerVerifyData = None
+    sex = ""  # 性别
+    birthday = ""  # 生日
+    openid = ""  # 微信openid
+    employee_number = ""  # 顾问编号
+    platform_number = ""  # 平台编号
+    address = ""  # 收货地址
+    area = ""  # 收货地区
+    city = ""  # 收货城市
+    province = ""  # 收货省
+    consignee = ""  # 收货人
+    preVerifyData: CustomerVerifyData = None  # 操作前数据
+    postVerifyData: CustomerVerifyData = None  # 操作后数据
+    expectedData: CustomerVerifyData = None  # 期待增加值
 
     def __init__(self):
         self.preVerifyData = CustomerVerifyData()

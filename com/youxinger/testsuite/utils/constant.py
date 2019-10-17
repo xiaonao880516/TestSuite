@@ -3,7 +3,7 @@ DOMAIN = "http://beta.lchapp_api.youxinger.net"
 # 环境域名(会员注册)
 WX_DOMAIN = "http://beta.lchmpapi.youxinger.net"
 # 后台管理员
-BACKGROUND_USER1 = dict(username='admin', password='123456')
+BACKGROUND_USER = dict(username='admin', password='123456')
 # 会员初始化信息, 钱女士， 女，业务顾问：店长老李，武大樱花平台
 CUSTOMER = dict(name="钱女士", sex="F", birthday="1996-01-10",  phone="13800138021", openid="customer_money_lady",
                 employee_number="204", platform_number="175149", address='林河大街17号', area='顺义区', city='北京市',
