@@ -9,7 +9,7 @@ def foreground_login():
     if variables.foregroundTID == "":
         logging.info(u"前台登录")
         url = constant.DOMAIN + "/frontStage/login/login"
-        data = {'username': constant.EMPLOYEE_PHONE, 'password': constant.EMPLOYEE_LOGIN_PASSWORD}
+        data = {'username': constant.EMPLOYEE.get('employee_phone'), 'password': constant.EMPLOYEE.get('employee_password')}
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         resp = requests.post(url, data, headers)
         tid = resp.headers.get('tid')
@@ -25,7 +25,7 @@ def background_login():
     if variables.backgroundTID == "":
         logging.info(u"后台登录")
         url = constant.DOMAIN + "/backStage/login/login"
-        data = {'username': constant.BACKGROUND_USER, 'password': constant.BACKGROUND_PASSWORD}
+        data = {'username': constant.BACKGROUND_USER1.get('username'), 'password': constant.BACKGROUND_USER1.get('password')}
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         resp = requests.post(url, data, headers)
         variables.backgroundTID = resp.headers.get('tid')

@@ -20,11 +20,22 @@ def register_customer(customer_info):
         logging.info(u"注册会员")
         url = constant.WX_DOMAIN + "/api/lchmpFrontStage/reg"
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        resp = requests.post(url, customer_info, headers)
+        resp = requests.post(url, customer_info, headers=headers)
         json_data = resp.json()
         if json_data['msg'] == '注册成功!':
             customer = get_customer_by_phone(customer_info['phone'])
             ___add_customer_address(customer, customer_info)
+            customer.sex = customer_info['sex']
+            customer.birthday = customer_info['birthday']
+            customer.openid = customer_info['openid']
+            customer.employee_number = customer_info['employee_number']
+            customer.platform_number = customer_info['platform_number']
+            customer.address = customer_info['address']
+            customer.area = customer_info['area']
+            customer.city = customer_info['city']
+            customer.province = customer_info['province']
+            customer.consignee = customer_info['consignee']
+            customer.consignee_phone = customer_info['phone']
             return customer
         else:
             raise Exception('会员注册失败')
@@ -128,10 +139,10 @@ def __update_customer_verify_data(is_post, customer: Customer, customer_array):
             customer.postVerifyData = post_verify_data
         else:
             pre_verify_data = CustomerVerifyData()
-            customer.preVerifyData.i_total_consume = int(customer_array[0]['total_consume'])
-            customer.preVerifyData.i_swap_score = int(customer_array[0]['swap_score'])
-            customer.preVerifyData.i_card_level = int(customer_array[0]['card_level'])
-            customer.preVerifyData.i_remainder = __get_customer_balance(customer)
+            pre_verify_data.i_total_consume = int(customer_array[0]['total_consume'])
+            pre_verify_data.i_swap_score = int(customer_array[0]['swap_score'])
+            pre_verify_data.i_card_level = int(customer_array[0]['card_level'])
+            pre_verify_data.i_remainder = __get_customer_balance(customer)
             customer.preVerifyData = pre_verify_data
     except TypeError:
         logging.error(u"查找会员，查找会员异常")
