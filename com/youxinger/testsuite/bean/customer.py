@@ -1,5 +1,8 @@
+from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 import logging
+
+from com.youxinger.testsuite.bean.platform import Platform
 
 
 class CustomerVerifyData(object):
@@ -36,9 +39,55 @@ class Customer(IDataVerify):
     def __init__(self):
         self.preVerifyData = CustomerVerifyData()
         self.postVerifyData = CustomerVerifyData()
-        self.expectedData = CustomerVerifyData()
+
+    def update_pre_verify_data(self):
+        """
+        更新操作之前的数据
+        :return:
+        """
+        from com.youxinger.testsuite.service import customer_service
+        customer_service.update_customer_verify_data(False, self)
+
+    def update_post_verify_data(self):
+        """
+        更新操作之后的数据
+        :return:
+        """
+        from com.youxinger.testsuite.service import customer_service
+        customer_service.update_customer_verify_data(True, self)
+
+    def recharge(self, remainder):
+        """
+        会员充值
+        :param remainder:
+        :return:
+        """
+        from com.youxinger.testsuite.service import customer_service
+        customer_service.recharge_customer(self, remainder)
+
+    @staticmethod
+    def register(customer_info, employee: Employee, platform: Platform):
+        """
+        会员注册
+        :param customer_info:
+        :param employee:
+        :param platform:
+        :return:
+        """
+        try:
+            from com.youxinger.testsuite.service import customer_service
+            return customer_service.register_customer(customer_info, employee, platform)
+        except Exception as e:
+            logging.error("注册会员失败, %s" % e)
+
+    def delete(self):
+        from com.youxinger.testsuite.service import customer_service
+        customer_service.del_customer(self)
 
     def data_verify(self):
+        if self.expectedData is None:
+            logging.debug("无预期值，无需进行数据验证")
+            return
         assert abs(
             self.postVerifyData.i_total_consume - self.expectedData.i_total_consume - self.preVerifyData.i_total_consume) < 2, \
             "会员消费额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
