@@ -1,24 +1,66 @@
 import unittest
-from com.youxinger.testsuite.bean.group import Group
+
+from com.youxinger.testsuite.bean.i_validate import IDataVerify
+from com.youxinger.testsuite.bean.store import Store
+from com.youxinger.testsuite.bean.area import Area
+from com.youxinger.testsuite.bean.employee import Employee
+from com.youxinger.testsuite.bean.lc_global import LCGlobal
+from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service, repository_service
 import logging
-from com.youxinger.testsuite.utils.constant import GOODS_CODE
+from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER
 from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 
 
-class TestData(object):
+class TestData(IDataVerify):
     """
     测试数据封装类
     """
     customers: [Customer] = None  # 要验证的会员列表
-    group: Group = None  # 要验证的总览数据
+    lc_global: LCGlobal = None  # 要验证的总览数据
 
     def __init__(self):
         self.customers = []
+
+    def data_verify(self):
+        """
+        数据验证操作
+        :return:
+        """
+        if self.customers is not None:
+            for customer in self.customers:
+                customer.data_verify()
+
+        if self.lc_global is not None:
+            self.lc_global.data_verify()
+
+    def update_pre_verify_data(self):
+        """
+        更新操作之前的数据
+        :return:
+        """
+        if self.customers is not None:
+            for customer in self.customers:
+                customer.update_pre_verify_data()
+
+        if self.lc_global is not None:
+            self.lc_global.update_pre_verify_data()
+
+    def update_post_verify_data(self):
+        """
+        更新操作之后的数据
+        :return:
+        """
+        if self.customers is not None:
+            for customer in self.customers:
+                customer.update_post_verify_data()
+
+        if self.lc_global is not None:
+            self.lc_global.update_post_verify_data()
 
 
 class BaseCase(unittest.TestCase):
@@ -27,6 +69,12 @@ class BaseCase(unittest.TestCase):
     """
     # 封装测试数据
     _test_data = TestData()
+    _customer: Customer = None
+    _employee: Employee = None
+    _platform: Platform = None
+    _global: LCGlobal = None
+    _area: Area = None
+    _store: Store = None
 
     @classmethod
     def setUpClass(cls):
@@ -39,6 +87,13 @@ class BaseCase(unittest.TestCase):
         login_service.foreground_login()
         # 后台登陆
         login_service.background_login()
+        # 注册新会员
+        cls._global = LCGlobal()
+        cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
+        cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
+        cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
+        cls._test_data.customers.append(cls._customer)
+        cls._test_data.lc_global = cls._global
 
     @classmethod
     def tearDownClass(cls):
@@ -47,6 +102,8 @@ class BaseCase(unittest.TestCase):
         :return:
         """
         logging.debug(u"tearDownClass")
+        # 删除会员
+        cls._customer.delete()
         variables.foregroundTID = ""
         variables.backgroundTID = ""
 
@@ -71,12 +128,6 @@ class BaseCase(unittest.TestCase):
         main_repository = repository_service.get_main_repository(GOODS_CODE)
 
     def _data_assertion(self):
-        """
-        数据验证操作
-        :param test_data:要验证的数据
-        :return:
-        """
-        if self._test_data.customers is not None:
-            for customer in self._test_data.customers:
-                customer.data_verify()
+        self._test_data.data_verify()
+
 

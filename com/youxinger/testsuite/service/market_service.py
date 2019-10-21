@@ -60,6 +60,7 @@ def good_shipped(shopping_order_id):
     更新物流信息，发货
     :return:
     """
+    logging.info(u"总仓发货")
     try:
         export_url = constant.DOMAIN + "/backStage/orders/not-export-orders"
         export_headers = {'Accept': 'application/json, text/plain, */*',
