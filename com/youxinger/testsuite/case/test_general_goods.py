@@ -1,4 +1,5 @@
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
+from com.youxinger.testsuite.bean.employee import EmployeeVerifyData
 from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
 from com.youxinger.testsuite.bean.platform import PlatVerifyData
 from com.youxinger.testsuite.bean.store import StoreVerifyData
@@ -79,6 +80,9 @@ class TestGeneralGoods(BaseCase):
         expected_platform = PlatVerifyData()
         expected_platform.f_platform_sale_num = 3.11
         self._platform.expectedData = expected_platform
+        expected_employee = EmployeeVerifyData()
+        expected_employee.f_employee_sale_num = 3.11
+        self._employee.expectedData = expected_employee
         self._store.repository.update_expected_verify_data(expected_store_repo)
         self._area.update_expected_store_verify_data(expected_store_values)
         # 验证数据
