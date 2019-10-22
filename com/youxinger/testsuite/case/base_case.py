@@ -1,6 +1,7 @@
 import unittest
 
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
+from com.youxinger.testsuite.bean.repository import Repository
 from com.youxinger.testsuite.bean.store import Store
 from com.youxinger.testsuite.bean.area import Area
 from com.youxinger.testsuite.bean.employee import Employee
@@ -88,7 +89,8 @@ class BaseCase(unittest.TestCase):
         # 后台登陆
         login_service.background_login()
         # 注册新会员
-        cls._global = LCGlobal()
+        global_repo = Repository.lc_global(GOODS_CODE)
+        cls._global = LCGlobal(global_repo)
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
@@ -121,11 +123,6 @@ class BaseCase(unittest.TestCase):
         :return:
         """
         logging.debug(u"tearDown")
-
-    # 初始化执行操作之后的数据
-    def _post_data_update(self):
-        store_repository = repository_service.get_store_repository_by_tid(variables.foregroundTID, GOODS_CODE)
-        main_repository = repository_service.get_main_repository(GOODS_CODE)
 
     def _data_assertion(self):
         self._test_data.data_verify()

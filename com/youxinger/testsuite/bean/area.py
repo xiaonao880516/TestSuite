@@ -23,13 +23,13 @@ class Area(IDataVerify):
     def __init__(self):
         self.preVerifyData = AreaVerifyData()
         self.postVerifyData = AreaVerifyData()
-        self.expectedData = AreaVerifyData()
 
     def data_verify(self):
-        assert abs(
-            self.postVerifyData.i_area_sales_amount - self.expectedData.i_area_sales_amount - self.preVerifyData.i_area_sales_amount) == 0, \
-            "大区销售额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.i_area_sales_amount, self.postVerifyData.i_area_sales_amount, self.preVerifyData.i_area_sales_amount)
+        if self.expectedData is not None:
+            assert abs(
+                self.postVerifyData.i_area_sales_amount - self.expectedData.i_area_sales_amount - self.preVerifyData.i_area_sales_amount) == 0, \
+                "大区销售额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.i_area_sales_amount, self.postVerifyData.i_area_sales_amount, self.preVerifyData.i_area_sales_amount)
 
         if self.stores is not None:
             for store in self.stores:

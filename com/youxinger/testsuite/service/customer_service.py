@@ -108,10 +108,10 @@ def get_customer_by_phone(phone: str):
             return None
 
 
-def update_customer_verify_data(is_post: bool, customer: Customer):
+def update_customer_verify_data(is_operated: bool, customer: Customer):
     """
     更新会员的验证数据
-    :param is_post: True：执行操作之后， False：执行操作之前
+    :param is_operated: True：执行操作之后， False：执行操作之前
     :param customer: 会员对象
     :return:
     """
@@ -127,20 +127,20 @@ def update_customer_verify_data(is_post: bool, customer: Customer):
     if customer_array == '':
         logging.debug(u"查找会员，会员不存在")
     else:
-        __update_customer_verify_data(is_post, customer, customer_array)
+        __update_customer_verify_data(is_operated, customer, customer_array)
         logging.debug(u"查找会员，会员存在")
 
 
-def __update_customer_verify_data(is_post, customer: Customer, customer_array):
+def __update_customer_verify_data(is_operated, customer: Customer, customer_array):
     """
     更新会员的验证数据
-    :param is_post: True：执行操作之后， False：执行操作之前
+    :param is_operated: True：执行操作之后， False：执行操作之前
     :param customer: 会员对象
     :param customer_array: 实际值
     :return:
     """
     try:
-        if is_post is True:
+        if is_operated is True:
             post_verify_data = CustomerVerifyData()
             post_verify_data.i_total_consume = int(customer_array[0]['total_consume'])
             post_verify_data.i_swap_score = int(customer_array[0]['swap_score'])
