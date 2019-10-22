@@ -99,6 +99,7 @@ class BaseCase(unittest.TestCase):
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
         cls._store.add_platform(cls._platform)
+        cls._store.add_employee(cls._employee)
         cls._store.repository = cls._store_repo
         cls._area = Area(AREA['name'], AREA['area_id'])
         cls._area.stores.append(cls._store)

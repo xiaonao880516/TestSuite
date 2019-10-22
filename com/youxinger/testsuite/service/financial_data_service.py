@@ -134,7 +134,7 @@ def get_update_employee_data(store_id, employee_id, verify_data: EmployeeVerifyD
         employee_array = json_data['data']['list']
         for employee in employee_array:
             if employee['employee_id'] == employee_id:
-                verify_data.i_employee_sale_num = int(employee['shiji'])
+                verify_data.f_employee_sale_num = float(employee['shiji'])
                 break
         logging.debug('获取员工数据成功')
     except Exception as e:

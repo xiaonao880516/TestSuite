@@ -50,7 +50,7 @@ class Store(IDataVerify):
     store_name = ""  # 门店名称
     __platforms: [Platform] = None  # 要验证的平台列表
     repository: Repository = None  # 要验证的仓库
-    employees: [Employee] = None  # 要验证的员工列表
+    __employees: [Employee] = None  # 要验证的员工列表
     preVerifyData: StoreVerifyData = None  # 操作前数据
     postVerifyData: StoreVerifyData = None  # 操作后数据
     expectedData: StoreVerifyData = None  # 期待增加值
@@ -61,11 +61,17 @@ class Store(IDataVerify):
         self.preVerifyData = StoreVerifyData()
         self.postVerifyData = StoreVerifyData()
         self.__platforms = []
+        self.__employees = []
 
     def add_platform(self, platform: Platform):
         if platform is not None:
             platform.store_id = self.store_id
             self.__platforms.append(platform)
+
+    def add_employee(self, employee: Employee):
+        if employee is not None:
+            employee.store_id = self.store_id
+            self.__employees.append(employee)
 
     def update_pre_verify_data(self):
         """
@@ -81,8 +87,8 @@ class Store(IDataVerify):
             for platform in self.__platforms:
                 platform.update_pre_verify_data()
 
-        if self.employees is not None:
-            for employee in self.employees:
+        if self.__employees is not None:
+            for employee in self.__employees:
                 employee.update_pre_verify_data()
 
     def update_post_verify_data(self):
@@ -99,8 +105,8 @@ class Store(IDataVerify):
             for platform in self.__platforms:
                 platform.update_post_verify_data()
 
-        if self.employees is not None:
-            for employee in self.employees:
+        if self.__employees is not None:
+            for employee in self.__employees:
                 employee.update_post_verify_data()
 
     def data_verify(self):
@@ -145,6 +151,6 @@ class Store(IDataVerify):
             for platform in self.__platforms:
                 platform.data_verify()
 
-        if self.employees is not None:
-            for employee in self.employees:
+        if self.__employees is not None:
+            for employee in self.__employees:
                 employee.data_verify()
