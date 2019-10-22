@@ -25,6 +25,16 @@ class Area(IDataVerify):
         self.area_id = area_id
         self.preVerifyData = AreaVerifyData()
         self.postVerifyData = AreaVerifyData()
+        self.stores = []
+
+    def update_expected_store_verify_data(self, expected_store_list):
+        """
+        更新期待门店验证值
+        :return:
+        """
+        if expected_store_list is not None:
+            for store in self.stores:
+                store.expectedData = expected_store_list.get(store.store_id)
 
     def update_pre_verify_data(self):
         """
