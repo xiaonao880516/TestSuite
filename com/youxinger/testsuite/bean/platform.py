@@ -5,7 +5,7 @@ class PlatVerifyData(object):
     """
     平台验证数据
     """
-    i_platform1_sale_num = 0  # 平台业绩
+    i_platform_sale_num = 0  # 平台业绩
 
 
 class Platform(IDataVerify):
@@ -14,6 +14,7 @@ class Platform(IDataVerify):
     """
     platform_name = ''  # 平台名称
     platform_id = ''  # 平台id
+    store_id = ''  # 门店id
     preVerifyData: PlatVerifyData = None  # 操作前数据
     postVerifyData: PlatVerifyData = None  # 操作后数据
     expectedData: PlatVerifyData = None  # 期待增加值
@@ -24,9 +25,21 @@ class Platform(IDataVerify):
         self.preVerifyData = PlatVerifyData()
         self.postVerifyData = PlatVerifyData()
 
+    def update_pre_verify_data(self):
+        """
+        更新操作之前的数据
+        :return:
+        """
+
+    def update_post_verify_data(self):
+        """
+        更新操作之后的数据
+        :return:
+        """
+
     def data_verify(self):
         if self.expectedData is not None:
             assert abs(
-                self.postVerifyData.i_platform1_sale_num - self.expectedData.i_platform1_sale_num - self.preVerifyData.i_platform1_sale_num) == 0, \
+                self.postVerifyData.i_platform_sale_num - self.expectedData.i_platform_sale_num - self.preVerifyData.i_platform_sale_num) == 0, \
                 "平台业绩检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                    self.expectedData.i_platform1_sale_num, self.postVerifyData.i_platform1_sale_num, self.preVerifyData.i_platform1_sale_num)
+                    self.expectedData.i_platform_sale_num, self.postVerifyData.i_platform_sale_num, self.preVerifyData.i_platform_sale_num)

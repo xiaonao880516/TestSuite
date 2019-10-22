@@ -29,6 +29,18 @@ class Employee(IDataVerify):
         self.preVerifyData = EmployeeVerifyData()
         self.postVerifyData = EmployeeVerifyData()
 
+    def update_pre_verify_data(self):
+        """
+        更新操作之前的数据
+        :return:
+        """
+
+    def update_post_verify_data(self):
+        """
+        更新操作之后的数据
+        :return:
+        """
+
     def data_verify(self):
         if self.expectedData is not None:
             assert abs(
