@@ -109,7 +109,7 @@ def get_update_platform_data(store_id, platform_id, verify_data: PlatVerifyData)
         platform_array = json_data['data']['list']
         for platform in platform_array:
             if platform['platform_id'] == platform_id:
-                verify_data.i_platform_sale_num = int(platform['shiji'])
+                verify_data.f_platform_sale_num = float(platform['shiji'])
                 break
         logging.debug('获取平台数据成功')
     except Exception as e:

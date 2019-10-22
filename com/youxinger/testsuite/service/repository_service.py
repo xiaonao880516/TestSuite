@@ -24,9 +24,9 @@ def get_store_repository_by_tid(is_operated, foreground_store_tid, verify_good_l
     for good in goods_list:
         if verify_good_list.keys().__contains__(good['tiaoma']):
             if is_operated:
-                verify_good_list[good['tiaoma']].i_post_quantity = int(good['kucun'])
+                verify_good_list[good['tiaoma']].i_post_quantity = int(good['num'])
             else:
-                verify_good_list[good['tiaoma']].i_pre_quantity = int(good['kucun'])
+                verify_good_list[good['tiaoma']].i_pre_quantity = int(good['num'])
 
 
 def get_global_repository(is_operated, verify_good_list: [GoodVerifyData]):
