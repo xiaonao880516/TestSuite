@@ -3,6 +3,7 @@ from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+from com.youxinger.testsuite.utils.constant import AREA
 
 
 class TestGeneralGoods(BaseCase):
@@ -65,6 +66,9 @@ class TestGeneralGoods(BaseCase):
         expected_global_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
         self._test_data.lc_global.repository.update_expected_verify_data(expected_global_repo)
+
+        expected_area_values = {AREA['area_id']: 3.11}
+        self._test_data.lc_global.update_expected_verify_data(expected_area_values)
         # 验证数据
         self._data_assertion()
 

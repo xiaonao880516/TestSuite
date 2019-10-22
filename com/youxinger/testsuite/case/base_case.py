@@ -10,7 +10,7 @@ from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service, repository_service
 import logging
-from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER
+from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA
 from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -74,6 +74,7 @@ class BaseCase(unittest.TestCase):
     _employee: Employee = None
     _platform: Platform = None
     _global: LCGlobal = None
+    _global_repo = None
     _area: Area = None
     _store: Store = None
 
@@ -89,8 +90,10 @@ class BaseCase(unittest.TestCase):
         # 后台登陆
         login_service.background_login()
         # 注册新会员
-        global_repo = Repository.lc_global(GOODS_CODE)
-        cls._global = LCGlobal(global_repo)
+        cls._global_repo = Repository.lc_global(GOODS_CODE)
+        cls._global = LCGlobal(cls._global_repo)
+        cls._area = Area(AREA['name'], AREA['area_id'])
+        cls._global.areas[AREA['area_id']] = cls._area
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)

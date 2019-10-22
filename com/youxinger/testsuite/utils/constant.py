@@ -11,6 +11,6 @@ CUSTOMER = dict(name="钱女士", sex="F", birthday="1996-01-10",  phone="138001
 GOODS_CODE = ['M216C237C0458', 'M216C237C0464', 'M116E248B0158', 'M116E248B0164', 'M316J232B01106', 'M316J232B0176', 'ZH02B215190T796242']
 # 员工信息
 EMPLOYEE = dict(employee_name='店长老李', employee_id='204', employee_phone='13815654785', employee_password='123456a')
-AREA = dict(name='武汉大区', area_id='HUB')
+AREA = dict(name='湖北大区', area_id='HUB')
 STORE = dict(name='武汉自营店', store_id='WHZYD')
 PLATFORM = dict(name='武大樱花平台', platform_id='175149')
