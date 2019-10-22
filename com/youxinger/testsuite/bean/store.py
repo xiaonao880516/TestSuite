@@ -19,6 +19,28 @@ class StoreVerifyData(object):
     f_store_plat_sale_num = 0  # 门店平台销售总额
     f_store_plat_sale_percent = 0.0  # 门店平台销售业绩占比
 
+    @classmethod
+    def expected_data(cls, i_store_arrive_store_num, i_store_newvip_num, i_store_order_num, i_store_refund_num,
+                      f_store_sale_num, f_store_plat_sale_num):
+        """
+        创建预期值对象
+        :param i_store_arrive_store_num: 门店到店次数期待增加值
+        :param i_store_newvip_num: 门店新增会员数期待增加值
+        :param i_store_order_num: 门店订单数期待增加值
+        :param i_store_refund_num: 门店退单数期待增加值
+        :param f_store_sale_num: 门店销售总额期待增加值
+        :param f_store_plat_sale_num: 门店平台销售总额期待增加值
+        :return:
+        """
+        exp_value = cls()
+        exp_value.i_store_arrive_store_num = i_store_arrive_store_num
+        exp_value.i_store_newvip_num = i_store_newvip_num
+        exp_value.i_store_order_num = i_store_order_num
+        exp_value.i_store_refund_num = i_store_refund_num
+        exp_value.f_store_sale_num = f_store_sale_num
+        exp_value.f_store_plat_sale_num = f_store_plat_sale_num
+        return exp_value
+
 
 class Store(IDataVerify):
     """
@@ -33,7 +55,9 @@ class Store(IDataVerify):
     postVerifyData: StoreVerifyData = None  # 操作后数据
     expectedData: StoreVerifyData = None  # 期待增加值
 
-    def __init__(self):
+    def __init__(self, store_name, store_id):
+        self.store_id = store_id
+        self.store_name = store_name
         self.preVerifyData = StoreVerifyData()
         self.postVerifyData = StoreVerifyData()
         self.__platforms = []
@@ -48,6 +72,8 @@ class Store(IDataVerify):
         更新操作之前的数据
         :return:
         """
+        from com.youxinger.testsuite.service import financial_data_service
+        financial_data_service.get_update_store_data(self.store_id, self.preVerifyData)
         if self.repository is not None:
             self.repository.update_pre_verify_data()
 
@@ -64,6 +90,8 @@ class Store(IDataVerify):
         更新操作之后的数据
         :return:
         """
+        from com.youxinger.testsuite.service import financial_data_service
+        financial_data_service.get_update_store_data(self.store_id, self.postVerifyData)
         if self.repository is not None:
             self.repository.update_post_verify_data()
 

@@ -34,7 +34,7 @@ class LCGlobal(IDataVerify):
         self.repository = repository
         self.areas = dict()
 
-    def update_expected_verify_data(self, expected_area_list):
+    def update_expected_area_verify_data(self, expected_area_list):
         """
         更新期待大区验证值
         :return:

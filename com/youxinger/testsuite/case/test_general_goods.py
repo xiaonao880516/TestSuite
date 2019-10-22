@@ -1,9 +1,10 @@
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
+from com.youxinger.testsuite.bean.store import StoreVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-from com.youxinger.testsuite.utils.constant import AREA
+from com.youxinger.testsuite.utils.constant import AREA, STORE
 
 
 class TestGeneralGoods(BaseCase):
@@ -68,7 +69,10 @@ class TestGeneralGoods(BaseCase):
         self._test_data.lc_global.repository.update_expected_verify_data(expected_global_repo)
 
         expected_area_values = {AREA['area_id']: 3.11}
-        self._test_data.lc_global.update_expected_verify_data(expected_area_values)
+        self._test_data.lc_global.update_expected_area_verify_data(expected_area_values)
+        expected_store_data = StoreVerifyData.expected_data(1, 0, 1, 0, 31096, 31096)
+        expected_store_values = {STORE['store_id']: expected_store_data}
+        self._area.update_expected_store_verify_data(expected_store_values)
         # 验证数据
         self._data_assertion()
 
