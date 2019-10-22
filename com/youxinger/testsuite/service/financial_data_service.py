@@ -1,7 +1,7 @@
 import requests
 
 from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
-from com.youxinger.testsuite.utils import constant, variables
+from com.youxinger.testsuite.utils import constant, variables, util
 import logging
 
 
@@ -19,15 +19,15 @@ def get_update_global_data(verify_data: LCGlobalVerifyData):
     resp = requests.get(url, params, headers=headers)
     try:
         json_data = resp.json()
-        verify_data.i_lc_global_arrive_store_num = json_data['data']['arrive_store_num']
-        verify_data.i_lc_global_bhm_percent = json_data['data']['bhm_percent']
-        verify_data.i_lc_global_newvip_num = json_data['data']['newvip_num']
-        verify_data.i_lc_global_newvip_order_percent = json_data['data']['newvip_order_percent']
-        verify_data.i_lc_global_order_num = json_data['data']['order_num']
-        verify_data.i_lc_global_refund_num = json_data['data']['refund_num']
-        verify_data.i_lc_global_sale_num = json_data['data']['sale_num']
-        verify_data.i_lc_global_sale_percent = json_data['data']['sale_percent']
-        logging.error('获取总览数据成功')
+        verify_data.i_lc_global_arrive_store_num = int(json_data['data']['arrive_store_num'])
+        verify_data.f_lc_global_bhm_percent = util.percentage_2_float(json_data['data']['bhm_percent'])
+        verify_data.i_lc_global_newvip_num = int(json_data['data']['newvip_num'])
+        verify_data.f_lc_global_newvip_order_percent = util.percentage_2_float(json_data['data']['newvip_order_percent'])
+        verify_data.i_lc_global_order_num = int(json_data['data']['order_num'])
+        verify_data.i_lc_global_refund_num = int(json_data['data']['refund_num'])
+        verify_data.f_lc_global_sale_num = float(json_data['data']['sale_num'])
+        verify_data.f_lc_global_sale_percent = util.percentage_2_float(json_data['data']['sale_percent'])
+        logging.debug('获取总览数据成功')
     except Exception as e:
         logging.error("获取总览数据错误, %s" % e)
     return verify_data
