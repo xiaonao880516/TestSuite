@@ -1,5 +1,6 @@
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
+from com.youxinger.testsuite.bean.platform import PlatVerifyData
 from com.youxinger.testsuite.bean.store import StoreVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
@@ -75,6 +76,9 @@ class TestGeneralGoods(BaseCase):
 
         expected_store_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
+        expected_platform = PlatVerifyData()
+        expected_platform.f_platform_sale_num = 3.11
+        self._platform.expectedData = expected_platform
         self._store.repository.update_expected_verify_data(expected_store_repo)
         self._area.update_expected_store_verify_data(expected_store_values)
         # 验证数据
