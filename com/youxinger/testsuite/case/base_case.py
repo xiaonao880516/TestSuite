@@ -77,6 +77,7 @@ class BaseCase(unittest.TestCase):
     _global_repo = None
     _area: Area = None
     _store: Store = None
+    _store_repo = None
 
     @classmethod
     def setUpClass(cls):
@@ -95,7 +96,9 @@ class BaseCase(unittest.TestCase):
         cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
         cls._test_data.customers.append(cls._customer)
 
+        cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
+        cls._store.repository = cls._store_repo
         cls._area = Area(AREA['name'], AREA['area_id'])
         cls._area.stores.append(cls._store)
         cls._global_repo = Repository.lc_global(GOODS_CODE)
