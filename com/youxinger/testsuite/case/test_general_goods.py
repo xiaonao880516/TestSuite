@@ -51,12 +51,7 @@ class TestGeneralGoods(BaseCase):
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
-        customer_verify_data = CustomerVerifyData()
-        customer_verify_data.i_remainder = 0
-        customer_verify_data.i_card_level = 3
-        customer_verify_data.i_swap_score = 31096
-        customer_verify_data.i_total_consume = 31096
-        self._customer.expectedData = customer_verify_data
+        self._customer.expectedData = CustomerVerifyData.expected_data(31096, 31096, 3, 0)
 
         lc_global_verify_data = LCGlobalVerifyData()
         lc_global_verify_data.i_lc_global_arrive_store_num = 1

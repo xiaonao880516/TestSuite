@@ -23,12 +23,7 @@ class TestCustomer(BaseCase):
         # 更新注册后的验证数据
         self._customer.update_post_verify_data()
         # 封装验证值
-        customer_verify_data = CustomerVerifyData()
-        customer_verify_data.i_remainder = 0
-        customer_verify_data.i_card_level = 1
-        customer_verify_data.i_swap_score = 500
-        customer_verify_data.i_total_consume = 0
-        self._customer.expectedData = customer_verify_data
+        self._customer.expectedData = CustomerVerifyData.expected_data(0, 500, 1, 0)
         # 验证数据
         self._data_assertion()
 
@@ -45,11 +40,6 @@ class TestCustomer(BaseCase):
         # 更新充值后的验证数据
         self._customer.update_post_verify_data()
         # 封装验证值
-        customer_verify_data = CustomerVerifyData()
-        customer_verify_data.i_remainder = 40000
-        customer_verify_data.i_card_level = 2
-        customer_verify_data.i_swap_score = 40000
-        customer_verify_data.i_total_consume = 0
-        self._customer.expectedData = customer_verify_data
+        self._customer.expectedData = CustomerVerifyData.expected_data(0, 40000, 2, 40000)
         # 验证数据
         self._data_assertion()
