@@ -107,6 +107,7 @@ class BaseCase(unittest.TestCase):
         cls._global = LCGlobal(cls._global_repo)
         cls._global.areas.append(cls._area)
         cls._test_data.lc_global = cls._global
+        pass
 
     @classmethod
     def tearDownClass(cls):
