@@ -7,6 +7,17 @@ class PlatVerifyData(object):
     """
     f_platform_sale_num = 0.0  # 平台业绩
 
+    @classmethod
+    def expected_data(cls, f_platform_sale_num):
+        """
+        创建预期值对象
+        :param f_platform_sale_num: 平台业绩
+        :return:
+        """
+        exp_value = cls()
+        exp_value.f_platform_sale_num = f_platform_sale_num
+        return exp_value
+
 
 class Platform(IDataVerify):
     """

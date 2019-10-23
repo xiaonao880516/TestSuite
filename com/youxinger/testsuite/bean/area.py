@@ -8,6 +8,17 @@ class AreaVerifyData(object):
     """
     f_area_sales_amount = 0  # 大区销售额
 
+    @classmethod
+    def expected_data(cls, f_area_sales_amount):
+        """
+        创建预期值对象
+        :param f_area_sales_amount: 大区销售额
+        :return:
+        """
+        exp_value = cls()
+        exp_value.f_area_sales_amount = f_area_sales_amount
+        return exp_value
+
 
 class Area(IDataVerify):
     """

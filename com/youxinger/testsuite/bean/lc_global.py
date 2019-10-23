@@ -17,6 +17,26 @@ class LCGlobalVerifyData(object):
     f_lc_global_sale_num = 0.0  # 总揽销售总额
     f_lc_global_sale_percent = 0.0  # 总揽销售完成比
 
+    @classmethod
+    def expected_data(cls, i_lc_global_arrive_store_num, i_lc_global_newvip_num, i_lc_global_order_num,
+                      i_lc_global_refund_num, f_lc_global_sale_num):
+        """
+        创建预期值对象
+        :param i_lc_global_arrive_store_num: 总揽到店次数
+        :param i_lc_global_newvip_num: 总揽新增会员数
+        :param i_lc_global_order_num: 总揽订单数
+        :param i_lc_global_refund_num: 总揽退单数
+        :param f_lc_global_sale_num: 总揽销售总额
+        :return:
+        """
+        exp_value = cls()
+        exp_value.i_lc_global_arrive_store_num = i_lc_global_arrive_store_num
+        exp_value.i_lc_global_newvip_num = i_lc_global_newvip_num
+        exp_value.i_lc_global_order_num = i_lc_global_order_num
+        exp_value.i_lc_global_refund_num = i_lc_global_refund_num
+        exp_value.f_lc_global_sale_num = f_lc_global_sale_num
+        return exp_value
+
 
 class LCGlobal(IDataVerify):
     """
