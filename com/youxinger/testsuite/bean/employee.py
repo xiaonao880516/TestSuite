@@ -7,6 +7,17 @@ class EmployeeVerifyData(object):
     """
     f_employee_sale_num = 0.0  # 员工业绩
 
+    @classmethod
+    def expected_data(cls, f_employee_sale_num):
+        """
+        创建预期值对象
+        :param f_employee_sale_num: 员工业绩
+        :return:
+        """
+        exp_value = cls()
+        exp_value.f_employee_sale_num = f_employee_sale_num
+        return exp_value
+
 
 class Employee(IDataVerify):
     """
