@@ -8,7 +8,7 @@ from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.lc_global import LCGlobal
 from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.utils import variables
-from com.youxinger.testsuite.service import login_service, repository_service
+from com.youxinger.testsuite.service import login_service
 import logging
 from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE
 from com.youxinger.testsuite.service.customer_service import Customer
@@ -105,7 +105,7 @@ class BaseCase(unittest.TestCase):
         cls._area.stores.append(cls._store)
         cls._global_repo = Repository.lc_global(GOODS_CODE)
         cls._global = LCGlobal(cls._global_repo)
-        cls._global.areas[AREA['area_id']] = cls._area
+        cls._global.areas.append(cls._area)
         cls._test_data.lc_global = cls._global
 
     @classmethod

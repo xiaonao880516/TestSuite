@@ -1,3 +1,4 @@
+from com.youxinger.testsuite.bean.area import AreaVerifyData
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.bean.employee import EmployeeVerifyData
 from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
@@ -51,29 +52,25 @@ class TestGeneralGoods(BaseCase):
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
-        self._customer.expectedData = CustomerVerifyData.expected_data(31096, 31096, 3, 0)
-
-        self._test_data.lc_global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)
+        self._customer.expectedData = CustomerVerifyData.expected_data(31096, 31096, 3, 0)  # 更新会员验证值
+        self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
 
         expected_global_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
-        self._test_data.lc_global.repository.update_expected_verify_data(expected_global_repo)
+        self._global.repository.update_expected_verify_data(expected_global_repo)  # 更新总览库存验证值
 
-        expected_area_values = {AREA['area_id']: 3.11}
-        self._test_data.lc_global.update_expected_area_verify_data(expected_area_values)
-        expected_store_data = StoreVerifyData.expected_data(1, 0, 1, 0, 31096, 31096)
-        expected_store_values = {STORE['store_id']: expected_store_data}
+        expected_area_values = {AREA['area_id']: AreaVerifyData.expected_data(3.11)}
+        self._global.update_expected_area_verify_data(expected_area_values)  # 更新大区验证值
+
+        self._platform.expectedData = PlatVerifyData.expected_data(3.11)  # 更新平台验证值
+        self._employee.expectedData = EmployeeVerifyData.expected_data(3.11)  # 更新员工验证值
 
         expected_store_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
-        expected_platform = PlatVerifyData()
-        expected_platform.f_platform_sale_num = 3.11
-        self._platform.expectedData = expected_platform
-        expected_employee = EmployeeVerifyData()
-        expected_employee.f_employee_sale_num = 3.11
-        self._employee.expectedData = expected_employee
-        self._store.repository.update_expected_verify_data(expected_store_repo)
-        self._area.update_expected_store_verify_data(expected_store_values)
+        self._store.repository.update_expected_verify_data(expected_store_repo)  # 更新门店库存验证值
+
+        expected_store_values = {STORE['store_id']: StoreVerifyData.expected_data(1, 0, 1, 0, 31096, 31096)}
+        self._area.update_expected_store_verify_data(expected_store_values)  # 更新门店验证值
         # 验证数据
         self._data_assertion()
 

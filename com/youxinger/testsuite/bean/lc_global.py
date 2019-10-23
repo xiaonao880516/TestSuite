@@ -42,7 +42,7 @@ class LCGlobal(IDataVerify):
     """
     总览信息
     """
-    areas: {Area} = None  # 要验证的大区列表
+    areas: [Area] = None  # 要验证的大区列表
     repository: Repository = None  # 要验证的仓库
     preVerifyData: LCGlobalVerifyData = None  # 操作前数据
     postVerifyData: LCGlobalVerifyData = None  # 操作后数据
@@ -52,7 +52,7 @@ class LCGlobal(IDataVerify):
         self.preVerifyData = LCGlobalVerifyData()
         self.postVerifyData = LCGlobalVerifyData()
         self.repository = repository
-        self.areas = dict()
+        self.areas = []
 
     def update_expected_area_verify_data(self, expected_area_list):
         """
@@ -60,12 +60,8 @@ class LCGlobal(IDataVerify):
         :return:
         """
         if expected_area_list is not None:
-            for area_id in expected_area_list:
-                area = self.areas.get(area_id)
-                if area is not None:
-                    expected_value = AreaVerifyData()
-                    expected_value.f_area_sales_amount = expected_area_list.get(area_id)
-                    area.expectedData = expected_value
+            for area in self.areas:
+                area.expectedData = expected_area_list.get(area.area_id)
 
     def update_pre_verify_data(self):
         """
@@ -76,8 +72,8 @@ class LCGlobal(IDataVerify):
         financial_data_service.get_update_global_data(self.preVerifyData)
         self.repository.update_pre_verify_data()
         if self.areas is not None:
-            for area_id in self.areas:
-                self.areas[area_id].update_pre_verify_data()
+            for area in self.areas:
+                area.update_pre_verify_data()
 
     def update_post_verify_data(self):
         """
@@ -88,8 +84,8 @@ class LCGlobal(IDataVerify):
         financial_data_service.get_update_global_data(self.postVerifyData)
         self.repository.update_post_verify_data()
         if self.areas is not None:
-            for area_id in self.areas:
-                self.areas[area_id].update_post_verify_data()
+            for area in self.areas:
+                area.update_post_verify_data()
 
     def data_verify(self):
         if self.expectedData is None:
@@ -120,5 +116,5 @@ class LCGlobal(IDataVerify):
             self.repository.data_verify()
 
         if self.areas is not None:
-            for area_id in self.areas:
-                self.areas[area_id].data_verify()
+            for area in self.areas:
+                area.data_verify()
