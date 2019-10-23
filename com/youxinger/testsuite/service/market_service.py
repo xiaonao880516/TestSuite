@@ -18,6 +18,7 @@ def pos_order(order_parms):
         real_pay = json_data['data']['real_pay'].replace(".", "")
         if pos_order_pay(shopping_order_id, real_pay) is True:
             good_shipped(shopping_order_id)
+        return shopping_order_id
     except Exception as e:
         logging.error("pos下单失败, %s" % e)
         return False
@@ -81,14 +82,14 @@ def good_shipped(shopping_order_id):
         return False
 
 
-def order_return():
+def return_order():
     """
     退货
     :return:
     """
 
 
-def order_exchange():
+def exchange_order():
     """
     换货
     :return:

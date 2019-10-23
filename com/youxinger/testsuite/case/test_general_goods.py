@@ -23,6 +23,8 @@ class TestGeneralGoods(BaseCase):
 
     def setUp(self):
         super().setUp()
+        # 更新充值前的验证数据
+        self._test_data.update_pre_verify_data()
 
     def tearDown(self):
         super().tearDown()
@@ -34,8 +36,6 @@ class TestGeneralGoods(BaseCase):
         :return:
         """
         logging.debug("test_pos_shopping_order")
-        # 更新充值前的验证数据
-        self._test_data.update_pre_verify_data()
         order_param = {'price': '33800.00', 'discount_money': '2704.00', 'real_pay': '31096.00', 'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
                        'receive_sheng': self._customer.province, 'receive_shi': self._customer.city, 'receive_diqu': self._customer.area, 'receive_address': self._customer.address,
                        'member_id': self._customer.member_number, 'member_name': self._customer.name, 'member_phone': self._customer.phone,
@@ -48,7 +48,7 @@ class TestGeneralGoods(BaseCase):
                        'goods_list[0][is_active]': '0', 'goods_list[0][type]': '1', 'pay_type': 'pos', 'zip_code': '', 'referral_phone': '', 'beizhu': '',
                        'discount_id': '', 'discount_description': '', 'coupon_id': '', 'coupon_discount_amount': '0.00', 'coupon_discount_rate': ''}
         # 下单购物
-        market_service.pos_order(order_param)
+        shopping_order_id = market_service.pos_order(order_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
@@ -66,7 +66,7 @@ class TestGeneralGoods(BaseCase):
         self._employee.expectedData = EmployeeVerifyData.expected_data(3.11)  # 更新员工验证值
 
         expected_store_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
-                                'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
+                               'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
         self._store.repository.update_expected_verify_data(expected_store_repo)  # 更新门店库存验证值
 
         expected_store_values = {STORE['store_id']: StoreVerifyData.expected_data(1, 0, 1, 0, 31096, 31096)}

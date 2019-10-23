@@ -88,29 +88,29 @@ class LCGlobal(IDataVerify):
                 area.update_post_verify_data()
 
     def data_verify(self):
-        if self.expectedData is None:
+        if self.expectedData is not None:
+            assert abs(
+                self.postVerifyData.i_lc_global_arrive_store_num - self.expectedData.i_lc_global_arrive_store_num - self.preVerifyData.i_lc_global_arrive_store_num) == 0, \
+                "总揽到店次数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.i_lc_global_arrive_store_num, self.postVerifyData.i_lc_global_arrive_store_num, self.preVerifyData.i_lc_global_arrive_store_num)
+            assert abs(
+                self.postVerifyData.i_lc_global_newvip_num - self.expectedData.i_lc_global_newvip_num - self.preVerifyData.i_lc_global_newvip_num) == 0, \
+                "总揽新增会员数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.i_lc_global_newvip_num, self.postVerifyData.i_lc_global_newvip_num, self.preVerifyData.i_lc_global_newvip_num)
+            assert abs(
+                self.postVerifyData.i_lc_global_order_num - self.expectedData.i_lc_global_order_num - self.preVerifyData.i_lc_global_order_num) == 0, \
+                "总揽订单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.i_lc_global_order_num, self.postVerifyData.i_lc_global_order_num, self.preVerifyData.i_lc_global_order_num)
+            assert abs(
+                self.postVerifyData.i_lc_global_refund_num - self.expectedData.i_lc_global_refund_num - self.preVerifyData.i_lc_global_refund_num) == 0, \
+                "总揽退单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.i_lc_global_refund_num, self.postVerifyData.i_lc_global_refund_num, self.preVerifyData.i_lc_global_refund_num)
+            assert abs(
+                self.postVerifyData.f_lc_global_sale_num - self.expectedData.f_lc_global_sale_num - self.preVerifyData.f_lc_global_sale_num) == 0, \
+                "总揽销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                    self.expectedData.f_lc_global_sale_num, self.postVerifyData.f_lc_global_sale_num, self.preVerifyData.f_lc_global_sale_num)
+        else:
             logging.debug("无预期值，无需进行数据验证")
-            return
-        assert abs(
-            self.postVerifyData.i_lc_global_arrive_store_num - self.expectedData.i_lc_global_arrive_store_num - self.preVerifyData.i_lc_global_arrive_store_num) == 0, \
-            "总揽到店次数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.i_lc_global_arrive_store_num, self.postVerifyData.i_lc_global_arrive_store_num, self.preVerifyData.i_lc_global_arrive_store_num)
-        assert abs(
-            self.postVerifyData.i_lc_global_newvip_num - self.expectedData.i_lc_global_newvip_num - self.preVerifyData.i_lc_global_newvip_num) == 0, \
-            "总揽新增会员数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.i_lc_global_newvip_num, self.postVerifyData.i_lc_global_newvip_num, self.preVerifyData.i_lc_global_newvip_num)
-        assert abs(
-            self.postVerifyData.i_lc_global_order_num - self.expectedData.i_lc_global_order_num - self.preVerifyData.i_lc_global_order_num) == 0, \
-            "总揽订单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.i_lc_global_order_num, self.postVerifyData.i_lc_global_order_num, self.preVerifyData.i_lc_global_order_num)
-        assert abs(
-            self.postVerifyData.i_lc_global_refund_num - self.expectedData.i_lc_global_refund_num - self.preVerifyData.i_lc_global_refund_num) == 0, \
-            "总揽退单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.i_lc_global_refund_num, self.postVerifyData.i_lc_global_refund_num, self.preVerifyData.i_lc_global_refund_num)
-        assert abs(
-            self.postVerifyData.f_lc_global_sale_num - self.expectedData.f_lc_global_sale_num - self.preVerifyData.f_lc_global_sale_num) == 0, \
-            "总揽销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                self.expectedData.f_lc_global_sale_num, self.postVerifyData.f_lc_global_sale_num, self.preVerifyData.f_lc_global_sale_num)
 
         if self.repository is not None:
             self.repository.data_verify()
