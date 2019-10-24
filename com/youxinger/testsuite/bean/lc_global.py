@@ -110,7 +110,7 @@ class LCGlobal(IDataVerify):
                 "总揽销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_lc_global_sale_num, self.postVerifyData.f_lc_global_sale_num, self.preVerifyData.f_lc_global_sale_num)
         else:
-            logging.debug("无预期值，无需进行数据验证")
+            logging.debug("LCGlobal无预期值，无需进行数据验证")
 
         if self.repository is not None:
             self.repository.data_verify()

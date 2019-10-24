@@ -103,7 +103,7 @@ class Customer(IDataVerify):
 
     def data_verify(self):
         if self.expectedData is None:
-            logging.debug("无预期值，无需进行数据验证")
+            logging.debug("Customer:" + self.name + ", 无预期值，无需进行数据验证")
             return
         assert abs(
             self.postVerifyData.i_total_consume - self.expectedData.i_total_consume - self.preVerifyData.i_total_consume) < 2, \

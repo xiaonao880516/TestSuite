@@ -53,7 +53,7 @@ class TestGeneralGoods(BaseCase):
         self._test_data.update_post_verify_data()
         # 封装验证值
         self._customer.expectedData = CustomerVerifyData.expected_data(31096, 31096, 3, 0)  # 更新会员验证值
-        self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
+        # self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
 
         expected_global_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}

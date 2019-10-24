@@ -1,3 +1,5 @@
+import logging
+
 from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 from com.youxinger.testsuite.bean.platform import Platform
@@ -143,6 +145,8 @@ class Store(IDataVerify):
                 self.postVerifyData.f_store_plat_sale_num - self.expectedData.f_store_plat_sale_num - self.preVerifyData.f_store_plat_sale_num) == 0, \
                 "门店平台销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_store_plat_sale_num, self.postVerifyData.f_store_plat_sale_num, self.preVerifyData.f_store_plat_sale_num)
+        else:
+            logging.debug("Store:"+self.store_name+", 无预期值，无需进行数据验证")
 
         if self.repository is not None:
             self.repository.data_verify()

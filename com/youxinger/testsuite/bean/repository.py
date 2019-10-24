@@ -1,3 +1,5 @@
+import logging
+
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 
 
@@ -87,4 +89,6 @@ class Repository(IDataVerify):
                 assert abs(good.i_post_quantity - good.i_pre_quantity - good.i_expected_quantity) == 0, \
                     "%s仓库%s商品，库存检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (self.repo_name, good.s_tiaoma,
                                                                   good.i_expected_quantity, good.i_post_quantity, good.i_pre_quantity)
+        else:
+            logging.debug("Repository:"+self.repo_name+", 无预期值，无需进行数据验证")
 

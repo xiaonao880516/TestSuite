@@ -1,3 +1,5 @@
+import logging
+
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 
 
@@ -58,3 +60,5 @@ class Platform(IDataVerify):
                 self.postVerifyData.f_platform_sale_num - self.expectedData.f_platform_sale_num - self.preVerifyData.f_platform_sale_num) < 0.02, \
                 "平台业绩检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_platform_sale_num, self.postVerifyData.f_platform_sale_num, self.preVerifyData.f_platform_sale_num)
+        else:
+            logging.debug("Platform:"+self.platform_name+", 无预期值，无需进行数据验证")

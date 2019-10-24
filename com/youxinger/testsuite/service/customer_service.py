@@ -104,8 +104,7 @@ def get_customer_by_phone(phone: str):
             customer.phone = customer_array[0]['phone']
             return customer
         except TypeError:
-            logging.error(u"查找会员，查找会员异常")
-            return None
+            raise Exception('查找会员，查找会员异常')
 
 
 def update_customer_verify_data(is_operated: bool, customer: Customer):
@@ -140,22 +139,17 @@ def __update_customer_verify_data(is_operated, customer: Customer, customer_arra
     :return:
     """
     try:
+        verify_data = CustomerVerifyData()
+        verify_data.i_total_consume = int(customer_array[0]['total_consume'])
+        verify_data.i_swap_score = int(customer_array[0]['swap_score'])
+        verify_data.i_card_level = int(customer_array[0]['card_level'])
+        verify_data.i_remainder = __get_customer_balance(customer)
         if is_operated is True:
-            post_verify_data = CustomerVerifyData()
-            post_verify_data.i_total_consume = int(customer_array[0]['total_consume'])
-            post_verify_data.i_swap_score = int(customer_array[0]['swap_score'])
-            post_verify_data.i_card_level = int(customer_array[0]['card_level'])
-            post_verify_data.i_remainder = __get_customer_balance(customer)
-            customer.postVerifyData = post_verify_data
+            customer.postVerifyData = verify_data
         else:
-            pre_verify_data = CustomerVerifyData()
-            pre_verify_data.i_total_consume = int(customer_array[0]['total_consume'])
-            pre_verify_data.i_swap_score = int(customer_array[0]['swap_score'])
-            pre_verify_data.i_card_level = int(customer_array[0]['card_level'])
-            pre_verify_data.i_remainder = __get_customer_balance(customer)
-            customer.preVerifyData = pre_verify_data
+            customer.preVerifyData = verify_data
     except TypeError:
-        logging.error(u"查找会员，查找会员异常")
+        raise Exception('查找会员，查找会员异常')
 
 
 def __get_customer_balance(customer: Customer):
