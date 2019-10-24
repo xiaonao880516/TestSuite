@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 22-Oct-2019 at 18:28:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.0</p>
+    <p>Report generated on 24-Oct-2019 at 17:33:55 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -255,12 +255,12 @@ function filter_table(elem) {
         <td>Windows-10-10.0.18362-SP0</td></tr>
       <tr>
         <td>Plugins</td>
-        <td>{&apos;html&apos;: &apos;2.0.0&apos;, &apos;metadata&apos;: &apos;1.8.0&apos;}</td></tr>
+        <td>{&apos;html&apos;: &apos;2.0.0&apos;, &apos;metadata&apos;: &apos;1.8.0&apos;, &apos;sugar&apos;: &apos;0.9.2&apos;}</td></tr>
       <tr>
         <td>Python</td>
         <td>3.7.1</td></tr></table>
     <h2>Summary</h2>
-    <p>5 tests ran in 36.21 seconds. </p>
+    <p>5 tests ran in 57.52 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -275,396 +275,458 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">com/youxinger/testsuite/case/test_check_all.py::TestCheckAll::test_check_all</td>
-          <td class="col-duration">0.65</td>
+          <td class="col-name">test_check_all.py::TestCheckAll::test_check_all</td>
+          <td class="col-duration">0.66</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-22 18:28:09,930 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:10,580 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /health/check-all HTTP/1.1&quot; 200 None
-<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /health/check-all HTTP/1.1&quot; 200 None<br/></div></td></tr></tbody>
+            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-24 17:32:58,396 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:32:59,053 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /health/check-all HTTP/1.1&quot; 200 None
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /health/check-all HTTP/1.1&quot; 200 None<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">com/youxinger/testsuite/case/test_customer.py::TestCustomer::test_1_after_customer_register</td>
+          <td class="col-name">test_customer.py::TestCustomer::test_1_after_customer_register</td>
           <td class="col-duration">0.38</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>2019-10-22 18:28:10,591 - base_case.py[line:88] - DEBUG: setUpClass
-2019-10-22 18:28:10,591 - login_service.py[line:10] - INFO: 前台登录
-2019-10-22 18:28:10,596 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:10,913 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
-2019-10-22 18:28:10,914 - login_service.py[line:26] - INFO: 后台登录
-2019-10-22 18:28:10,915 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:11,028 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
-2019-10-22 18:28:11,030 - customer_service.py[line:86] - INFO: 根据手机号获取会员
-2019-10-22 18:28:11,034 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:11,232 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:11,233 - customer_service.py[line:96] - DEBUG: 查找会员，会员不存在
-2019-10-22 18:28:11,233 - customer_service.py[line:25] - INFO: 注册会员
-2019-10-22 18:28:11,237 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
-2019-10-22 18:28:11,448 - connectionpool.py[line:437] - DEBUG: http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
-2019-10-22 18:28:11,450 - customer_service.py[line:86] - INFO: 根据手机号获取会员
-2019-10-22 18:28:11,453 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:12,025 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:12,027 - customer_service.py[line:99] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:12,028 - customer_service.py[line:61] - INFO: 会员增加收获地址
-2019-10-22 18:28:12,031 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:12,271 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
-<br/> -------------------------------Captured log setup------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:88 setUpClass
-[32mINFO    [0m root:login_service.py:10 前台登录
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:login_service.py:26 后台登录
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:86 根据手机号获取会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:96 查找会员，会员不存在
-[32mINFO    [0m root:customer_service.py:25 注册会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:86 根据手机号获取会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:99 查找会员，会员存在
-[32mINFO    [0m root:customer_service.py:61 会员增加收获地址
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None<br/> ------------------------------Captured stderr call------------------------------ <br/>2019-10-22 18:28:12,275 - base_case.py[line:128] - DEBUG: setUp
-2019-10-22 18:28:12,276 - test_customer.py[line:22] - DEBUG: test_after_customer_register
-2019-10-22 18:28:12,276 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:12,280 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:12,559 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:12,560 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:12,561 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:12,655 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-2019-10-22 18:28:12,657 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:12,657 - lc_global.py[line:76] - DEBUG: 无预期值，无需进行数据验证
-2019-10-22 18:28:12,657 - base_case.py[line:136] - DEBUG: tearDown
-<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:128 setUp
-[35mDEBUG   [0m root:test_customer.py:22 test_after_customer_register
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[35mDEBUG   [0m root:lc_global.py:76 无预期值，无需进行数据验证
-[35mDEBUG   [0m root:base_case.py:136 tearDown<br/></div></td></tr></tbody>
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>2019-10-24 17:32:59,059 - base_case.py[line:88] - DEBUG: setUpClass
+2019-10-24 17:32:59,059 - login_service.py[line:10] - INFO: 前台登录
+2019-10-24 17:32:59,061 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:32:59,353 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
+2019-10-24 17:32:59,355 - login_service.py[line:26] - INFO: 后台登录
+2019-10-24 17:32:59,360 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:32:59,472 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
+2019-10-24 17:32:59,473 - customer_service.py[line:86] - INFO: 根据手机号获取会员
+2019-10-24 17:32:59,474 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:32:59,685 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:32:59,687 - customer_service.py[line:96] - DEBUG: 查找会员，会员不存在
+2019-10-24 17:32:59,687 - customer_service.py[line:25] - INFO: 注册会员
+2019-10-24 17:32:59,692 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
+2019-10-24 17:32:59,902 - connectionpool.py[line:437] - DEBUG: http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
+2019-10-24 17:32:59,904 - customer_service.py[line:86] - INFO: 根据手机号获取会员
+2019-10-24 17:32:59,909 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:00,197 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:00,199 - customer_service.py[line:99] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:00,199 - customer_service.py[line:61] - INFO: 会员增加收获地址
+2019-10-24 17:33:00,204 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:00,415 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
+<br/> -------------------------------Captured log setup------------------------------- <br/>DEBUG    root:base_case.py:88 setUpClass
+INFO     root:login_service.py:10 前台登录
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
+INFO     root:login_service.py:26 后台登录
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:86 根据手机号获取会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:96 查找会员，会员不存在
+INFO     root:customer_service.py:25 注册会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:86 根据手机号获取会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:99 查找会员，会员存在
+INFO     root:customer_service.py:61 会员增加收获地址
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None<br/> ------------------------------Captured stderr call------------------------------ <br/>2019-10-24 17:33:00,421 - base_case.py[line:130] - DEBUG: setUp
+2019-10-24 17:33:00,422 - test_customer.py[line:22] - DEBUG: test_after_customer_register
+2019-10-24 17:33:00,422 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:00,426 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:00,687 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:00,689 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:00,694 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:00,794 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:00,795 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:00,796 - lc_global.py[line:113] - DEBUG: LCGlobal无预期值，无需进行数据验证
+2019-10-24 17:33:00,796 - area.py[line:80] - DEBUG: Area:湖北大区, 无预期值，无需进行数据验证
+2019-10-24 17:33:00,796 - store.py[line:149] - DEBUG: Store:武汉自营店, 无预期值，无需进行数据验证
+2019-10-24 17:33:00,796 - platform.py[line:64] - DEBUG: Platform:武大樱花平台, 无预期值，无需进行数据验证
+2019-10-24 17:33:00,796 - employee.py[line:69] - DEBUG: Employee:店长老李, 无预期值，无需进行数据验证
+2019-10-24 17:33:00,797 - base_case.py[line:138] - DEBUG: tearDown
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    root:base_case.py:130 setUp
+DEBUG    root:test_customer.py:22 test_after_customer_register
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+DEBUG    root:lc_global.py:113 LCGlobal无预期值，无需进行数据验证
+DEBUG    root:area.py:80 Area:湖北大区, 无预期值，无需进行数据验证
+DEBUG    root:store.py:149 Store:武汉自营店, 无预期值，无需进行数据验证
+DEBUG    root:platform.py:64 Platform:武大樱花平台, 无预期值，无需进行数据验证
+DEBUG    root:employee.py:69 Employee:店长老李, 无预期值，无需进行数据验证
+DEBUG    root:base_case.py:138 tearDown<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">com/youxinger/testsuite/case/test_customer.py::TestCustomer::test_2_after_customer_recharge</td>
-          <td class="col-duration">1.68</td>
+          <td class="col-name">test_customer.py::TestCustomer::test_2_after_customer_recharge</td>
+          <td class="col-duration">1.66</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-22 18:28:12,661 - base_case.py[line:128] - DEBUG: setUp
-2019-10-22 18:28:12,661 - test_customer.py[line:40] - DEBUG: test_after_customer_recharge
-2019-10-22 18:28:12,661 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:12,662 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:12,962 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:12,964 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:12,968 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:13,061 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-2019-10-22 18:28:13,061 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:13,062 - customer_service.py[line:185] - INFO: 会员充值， 创建充值订单
-2019-10-22 18:28:13,064 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:13,376 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
-2019-10-22 18:28:13,377 - customer_service.py[line:203] - INFO: 充值订单付款
-2019-10-22 18:28:13,381 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:13,970 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
-2019-10-22 18:28:13,972 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:13,975 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:14,241 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:14,243 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:14,247 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:14,343 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-2019-10-22 18:28:14,345 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:14,345 - lc_global.py[line:76] - DEBUG: 无预期值，无需进行数据验证
-2019-10-22 18:28:14,345 - base_case.py[line:136] - DEBUG: tearDown
-<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:128 setUp
-[35mDEBUG   [0m root:test_customer.py:40 test_after_customer_recharge
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[32mINFO    [0m root:customer_service.py:185 会员充值， 创建充值订单
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:203 充值订单付款
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[35mDEBUG   [0m root:lc_global.py:76 无预期值，无需进行数据验证
-[35mDEBUG   [0m root:base_case.py:136 tearDown<br/></div></td></tr></tbody>
+            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-24 17:33:00,802 - base_case.py[line:130] - DEBUG: setUp
+2019-10-24 17:33:00,803 - test_customer.py[line:35] - DEBUG: test_after_customer_recharge
+2019-10-24 17:33:00,803 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:00,806 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:01,063 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:01,065 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:01,068 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:01,173 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:01,174 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:01,174 - customer_service.py[line:179] - INFO: 会员充值， 创建充值订单
+2019-10-24 17:33:01,175 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:01,512 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
+2019-10-24 17:33:01,514 - customer_service.py[line:197] - INFO: 充值订单付款
+2019-10-24 17:33:01,519 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:02,076 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
+2019-10-24 17:33:02,077 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:02,082 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:02,351 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:02,352 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:02,353 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:02,459 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:02,460 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:02,461 - lc_global.py[line:113] - DEBUG: LCGlobal无预期值，无需进行数据验证
+2019-10-24 17:33:02,461 - area.py[line:80] - DEBUG: Area:湖北大区, 无预期值，无需进行数据验证
+2019-10-24 17:33:02,461 - store.py[line:149] - DEBUG: Store:武汉自营店, 无预期值，无需进行数据验证
+2019-10-24 17:33:02,461 - platform.py[line:64] - DEBUG: Platform:武大樱花平台, 无预期值，无需进行数据验证
+2019-10-24 17:33:02,462 - employee.py[line:69] - DEBUG: Employee:店长老李, 无预期值，无需进行数据验证
+2019-10-24 17:33:02,462 - base_case.py[line:138] - DEBUG: tearDown
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    root:base_case.py:130 setUp
+DEBUG    root:test_customer.py:35 test_after_customer_recharge
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+INFO     root:customer_service.py:179 会员充值， 创建充值订单
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:197 充值订单付款
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=25245414f2 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+DEBUG    root:lc_global.py:113 LCGlobal无预期值，无需进行数据验证
+DEBUG    root:area.py:80 Area:湖北大区, 无预期值，无需进行数据验证
+DEBUG    root:store.py:149 Store:武汉自营店, 无预期值，无需进行数据验证
+DEBUG    root:platform.py:64 Platform:武大樱花平台, 无预期值，无需进行数据验证
+DEBUG    root:employee.py:69 Employee:店长老李, 无预期值，无需进行数据验证
+DEBUG    root:base_case.py:138 tearDown<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">com/youxinger/testsuite/case/test_general_goods.py::TestGeneralGoods::test_1_pos_shopping_order</td>
-          <td class="col-duration">28.93</td>
+          <td class="col-name">test_general_goods.py::TestGeneralGoods::test_1_pos_shopping_order</td>
+          <td class="col-duration">37.65</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>2019-10-22 18:28:14,539 - base_case.py[line:88] - DEBUG: setUpClass
-2019-10-22 18:28:14,540 - login_service.py[line:10] - INFO: 前台登录
-2019-10-22 18:28:14,543 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:14,842 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
-2019-10-22 18:28:14,842 - login_service.py[line:26] - INFO: 后台登录
-2019-10-22 18:28:14,844 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:14,958 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
-2019-10-22 18:28:14,959 - customer_service.py[line:86] - INFO: 根据手机号获取会员
-2019-10-22 18:28:14,961 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:15,168 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:15,169 - customer_service.py[line:96] - DEBUG: 查找会员，会员不存在
-2019-10-22 18:28:15,169 - customer_service.py[line:25] - INFO: 注册会员
-2019-10-22 18:28:15,171 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
-2019-10-22 18:28:15,398 - connectionpool.py[line:437] - DEBUG: http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
-2019-10-22 18:28:15,399 - customer_service.py[line:86] - INFO: 根据手机号获取会员
-2019-10-22 18:28:15,400 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:15,685 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:15,687 - customer_service.py[line:99] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:15,687 - customer_service.py[line:61] - INFO: 会员增加收获地址
-2019-10-22 18:28:15,690 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:15,922 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
-2019-10-22 18:28:15,924 - customer_service.py[line:185] - INFO: 会员充值， 创建充值订单
-2019-10-22 18:28:15,928 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:16,257 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
-2019-10-22 18:28:16,259 - customer_service.py[line:203] - INFO: 充值订单付款
-2019-10-22 18:28:16,263 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:16,845 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
-<br/> -------------------------------Captured log setup------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:88 setUpClass
-[32mINFO    [0m root:login_service.py:10 前台登录
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:login_service.py:26 后台登录
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:86 根据手机号获取会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:96 查找会员，会员不存在
-[32mINFO    [0m root:customer_service.py:25 注册会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:86 根据手机号获取会员
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:99 查找会员，会员存在
-[32mINFO    [0m root:customer_service.py:61 会员增加收获地址
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:185 会员充值， 创建充值订单
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:203 充值订单付款
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None<br/> ------------------------------Captured stderr call------------------------------ <br/>2019-10-22 18:28:16,846 - base_case.py[line:128] - DEBUG: setUp
-2019-10-22 18:28:16,846 - test_general_goods.py[line:35] - DEBUG: test_pos_shopping_order
-2019-10-22 18:28:16,846 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:16,848 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:17,127 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:17,128 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:17,133 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:17,229 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-2019-10-22 18:28:17,230 - customer_service.py[line:158] - ERROR: 查找会员，查找会员异常
-2019-10-22 18:28:17,231 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:17,231 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:17,235 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:17,500 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:17,501 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:17,506 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:17,599 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=8c65dd7ee2 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:17,601 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:17,603 - financial_data_service.py[line:17] - INFO: 获取总览数据
-2019-10-22 18:28:17,607 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:18,265 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:18,267 - financial_data_service.py[line:34] - DEBUG: 获取总览数据成功
-2019-10-22 18:28:18,267 - repository_service.py[line:39] - INFO: 根据商品条码查找总仓的商品库存
-2019-10-22 18:28:18,271 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:20,939 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
-2019-10-22 18:28:24,717 - financial_data_service.py[line:45] - INFO: 获取大区数据
-2019-10-22 18:28:24,719 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:25,850 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
-2019-10-22 18:28:25,851 - financial_data_service.py[line:59] - DEBUG: 获取大区数据成功
-2019-10-22 18:28:25,851 - financial_data_service.py[line:70] - INFO: 获取门店数据
-2019-10-22 18:28:25,852 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:26,515 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:26,517 - financial_data_service.py[line:89] - DEBUG: 获取门店数据成功
-2019-10-22 18:28:26,517 - repository_service.py[line:16] - INFO: 根据tid与商品条码查找门店的商品库存
-2019-10-22 18:28:26,520 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:27,345 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
-2019-10-22 18:28:27,358 - financial_data_service.py[line:100] - INFO: 获取平台数据
-2019-10-22 18:28:27,360 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:27,979 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:27,980 - financial_data_service.py[line:114] - DEBUG: 获取平台数据成功
-2019-10-22 18:28:27,980 - financial_data_service.py[line:125] - INFO: 获取员工数据
-2019-10-22 18:28:27,983 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:28,619 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:28,620 - financial_data_service.py[line:139] - DEBUG: 获取员工数据成功
-2019-10-22 18:28:28,620 - market_service.py[line:10] - INFO: pos订单
-2019-10-22 18:28:28,622 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:30,629 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/orders/new-orders HTTP/1.1&quot; 200 None
-2019-10-22 18:28:30,631 - market_service.py[line:33] - DEBUG: shopping_order_id=910220628398021, real_pay=3109600
-2019-10-22 18:28:30,634 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:32,886 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/wfjpay/order-done HTTP/1.1&quot; 200 None
-2019-10-22 18:28:32,887 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:32,888 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:33,166 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:33,167 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:33,168 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:33,264 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-2019-10-22 18:28:33,265 - customer_service.py[line:158] - ERROR: 查找会员，查找会员异常
-2019-10-22 18:28:33,265 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:33,265 - customer_service.py[line:118] - INFO: 查找会员，更新操作执行后数据
-2019-10-22 18:28:33,267 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:33,556 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:33,558 - customer_service.py[line:167] - INFO: 查找并保存会员余额
-2019-10-22 18:28:33,562 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:33,657 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=8c65dd7ee2 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:33,659 - customer_service.py[line:131] - DEBUG: 查找会员，会员存在
-2019-10-22 18:28:33,660 - financial_data_service.py[line:17] - INFO: 获取总览数据
-2019-10-22 18:28:33,663 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:34,351 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
-2019-10-22 18:28:34,353 - financial_data_service.py[line:34] - DEBUG: 获取总览数据成功
-2019-10-22 18:28:34,353 - repository_service.py[line:39] - INFO: 根据商品条码查找总仓的商品库存
-2019-10-22 18:28:34,357 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:37,005 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
-2019-10-22 18:28:40,718 - financial_data_service.py[line:45] - INFO: 获取大区数据
-2019-10-22 18:28:40,720 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:42,968 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
-2019-10-22 18:28:42,968 - financial_data_service.py[line:59] - DEBUG: 获取大区数据成功
-2019-10-22 18:28:42,969 - financial_data_service.py[line:70] - INFO: 获取门店数据
-2019-10-22 18:28:42,971 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:43,620 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:43,622 - financial_data_service.py[line:89] - DEBUG: 获取门店数据成功
-2019-10-22 18:28:43,622 - repository_service.py[line:16] - INFO: 根据tid与商品条码查找门店的商品库存
-2019-10-22 18:28:43,626 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:44,438 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
-2019-10-22 18:28:44,455 - financial_data_service.py[line:100] - INFO: 获取平台数据
-2019-10-22 18:28:44,458 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:45,115 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:45,115 - financial_data_service.py[line:114] - DEBUG: 获取平台数据成功
-2019-10-22 18:28:45,116 - financial_data_service.py[line:125] - INFO: 获取员工数据
-2019-10-22 18:28:45,117 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-2019-10-22 18:28:45,770 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-2019-10-22 18:28:45,772 - financial_data_service.py[line:139] - DEBUG: 获取员工数据成功
-2019-10-22 18:28:45,772 - base_case.py[line:136] - DEBUG: tearDown
-<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:128 setUp
-[35mDEBUG   [0m root:test_general_goods.py:35 test_pos_shopping_order
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-[1m[31mERROR   [0m root:customer_service.py:158 查找会员，查找会员异常
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=8c65dd7ee2 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[32mINFO    [0m root:financial_data_service.py:17 获取总览数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:34 获取总览数据成功
-[32mINFO    [0m root:repository_service.py:39 根据商品条码查找总仓的商品库存
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:financial_data_service.py:45 获取大区数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:59 获取大区数据成功
-[32mINFO    [0m root:financial_data_service.py:70 获取门店数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:89 获取门店数据成功
-[32mINFO    [0m root:repository_service.py:16 根据tid与商品条码查找门店的商品库存
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:financial_data_service.py:100 获取平台数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:114 获取平台数据成功
-[32mINFO    [0m root:financial_data_service.py:125 获取员工数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:139 获取员工数据成功
-[32mINFO    [0m root:market_service.py:10 pos订单
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/orders/new-orders HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:market_service.py:33 shopping_order_id=910220628398021, real_pay=3109600
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/wfjpay/order-done HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=7dc36b776b HTTP/1.1&quot; 200 None
-[1m[31mERROR   [0m root:customer_service.py:158 查找会员，查找会员异常
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[32mINFO    [0m root:customer_service.py:118 查找会员，更新操作执行后数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:customer_service.py:167 查找并保存会员余额
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=8c65dd7ee2 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:customer_service.py:131 查找会员，会员存在
-[32mINFO    [0m root:financial_data_service.py:17 获取总览数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:34 获取总览数据成功
-[32mINFO    [0m root:repository_service.py:39 根据商品条码查找总仓的商品库存
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:financial_data_service.py:45 获取大区数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:59 获取大区数据成功
-[32mINFO    [0m root:financial_data_service.py:70 获取门店数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:89 获取门店数据成功
-[32mINFO    [0m root:repository_service.py:16 根据tid与商品条码查找门店的商品库存
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
-[32mINFO    [0m root:financial_data_service.py:100 获取平台数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:114 获取平台数据成功
-[32mINFO    [0m root:financial_data_service.py:125 获取员工数据
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
-[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
-[35mDEBUG   [0m root:financial_data_service.py:139 获取员工数据成功
-[35mDEBUG   [0m root:base_case.py:136 tearDown<br/></div></td></tr></tbody>
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>2019-10-24 17:33:02,654 - base_case.py[line:88] - DEBUG: setUpClass
+2019-10-24 17:33:02,655 - login_service.py[line:10] - INFO: 前台登录
+2019-10-24 17:33:02,660 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:02,951 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
+2019-10-24 17:33:02,953 - login_service.py[line:26] - INFO: 后台登录
+2019-10-24 17:33:02,957 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:03,073 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
+2019-10-24 17:33:03,074 - customer_service.py[line:86] - INFO: 根据手机号获取会员
+2019-10-24 17:33:03,075 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:03,279 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:03,280 - customer_service.py[line:96] - DEBUG: 查找会员，会员不存在
+2019-10-24 17:33:03,280 - customer_service.py[line:25] - INFO: 注册会员
+2019-10-24 17:33:03,281 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
+2019-10-24 17:33:03,546 - connectionpool.py[line:437] - DEBUG: http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
+2019-10-24 17:33:03,548 - customer_service.py[line:86] - INFO: 根据手机号获取会员
+2019-10-24 17:33:03,553 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:03,853 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:03,855 - customer_service.py[line:99] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:03,855 - customer_service.py[line:61] - INFO: 会员增加收获地址
+2019-10-24 17:33:03,858 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:04,069 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
+2019-10-24 17:33:04,071 - customer_service.py[line:179] - INFO: 会员充值， 创建充值订单
+2019-10-24 17:33:04,075 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:04,414 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
+2019-10-24 17:33:04,416 - customer_service.py[line:197] - INFO: 充值订单付款
+2019-10-24 17:33:04,420 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:04,988 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None
+<br/> -------------------------------Captured log setup------------------------------- <br/>DEBUG    root:base_case.py:88 setUpClass
+INFO     root:login_service.py:10 前台登录
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/login/login HTTP/1.1&quot; 200 None
+INFO     root:login_service.py:26 后台登录
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/login/login HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:86 根据手机号获取会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:96 查找会员，会员不存在
+INFO     root:customer_service.py:25 注册会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchmpapi.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchmpapi.youxinger.net:80 &quot;POST /api/lchmpFrontStage/reg HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:86 根据手机号获取会员
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:99 查找会员，会员存在
+INFO     root:customer_service.py:61 会员增加收获地址
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/vip/address/create-address HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:179 会员充值， 创建充值订单
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/generate-order HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:197 充值订单付款
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/recharge/ceshi HTTP/1.1&quot; 200 None<br/> ------------------------------Captured stderr call------------------------------ <br/>2019-10-24 17:33:04,994 - base_case.py[line:130] - DEBUG: setUp
+2019-10-24 17:33:04,995 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:04,998 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:05,279 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:05,280 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:05,281 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:05,376 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+2019-10-24 17:33:05,376 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:05,377 - financial_data_service.py[line:17] - INFO: 获取总览数据
+2019-10-24 17:33:05,379 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:06,214 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:06,215 - financial_data_service.py[line:34] - DEBUG: 获取总览数据成功
+2019-10-24 17:33:06,229 - repository_service.py[line:39] - INFO: 根据商品条码查找总仓的商品库存
+2019-10-24 17:33:06,231 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:09,023 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+2019-10-24 17:33:12,952 - financial_data_service.py[line:45] - INFO: 获取大区数据
+2019-10-24 17:33:12,954 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:15,202 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+2019-10-24 17:33:15,202 - financial_data_service.py[line:59] - DEBUG: 获取大区数据成功
+2019-10-24 17:33:15,203 - financial_data_service.py[line:70] - INFO: 获取门店数据
+2019-10-24 17:33:15,204 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:15,935 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:15,936 - financial_data_service.py[line:89] - DEBUG: 获取门店数据成功
+2019-10-24 17:33:15,936 - repository_service.py[line:16] - INFO: 根据tid与商品条码查找门店的商品库存
+2019-10-24 17:33:15,938 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:16,701 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+2019-10-24 17:33:16,718 - financial_data_service.py[line:100] - INFO: 获取平台数据
+2019-10-24 17:33:16,723 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:17,397 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:17,398 - financial_data_service.py[line:114] - DEBUG: 获取平台数据成功
+2019-10-24 17:33:17,398 - financial_data_service.py[line:125] - INFO: 获取员工数据
+2019-10-24 17:33:17,400 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:18,062 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:18,064 - financial_data_service.py[line:139] - DEBUG: 获取员工数据成功
+2019-10-24 17:33:18,064 - test_general_goods.py[line:38] - DEBUG: test_pos_shopping_order
+2019-10-24 17:33:18,065 - market_service.py[line:10] - INFO: pos订单
+2019-10-24 17:33:18,070 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:24,323 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/orders/new-orders HTTP/1.1&quot; 200 None
+2019-10-24 17:33:24,325 - market_service.py[line:34] - DEBUG: shopping_order_id=910240533188021, real_pay=3109600
+2019-10-24 17:33:24,329 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:28,581 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/wfjpay/order-done HTTP/1.1&quot; 200 None
+2019-10-24 17:33:28,583 - market_service.py[line:64] - INFO: 总仓发货
+2019-10-24 17:33:28,588 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:29,015 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/orders/not-export-orders HTTP/1.1&quot; 200 None
+2019-10-24 17:33:29,017 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:29,565 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/orders/update-orders HTTP/1.1&quot; 200 None
+2019-10-24 17:33:29,565 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:29,567 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:29,831 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:29,832 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:29,838 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:29,929 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+2019-10-24 17:33:29,931 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:29,931 - financial_data_service.py[line:17] - INFO: 获取总览数据
+2019-10-24 17:33:29,936 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:30,698 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:30,700 - financial_data_service.py[line:34] - DEBUG: 获取总览数据成功
+2019-10-24 17:33:30,700 - repository_service.py[line:39] - INFO: 根据商品条码查找总仓的商品库存
+2019-10-24 17:33:30,703 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:33,717 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+2019-10-24 17:33:37,545 - financial_data_service.py[line:45] - INFO: 获取大区数据
+2019-10-24 17:33:37,547 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:39,797 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+2019-10-24 17:33:39,799 - financial_data_service.py[line:59] - DEBUG: 获取大区数据成功
+2019-10-24 17:33:39,799 - financial_data_service.py[line:70] - INFO: 获取门店数据
+2019-10-24 17:33:39,804 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:40,517 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:40,519 - financial_data_service.py[line:89] - DEBUG: 获取门店数据成功
+2019-10-24 17:33:40,519 - repository_service.py[line:16] - INFO: 根据tid与商品条码查找门店的商品库存
+2019-10-24 17:33:40,522 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:41,308 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+2019-10-24 17:33:41,320 - financial_data_service.py[line:100] - INFO: 获取平台数据
+2019-10-24 17:33:41,325 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:41,974 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:41,976 - financial_data_service.py[line:114] - DEBUG: 获取平台数据成功
+2019-10-24 17:33:41,976 - financial_data_service.py[line:125] - INFO: 获取员工数据
+2019-10-24 17:33:41,981 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:42,645 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:42,647 - financial_data_service.py[line:139] - DEBUG: 获取员工数据成功
+2019-10-24 17:33:42,647 - lc_global.py[line:113] - DEBUG: LCGlobal无预期值，无需进行数据验证
+2019-10-24 17:33:42,648 - base_case.py[line:138] - DEBUG: tearDown
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    root:base_case.py:130 setUp
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+INFO     root:financial_data_service.py:17 获取总览数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:34 获取总览数据成功
+INFO     root:repository_service.py:39 根据商品条码查找总仓的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:45 获取大区数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:59 获取大区数据成功
+INFO     root:financial_data_service.py:70 获取门店数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:89 获取门店数据成功
+INFO     root:repository_service.py:16 根据tid与商品条码查找门店的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:100 获取平台数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:114 获取平台数据成功
+INFO     root:financial_data_service.py:125 获取员工数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:139 获取员工数据成功
+DEBUG    root:test_general_goods.py:38 test_pos_shopping_order
+INFO     root:market_service.py:10 pos订单
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/orders/new-orders HTTP/1.1&quot; 200 None
+DEBUG    root:market_service.py:34 shopping_order_id=910240533188021, real_pay=3109600
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /frontStage/wfjpay/order-done HTTP/1.1&quot; 200 None
+INFO     root:market_service.py:64 总仓发货
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/orders/not-export-orders HTTP/1.1&quot; 200 None
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;POST /backStage/orders/update-orders HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+INFO     root:financial_data_service.py:17 获取总览数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:34 获取总览数据成功
+INFO     root:repository_service.py:39 根据商品条码查找总仓的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:45 获取大区数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:59 获取大区数据成功
+INFO     root:financial_data_service.py:70 获取门店数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:89 获取门店数据成功
+INFO     root:repository_service.py:16 根据tid与商品条码查找门店的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:100 获取平台数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:114 获取平台数据成功
+INFO     root:financial_data_service.py:125 获取员工数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:139 获取员工数据成功
+DEBUG    root:lc_global.py:113 LCGlobal无预期值，无需进行数据验证
+DEBUG    root:base_case.py:138 tearDown<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">com/youxinger/testsuite/case/test_general_goods.py::TestGeneralGoods::test_2_return_2pieces</td>
-          <td class="col-duration">0.00</td>
+          <td class="col-name">test_general_goods.py::TestGeneralGoods::test_2_return_2pieces</td>
+          <td class="col-duration">12.94</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-22 18:28:45,780 - base_case.py[line:128] - DEBUG: setUp
-2019-10-22 18:28:45,780 - test_general_goods.py[line:97] - DEBUG: test_return_2pieces
-2019-10-22 18:28:45,780 - base_case.py[line:136] - DEBUG: tearDown
-<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m root:base_case.py:128 setUp
-[35mDEBUG   [0m root:test_general_goods.py:97 test_return_2pieces
-[35mDEBUG   [0m root:base_case.py:136 tearDown<br/></div></td></tr></tbody></table></body></html>
+            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>2019-10-24 17:33:42,664 - base_case.py[line:130] - DEBUG: setUp
+2019-10-24 17:33:42,665 - customer_service.py[line:117] - INFO: 查找会员，更新操作执行后数据
+2019-10-24 17:33:42,669 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:42,935 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:42,935 - customer_service.py[line:161] - INFO: 查找并保存会员余额
+2019-10-24 17:33:42,937 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:43,025 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+2019-10-24 17:33:43,026 - customer_service.py[line:130] - DEBUG: 查找会员，会员存在
+2019-10-24 17:33:43,027 - financial_data_service.py[line:17] - INFO: 获取总览数据
+2019-10-24 17:33:43,029 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:43,721 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+2019-10-24 17:33:43,721 - financial_data_service.py[line:34] - DEBUG: 获取总览数据成功
+2019-10-24 17:33:43,721 - repository_service.py[line:39] - INFO: 根据商品条码查找总仓的商品库存
+2019-10-24 17:33:43,723 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:46,346 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+2019-10-24 17:33:50,443 - financial_data_service.py[line:45] - INFO: 获取大区数据
+2019-10-24 17:33:50,444 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:52,691 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+2019-10-24 17:33:52,692 - financial_data_service.py[line:59] - DEBUG: 获取大区数据成功
+2019-10-24 17:33:52,692 - financial_data_service.py[line:70] - INFO: 获取门店数据
+2019-10-24 17:33:52,694 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:53,438 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:53,440 - financial_data_service.py[line:89] - DEBUG: 获取门店数据成功
+2019-10-24 17:33:53,440 - repository_service.py[line:16] - INFO: 根据tid与商品条码查找门店的商品库存
+2019-10-24 17:33:53,445 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:54,250 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+2019-10-24 17:33:54,259 - financial_data_service.py[line:100] - INFO: 获取平台数据
+2019-10-24 17:33:54,260 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:54,905 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:54,907 - financial_data_service.py[line:114] - DEBUG: 获取平台数据成功
+2019-10-24 17:33:54,907 - financial_data_service.py[line:125] - INFO: 获取员工数据
+2019-10-24 17:33:54,912 - connectionpool.py[line:225] - DEBUG: Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+2019-10-24 17:33:55,603 - connectionpool.py[line:437] - DEBUG: http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+2019-10-24 17:33:55,604 - financial_data_service.py[line:139] - DEBUG: 获取员工数据成功
+2019-10-24 17:33:55,604 - test_general_goods.py[line:83] - DEBUG: test_return_2pieces
+2019-10-24 17:33:55,604 - base_case.py[line:138] - DEBUG: tearDown
+<br/> -------------------------------Captured log call-------------------------------- <br/>DEBUG    root:base_case.py:130 setUp
+INFO     root:customer_service.py:117 查找会员，更新操作执行后数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/vip/search-byphone?phone=13800138021 HTTP/1.1&quot; 200 None
+INFO     root:customer_service.py:161 查找并保存会员余额
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/customer/get-balance?member_number=776967b5eb HTTP/1.1&quot; 200 None
+DEBUG    root:customer_service.py:130 查找会员，会员存在
+INFO     root:financial_data_service.py:17 获取总览数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10 HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:34 获取总览数据成功
+INFO     root:repository_service.py:39 根据商品条码查找总仓的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/baseinfo/goods/search-goods HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:45 获取大区数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/area-performance?start=2019-10&amp;end=2019-10&amp;produce= HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:59 获取大区数据成功
+INFO     root:financial_data_service.py:70 获取门店数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/view-data?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:89 获取门店数据成功
+INFO     root:repository_service.py:16 根据tid与商品条码查找门店的商品库存
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /frontStage/repository/inventory/search-inventory HTTP/1.1&quot; 200 None
+INFO     root:financial_data_service.py:100 获取平台数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/pingtai-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:114 获取平台数据成功
+INFO     root:financial_data_service.py:125 获取员工数据
+DEBUG    urllib3.connectionpool:connectionpool.py:225 Starting new HTTP connection (1): beta.lchapp_api.youxinger.net:80
+DEBUG    urllib3.connectionpool:connectionpool.py:437 http://beta.lchapp_api.youxinger.net:80 &quot;GET /backStage/export/report/employee-performance?start=2019-10&amp;end=2019-10&amp;store_id=WHZYD HTTP/1.1&quot; 200 None
+DEBUG    root:financial_data_service.py:139 获取员工数据成功
+DEBUG    root:test_general_goods.py:83 test_return_2pieces
+DEBUG    root:base_case.py:138 tearDown<br/></div></td></tr></tbody></table></body></html>

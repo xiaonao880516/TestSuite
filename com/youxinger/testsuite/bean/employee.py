@@ -1,3 +1,5 @@
+import logging
+
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 
 
@@ -63,3 +65,5 @@ class Employee(IDataVerify):
                 self.postVerifyData.f_employee_sale_num - self.expectedData.f_employee_sale_num - self.preVerifyData.f_employee_sale_num) < 0.02, \
                 "员工业绩检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_employee_sale_num, self.postVerifyData.f_employee_sale_num, self.preVerifyData.f_employee_sale_num)
+        else:
+            logging.debug("Employee:"+self.employee_name+", 无预期值，无需进行数据验证")

@@ -69,7 +69,7 @@ class BaseCase(unittest.TestCase):
     测试用例基类, 用于登录等操作
     """
     # 封装测试数据
-    _test_data = TestData()
+    _test_data = None
     _customer: Customer = None
     _employee: Employee = None
     _platform: Platform = None
@@ -90,6 +90,7 @@ class BaseCase(unittest.TestCase):
         login_service.foreground_login()
         # 后台登陆
         login_service.background_login()
+        cls._test_data = TestData()
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
