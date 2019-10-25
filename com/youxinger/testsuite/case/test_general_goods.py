@@ -48,7 +48,7 @@ class TestGeneralGoods(BaseCase):
                        'goods_list[0][is_active]': '0', 'goods_list[0][type]': '1', 'pay_type': 'pos', 'zip_code': '', 'referral_phone': '', 'beizhu': '',
                        'discount_id': '', 'discount_description': '', 'coupon_id': '', 'coupon_discount_amount': '0.00', 'coupon_discount_rate': ''}
         # 下单购物
-        shopping_order_id = market_service.pos_order(order_param)
+        globals()['shopping_order_id'] = market_service.pos_order(order_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
@@ -81,4 +81,37 @@ class TestGeneralGoods(BaseCase):
         :return:
         """
         logging.debug("test_return_2pieces")
-        pass
+        if globals()['shopping_order_id'] is not None:
+            return_order_id = globals()['shopping_order_id'] + "_0"
+            return_param = {'main_order_id': globals()['shopping_order_id'], 'return_price': '6219.20', 'reason': '15天无理由退货', 'remarks':'退货2件',
+                            'afterSales_info[0][order_id]': return_order_id, 'afterSales_info[0][danjia]': '3380.00', 'afterSales_info[0][sku_name]':'腰背夹',
+                            'afterSales_info[0][sku_detail]': '深蓝色 58', 'afterSales_info[0][tiaoma]': 'M216C237C0458', 'afterSales_info[0][kuanhao]=M216C237': 'M216C237',
+                            'afterSales_info[0][sku_id]': '4878', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg',
+                            'afterSales_info[0][aftersale_num]': '2', 'afterSales_info[0][aftersale_money]':  '6219.20', 'afterSales_info[0][goods_type]': '1'}
+
+            market_service.return_order(return_param)
+
+            # 更新充值后的验证数据
+            self._test_data.update_post_verify_data()
+            # 封装验证值
+            self._customer.expectedData = CustomerVerifyData.expected_data(-6219, -6219, 3, 0)  # 更新会员验证值
+            # self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
+
+            expected_global_repo = {'M216C237C0458': 0, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
+                                    'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
+            self._global.repository.update_expected_verify_data(expected_global_repo)  # 更新总览库存验证值
+
+            expected_area_values = {AREA['area_id']: AreaVerifyData.expected_data(-0.62)}
+            self._global.update_expected_area_verify_data(expected_area_values)  # 更新大区验证值
+
+            self._platform.expectedData = PlatVerifyData.expected_data(-0.62)  # 更新平台验证值
+            self._employee.expectedData = EmployeeVerifyData.expected_data(-0.62)  # 更新员工验证值
+
+            expected_store_repo = {'M216C237C0458': 2, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
+                                   'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}
+            self._store.repository.update_expected_verify_data(expected_store_repo)  # 更新门店库存验证值
+
+            expected_store_values = {STORE['store_id']: StoreVerifyData.expected_data(0, 0, 0, 0, -6219, -6219)}
+            self._area.update_expected_store_verify_data(expected_store_values)  # 更新门店验证值
+            # 验证数据
+            self._data_assertion()
