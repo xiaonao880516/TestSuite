@@ -82,11 +82,41 @@ def good_shipped(shopping_order_id):
         return False
 
 
-def return_order():
+def return_order(params):
     """
     退货
     :return:
     """
+    after_sale_id = create_return_order(params)
+    return after_sale_review(1, after_sale_id)
+
+
+def create_return_order(order_params):
+    """
+    创建退货订单
+    :return:
+    """
+    return_url = constant.DOMAIN + "/frontStage/aftersale/apply-return"
+    return_headers = {'Accept': 'application/json, text/plain, */*',
+                      'tid': variables.foregroundTID}
+    resp = requests.post(return_url, order_params, headers=return_headers)
+    json_data = resp.json()
+    after_sale_id = json_data['data']['aftersale_id']
+    return after_sale_id
+
+
+def after_sale_review(review_type, after_sale_id):
+    """
+    售后审核
+    :param review_type:售后类型
+    :param after_sale_id: 售后id
+    :return:
+    """
+    url = constant.DOMAIN + "/frontStage/aftersale/review"
+    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
+    params = dict(aftersale_id=after_sale_id, status=1, reason='审核通过', type=review_type)
+    resp = requests.post(url, params, headers=headers)
+    return resp.text.__contains__('成功')
 
 
 def exchange_order():

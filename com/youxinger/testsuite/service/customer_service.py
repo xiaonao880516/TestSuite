@@ -114,7 +114,7 @@ def update_customer_verify_data(is_operated: bool, customer: Customer):
     :param customer: 会员对象
     :return:
     """
-    logging.info(u"查找会员，更新操作执行后数据")
+    logging.info(u"查找会员，更新操作执行数据")
     if (customer is None) or customer.phone == "":
         return
     url = constant.DOMAIN + "/frontStage/vip/search-byphone"
