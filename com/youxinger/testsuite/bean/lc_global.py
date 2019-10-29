@@ -106,8 +106,8 @@ class LCGlobal(IDataVerify):
                 "总揽退单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.i_lc_global_refund_num, self.postVerifyData.i_lc_global_refund_num, self.preVerifyData.i_lc_global_refund_num)
             assert abs(
-                self.postVerifyData.f_lc_global_sale_num - self.expectedData.f_lc_global_sale_num - self.preVerifyData.f_lc_global_sale_num) == 0, \
-                "总揽销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                self.postVerifyData.f_lc_global_sale_num - self.expectedData.f_lc_global_sale_num - self.preVerifyData.f_lc_global_sale_num) < 2, \
+                "总揽销售总额检测失败,期待增加值:%d, 当前值:%f, 之前值:%f" % (
                     self.expectedData.f_lc_global_sale_num, self.postVerifyData.f_lc_global_sale_num, self.preVerifyData.f_lc_global_sale_num)
         else:
             logging.debug("LCGlobal无预期值，无需进行数据验证")

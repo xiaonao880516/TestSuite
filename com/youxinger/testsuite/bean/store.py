@@ -126,10 +126,6 @@ class Store(IDataVerify):
                 "门店新增会员数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.i_store_newvip_num, self.postVerifyData.i_store_newvip_num, self.preVerifyData.i_store_newvip_num)
             assert abs(
-                self.postVerifyData.f_store_bhm_percent - self.expectedData.f_store_bhm_percent - self.preVerifyData.f_store_bhm_percent) == 0, \
-                "总揽到店次数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                    self.expectedData.f_store_bhm_percent, self.postVerifyData.f_store_bhm_percent, self.preVerifyData.f_store_bhm_percent)
-            assert abs(
                 self.postVerifyData.i_store_order_num - self.expectedData.i_store_order_num - self.preVerifyData.i_store_order_num) == 0, \
                 "门店订单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.i_store_order_num, self.postVerifyData.i_store_order_num, self.preVerifyData.i_store_order_num)
@@ -138,12 +134,12 @@ class Store(IDataVerify):
                 "门店退单数检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.i_store_refund_num, self.postVerifyData.i_store_refund_num, self.preVerifyData.i_store_refund_num)
             assert abs(
-                self.postVerifyData.f_store_sale_num - self.expectedData.f_store_sale_num - self.preVerifyData.f_store_sale_num) == 0, \
-                "门店销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                self.postVerifyData.f_store_sale_num - self.expectedData.f_store_sale_num - self.preVerifyData.f_store_sale_num) < 2, \
+                "门店销售总额检测失败,期待增加值:%d, 当前值:%f, 之前值:%f" % (
                     self.expectedData.f_store_sale_num, self.postVerifyData.f_store_sale_num, self.preVerifyData.f_store_sale_num)
             assert abs(
-                self.postVerifyData.f_store_plat_sale_num - self.expectedData.f_store_plat_sale_num - self.preVerifyData.f_store_plat_sale_num) == 0, \
-                "门店平台销售总额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
+                self.postVerifyData.f_store_plat_sale_num - self.expectedData.f_store_plat_sale_num - self.preVerifyData.f_store_plat_sale_num) < 2, \
+                "门店平台销售总额检测失败,期待增加值:%d, 当前值:%f, 之前值:%f" % (
                     self.expectedData.f_store_plat_sale_num, self.postVerifyData.f_store_plat_sale_num, self.preVerifyData.f_store_plat_sale_num)
         else:
             logging.debug("Store:"+self.store_name+", 无预期值，无需进行数据验证")
