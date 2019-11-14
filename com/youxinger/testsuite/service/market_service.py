@@ -53,7 +53,65 @@ def recharge_order(order_parms):
     :param order_parms:
     :return:
     """
-    pass
+    logging.info(u"余额订单")
+    url = constant.DOMAIN + "/frontStage/orders/new-orders"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID}
+    resp = requests.post(url, order_parms, headers=headers)
+    json_data = resp.json()
+    try:
+        shopping_order_id = json_data['data']['order_id']
+        if recharge_order_pay(shopping_order_id) is True:
+            good_shipped(shopping_order_id)
+        return shopping_order_id
+    except Exception as e:
+        logging.error("余额下单失败, %s" % e)
+        return False
+
+
+def no_recharge_order(order_parms):
+    """
+    余额不付款订单
+    :param order_parms:
+    :return:
+    """
+    logging.info(u"余额不支付订单")
+    url = constant.DOMAIN + "/frontStage/orders/new-orders"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID}
+    resp = requests.post(url, order_parms, headers=headers)
+    json_data = resp.json()
+    shopping_order_id = json_data['data']['order_id']
+    return shopping_order_id
+
+
+def cancellation_of_order(return_param):
+    """
+    余额取消订单
+    :param order_parms:
+    :return:
+    """
+    logging.info(u"余额取消订单")
+    url = constant.DOMAIN + "/frontStage/orders/cancel-orders"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID}
+    resp = requests.post(url, return_param, headers=headers)
+    json_data = resp.json()
+
+
+def recharge_order_pay(shopping_order_id):
+    """
+    余额订单付款
+    :param shopping_order_id: 订单编号
+    :param real_pay: 订单金额
+    :return:是否付款成功
+    """
+    logging.info(u"余额订单付款")
+    url = constant.WX_DOMAIN + "/api/lchmpFrontStage/recharge/pay-ceshi"
+    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
+    body = {'order_id': shopping_order_id}
+    resp = requests.post(url, body, headers=headers)
+    return resp.text.__contains__('成功')
 
 
 def good_shipped(shopping_order_id):
@@ -112,6 +170,7 @@ def after_sale_review(review_type, after_sale_id):
     :param after_sale_id: 售后id
     :return:
     """
+    logging.info(u"审批")
     url = constant.DOMAIN + "/frontStage/aftersale/review"
     headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
     params = dict(aftersale_id=after_sale_id, status=1, reason='审核通过', type=review_type)
@@ -119,8 +178,57 @@ def after_sale_review(review_type, after_sale_id):
     return resp.text.__contains__('成功')
 
 
-def exchange_order():
+def exchange_order(params):
     """
     换货
     :return:
     """
+    after_sale_id = create_changer_order(params)
+    return after_sale_review(2, after_sale_id)
+
+
+def create_changer_order(params):
+    """
+    创建换货订单
+    :return:
+    """
+    logging.info(u"换货接口")
+    return_url = constant.DOMAIN + "/frontStage/aftersale/apply"
+    return_headers = {'Accept': 'application/json, text/plain, */*',
+                      'tid': variables.foregroundTID}
+    resp = requests.post(return_url, params, headers=return_headers)
+    json_data = resp.json()
+    after_sale_id = json_data['data']['aftersale_id']
+    return after_sale_id
+
+
+def find_order_id(shopping_order_id):
+    url = constant.DOMAIN + "/frontStage/vip/search-byphone"
+    params = {'phone': 17151800009}
+    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
+    resp = requests.get(url, params=params, headers=headers)
+    json_data = resp.json()
+    customer_array = json_data['data']
+    member_number = customer_array[0]['member_number']
+    print(member_number)
+    try:
+        url = constant.DOMAIN + '/frontStage/orders/search-orders?order_status=0&keywords=&search_type=member&member_id=' + member_number
+        return_headers = {'Accept': 'application/json, text/plain, */*',
+                          'tid': variables.foregroundTID}
+        resp = requests.get(url, headers=return_headers)
+        json_data = resp.json()
+        orderList = json_data['data']['all_goods']
+        print(orderList[0].order_id)
+        # for i in range(0, orderList.length):
+        #     if shopping_order_id == orderList[i].order_id:
+        #         afterSaleOrders = orderList[i].aftersale_orders_info
+        #         exchangeOrderId = afterSaleOrders[afterSaleOrders.length - 1].order_id
+        #         return exchangeOrderId
+    except Exception as e:
+        logging.error("新单号获取失败, %s" % e)
+        return False
+
+
+
+
+
