@@ -1,3 +1,4 @@
+import logging
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 from com.youxinger.testsuite.bean.store import Store
 
@@ -7,6 +8,17 @@ class AreaVerifyData(object):
     大区数据验证类
     """
     f_area_sales_amount = 0  # 大区销售额
+
+    @classmethod
+    def expected_data(cls, f_area_sales_amount):
+        """
+        创建预期值对象
+        :param f_area_sales_amount: 大区销售额
+        :return:
+        """
+        exp_value = cls()
+        exp_value.f_area_sales_amount = f_area_sales_amount
+        return exp_value
 
 
 class Area(IDataVerify):
@@ -64,6 +76,8 @@ class Area(IDataVerify):
                 self.postVerifyData.f_area_sales_amount - self.expectedData.f_area_sales_amount - self.preVerifyData.f_area_sales_amount) < 0.02, \
                 "大区销售额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_area_sales_amount, self.postVerifyData.f_area_sales_amount, self.preVerifyData.f_area_sales_amount)
+        else:
+            logging.debug("Area:"+self.area_name+", 无预期值，无需进行数据验证")
 
         if self.stores is not None:
             for store in self.stores:

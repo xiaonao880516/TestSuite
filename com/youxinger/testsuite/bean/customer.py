@@ -14,6 +14,23 @@ class CustomerVerifyData(object):
     i_card_level = 0  # 会员卡等级
     i_remainder = 0  # 会员余额
 
+    @classmethod
+    def expected_data(cls, i_total_consume, i_swap_score, i_card_level, i_remainder):
+        """
+        创建预期值对象
+        :param i_total_consume: 会员消费额
+        :param i_swap_score: 会员积分
+        :param i_card_level: 会员卡等级
+        :param i_remainder: 会员余额
+        :return:
+        """
+        exp_value = cls()
+        exp_value.i_total_consume = i_total_consume
+        exp_value.i_swap_score = i_swap_score
+        exp_value.i_card_level = i_card_level
+        exp_value.i_remainder = i_remainder
+        return exp_value
+
 
 class Customer(IDataVerify):
     """
@@ -86,7 +103,7 @@ class Customer(IDataVerify):
 
     def data_verify(self):
         if self.expectedData is None:
-            logging.debug("无预期值，无需进行数据验证")
+            logging.debug("Customer:" + self.name + ", 无预期值，无需进行数据验证")
             return
         assert abs(
             self.postVerifyData.i_total_consume - self.expectedData.i_total_consume - self.preVerifyData.i_total_consume) < 2, \

@@ -8,7 +8,7 @@ from com.youxinger.testsuite.bean.employee import Employee
 from com.youxinger.testsuite.bean.lc_global import LCGlobal
 from com.youxinger.testsuite.bean.platform import Platform
 from com.youxinger.testsuite.utils import variables
-from com.youxinger.testsuite.service import login_service, repository_service
+from com.youxinger.testsuite.service import login_service
 import logging
 from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE
 from com.youxinger.testsuite.service.customer_service import Customer
@@ -69,7 +69,7 @@ class BaseCase(unittest.TestCase):
     测试用例基类, 用于登录等操作
     """
     # 封装测试数据
-    _test_data = TestData()
+    _test_data = None
     _customer: Customer = None
     _employee: Employee = None
     _platform: Platform = None
@@ -90,6 +90,7 @@ class BaseCase(unittest.TestCase):
         login_service.foreground_login()
         # 后台登陆
         login_service.background_login()
+        cls._test_data = TestData()
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
@@ -105,8 +106,9 @@ class BaseCase(unittest.TestCase):
         cls._area.stores.append(cls._store)
         cls._global_repo = Repository.lc_global(GOODS_CODE)
         cls._global = LCGlobal(cls._global_repo)
-        cls._global.areas[AREA['area_id']] = cls._area
+        cls._global.areas.append(cls._area)
         cls._test_data.lc_global = cls._global
+        pass
 
     @classmethod
     def tearDownClass(cls):
