@@ -71,6 +71,7 @@ class TestGeneralGoods(BaseCase):
         self._test_data.lc_global.update_expected_verify_data(expected_area_values)
         # 验证数据
         self._data_assertion()
+        pass
 
     def test_2_return_2pieces(self):
         """
