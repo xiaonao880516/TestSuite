@@ -73,6 +73,7 @@ class TestGeneralGoods(BaseCase):
         self._area.update_expected_store_verify_data(expected_store_values)  # 更新门店验证值
         # 验证数据
         self._data_assertion()
+        pass
 
     def test_2_return_2pieces(self):
         """
