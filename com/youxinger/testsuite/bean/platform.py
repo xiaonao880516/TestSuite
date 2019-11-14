@@ -1,3 +1,5 @@
+import logging
+
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 
 
@@ -5,7 +7,18 @@ class PlatVerifyData(object):
     """
     平台验证数据
     """
-    i_platform_sale_num = 0  # 平台业绩
+    f_platform_sale_num = 0.0  # 平台业绩
+
+    @classmethod
+    def expected_data(cls, f_platform_sale_num):
+        """
+        创建预期值对象
+        :param f_platform_sale_num: 平台业绩
+        :return:
+        """
+        exp_value = cls()
+        exp_value.f_platform_sale_num = f_platform_sale_num
+        return exp_value
 
 
 class Platform(IDataVerify):
@@ -30,16 +43,22 @@ class Platform(IDataVerify):
         更新操作之前的数据
         :return:
         """
+        from com.youxinger.testsuite.service import financial_data_service
+        financial_data_service.get_update_platform_data(self.store_id, self.platform_id, self.preVerifyData)
 
     def update_post_verify_data(self):
         """
         更新操作之后的数据
         :return:
         """
+        from com.youxinger.testsuite.service import financial_data_service
+        financial_data_service.get_update_platform_data(self.store_id, self.platform_id, self.postVerifyData)
 
     def data_verify(self):
         if self.expectedData is not None:
             assert abs(
-                self.postVerifyData.i_platform_sale_num - self.expectedData.i_platform_sale_num - self.preVerifyData.i_platform_sale_num) == 0, \
+                self.postVerifyData.f_platform_sale_num - self.expectedData.f_platform_sale_num - self.preVerifyData.f_platform_sale_num) < 0.02, \
                 "平台业绩检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
-                    self.expectedData.i_platform_sale_num, self.postVerifyData.i_platform_sale_num, self.preVerifyData.i_platform_sale_num)
+                    self.expectedData.f_platform_sale_num, self.postVerifyData.f_platform_sale_num, self.preVerifyData.f_platform_sale_num)
+        else:
+            logging.debug("Platform:"+self.platform_name+", 无预期值，无需进行数据验证")
