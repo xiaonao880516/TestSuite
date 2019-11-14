@@ -1,12 +1,13 @@
 import unittest
 
+from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.bean.i_validate import IDataVerify
 from com.youxinger.testsuite.bean.repository import Repository
-from com.youxinger.testsuite.bean.store import Store
-from com.youxinger.testsuite.bean.area import Area
-from com.youxinger.testsuite.bean.employee import Employee
-from com.youxinger.testsuite.bean.lc_global import LCGlobal
-from com.youxinger.testsuite.bean.platform import Platform
+from com.youxinger.testsuite.bean.store import Store, StoreVerifyData
+from com.youxinger.testsuite.bean.area import Area, AreaVerifyData
+from com.youxinger.testsuite.bean.employee import Employee, EmployeeVerifyData
+from com.youxinger.testsuite.bean.lc_global import LCGlobal, LCGlobalVerifyData
+from com.youxinger.testsuite.bean.platform import Platform, PlatVerifyData
 from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service
 import logging
@@ -15,6 +16,7 @@ from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+
 
 
 class TestData(IDataVerify):
@@ -140,4 +142,26 @@ class BaseCase(unittest.TestCase):
     def _data_assertion(self):
         self._test_data.data_verify()
 
+    def expectedData(self, total_consume, swap_score, card_level, remainder, global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num, M216C237C0458MainStoreQuantityRepo, M216C237C0464MainStoreQuantityRepo
+                     , M116E248B0158MainStoreQuantityRepo, M116E248B0164MainStoreQuantityRepo, M316J232B01106MainStoreQuantityRepo, M316J232B0176MainStoreQuantityRepo, ZH02B215190T796242MainStoreQuantityRepo, verify
+                     , M216C237C0458QuantityRepo, M216C237C0464QuantityRepo, M116E248B0158QuantityRepo, M116E248B0164QuantityRepo, M316J232B01106QuantityRepo, M316J232B0176QuantityRepo, ZH02B215190T796242QuantityRepo
+                     , i_store_arrive_store_num, i_store_newvip_num, i_store_order_num, i_store_refund_num, f_store_sale_num, f_store_plat_sale_num):
+        self._customer.expectedData = CustomerVerifyData.expected_data(total_consume, swap_score, card_level, remainder)  # 更新会员验证值
+        self._global.expectedData = LCGlobalVerifyData.expected_data(global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num)  # 更新总览验证值
 
+        expected_global_repo = {'M216C237C0458': M216C237C0458MainStoreQuantityRepo, 'M216C237C0464': M216C237C0464MainStoreQuantityRepo, 'M116E248B0158': M116E248B0158MainStoreQuantityRepo, 'M116E248B0164': M116E248B0164MainStoreQuantityRepo,
+                                'M316J232B01106': M316J232B01106MainStoreQuantityRepo, 'M316J232B0176': M316J232B0176MainStoreQuantityRepo, 'ZH02B215190T796242': ZH02B215190T796242MainStoreQuantityRepo}
+        self._global.repository.update_expected_verify_data(expected_global_repo)  # 更新总览库存验证值
+
+        expected_area_values = {AREA['area_id']: AreaVerifyData.expected_data(verify)}
+        self._global.update_expected_area_verify_data(expected_area_values)  # 更新大区验证值
+
+        self._platform.expectedData = PlatVerifyData.expected_data(verify)  # 更新平台验证值
+        self._employee.expectedData = EmployeeVerifyData.expected_data(verify)  # 更新员工验证值
+
+        expected_store_repo = {'M216C237C0458': M216C237C0458QuantityRepo, 'M216C237C0464': M216C237C0464QuantityRepo, 'M116E248B0158': M116E248B0158QuantityRepo, 'M116E248B0164': M116E248B0164QuantityRepo,
+                               'M316J232B01106': M316J232B01106QuantityRepo, 'M316J232B0176': M316J232B0176QuantityRepo, 'ZH02B215190T796242': ZH02B215190T796242QuantityRepo}
+        self._store.repository.update_expected_verify_data(expected_store_repo)  # 更新门店库存验证值
+
+        expected_store_values = {STORE['store_id']: StoreVerifyData.expected_data(i_store_arrive_store_num, i_store_newvip_num, i_store_order_num, i_store_refund_num, f_store_sale_num, f_store_plat_sale_num)}
+        self._area.update_expected_store_verify_data(expected_store_values)  # 更新门店验证值
