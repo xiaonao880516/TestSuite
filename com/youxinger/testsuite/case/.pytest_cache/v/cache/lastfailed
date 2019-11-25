@@ -5,5 +5,7 @@
   "test_hello.py::TestHello::test_say_hello": true,
   "test_lanchao_app.py::TestHello::test": true,
   "test_lanchao_app.py::TestHello::test_add": true,
-  "test_lanchao_app.py::TestHello::test_say_hello": true
+  "test_lanchao_app.py::TestHello::test_say_hello": true,
+  "test_return.py::TestGeneralGoods::test_1_pos_shopping_order": true,
+  "test_sku_post.py::TestGeneralGoods::test_1_sku_post_order": true
 }
