@@ -35,7 +35,7 @@ class TestGeneralGoods(BaseCase):
         腰背夹M216C237，深蓝色，58 总仓5个，门店5个
         :return:
         """
-        logging.debug("test_pos_shopping_order")
+        logging.debug("test_1_pos_shopping_order")
         order_param = {'price': '33800.00', 'discount_money': '2704.00', 'real_pay': '31096.00', 'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
                        'receive_sheng': self._customer.province, 'receive_shi': self._customer.city, 'receive_diqu': self._customer.area, 'receive_address': self._customer.address,
                        'member_id': self._customer.member_number, 'member_name': self._customer.name, 'member_phone': self._customer.phone,
@@ -53,7 +53,7 @@ class TestGeneralGoods(BaseCase):
         self._test_data.update_post_verify_data()
         # 封装验证值
         self._customer.expectedData = CustomerVerifyData.expected_data(31096, 31096, 3, 0)  # 更新会员验证值
-        self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
+        # self._global.expectedData = LCGlobalVerifyData.expected_data(1, 0, 1, 0, 31096)  # 更新总览验证值
 
         expected_global_repo = {'M216C237C0458': -5, 'M216C237C0464': 0, 'M116E248B0158': 0, 'M116E248B0164': 0,
                                 'M316J232B01106': 0, 'M316J232B0176': 0, 'ZH02B215190T796242': 0}

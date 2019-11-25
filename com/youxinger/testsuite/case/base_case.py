@@ -147,7 +147,7 @@ class BaseCase(unittest.TestCase):
                      , M216C237C0458QuantityRepo, M216C237C0464QuantityRepo, M116E248B0158QuantityRepo, M116E248B0164QuantityRepo, M316J232B01106QuantityRepo, M316J232B0176QuantityRepo, ZH02B215190T796242QuantityRepo
                      , i_store_arrive_store_num, i_store_newvip_num, i_store_order_num, i_store_refund_num, f_store_sale_num, f_store_plat_sale_num):
         self._customer.expectedData = CustomerVerifyData.expected_data(total_consume, swap_score, card_level, remainder)  # 更新会员验证值
-        self._global.expectedData = LCGlobalVerifyData.expected_data(global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num)  # 更新总览验证值
+        # self._global.expectedData = LCGlobalVerifyData.expected_data(global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num)  # 更新总览验证值
 
         expected_global_repo = {'M216C237C0458': M216C237C0458MainStoreQuantityRepo, 'M216C237C0464': M216C237C0464MainStoreQuantityRepo, 'M116E248B0158': M116E248B0158MainStoreQuantityRepo, 'M116E248B0164': M116E248B0164MainStoreQuantityRepo,
                                 'M316J232B01106': M316J232B01106MainStoreQuantityRepo, 'M316J232B0176': M316J232B0176MainStoreQuantityRepo, 'ZH02B215190T796242': ZH02B215190T796242MainStoreQuantityRepo}

@@ -1,7 +1,5 @@
 [
-  "test_check_all.py::TestCheckAll::test_check_all",
-  "test_customer.py::TestCustomer::test_1_after_customer_register",
-  "test_customer.py::TestCustomer::test_2_after_customer_recharge",
-  "test_general_goods.py::TestGeneralGoods::test_1_pos_shopping_order",
-  "test_general_goods.py::TestGeneralGoods::test_2_return_2pieces"
+  "test_oneandsku_post.py::TestGeneralGoods::test_1_sku_post_order",
+  "test_oneandsku_post.py::TestGeneralGoods::test_2_return_some",
+  "test_oneandsku_post.py::TestGeneralGoods::test_3_return_other"
 ]

@@ -61,8 +61,7 @@ def recharge_order(order_parms):
     json_data = resp.json()
     try:
         shopping_order_id = json_data['data']['order_id']
-        if recharge_order_pay(shopping_order_id) is True:
-            good_shipped(shopping_order_id)
+        recharge_order_pay(shopping_order_id)
         return shopping_order_id
     except Exception as e:
         logging.error("余额下单失败, %s" % e)
@@ -202,15 +201,11 @@ def create_changer_order(params):
     return after_sale_id
 
 
-def find_order_id(shopping_order_id):
-    url = constant.DOMAIN + "/frontStage/vip/search-byphone"
-    params = {'phone': 17151800009}
-    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
-    resp = requests.get(url, params=params, headers=headers)
-    json_data = resp.json()
-    customer_array = json_data['data']
-    member_number = customer_array[0]['member_number']
-    print(member_number)
+def find_order_id(shopping_order_id, member_number):
+    """
+    获取换货时生成的新订单order_id
+    :return:
+    """
     try:
         url = constant.DOMAIN + '/frontStage/orders/search-orders?order_status=0&keywords=&search_type=member&member_id=' + member_number
         return_headers = {'Accept': 'application/json, text/plain, */*',
@@ -218,17 +213,12 @@ def find_order_id(shopping_order_id):
         resp = requests.get(url, headers=return_headers)
         json_data = resp.json()
         orderList = json_data['data']['all_goods']
-        print(orderList[0].order_id)
-        # for i in range(0, orderList.length):
-        #     if shopping_order_id == orderList[i].order_id:
-        #         afterSaleOrders = orderList[i].aftersale_orders_info
-        #         exchangeOrderId = afterSaleOrders[afterSaleOrders.length - 1].order_id
-        #         return exchangeOrderId
+        for i in range(0, len(orderList)):
+            if shopping_order_id == orderList[i]['order_id']:
+                afterSaleOrders = orderList[i]['aftersale_orders_info']
+                exchangeOrderId = afterSaleOrders[len(afterSaleOrders)-1]['order_id']
+                return exchangeOrderId
     except Exception as e:
         logging.error("新单号获取失败, %s" % e)
         return False
-
-
-
-
 
