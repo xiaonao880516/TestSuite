@@ -15,7 +15,8 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
     def setUpClass(cls):
         super().setUpClass()
         # 设置特定商品不折扣不积分
-        market_service.set_no_discount_no_score_product()
+        product =["M316J232B0198", "M316J232B0190", "M316J232B0182", "M316J232B0176", "M316J232B01106"]
+        market_service.set_no_discount_no_score_product(product)
 
         # 会员充值40000
         cls._customer.recharge(40000)
@@ -161,11 +162,11 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
         """
         logging.debug("test_2_NoDiscountNoScoreSimple_ReturnPart")
         if globals()['shopping_order_id'] is not None:
-            returnOrderId = globals()['shopping_order_id'] + "_0"
+            return_order_id = globals()['shopping_order_id'] + "_0"
             recharge_param = {
                 'main_order_id': globals()['shopping_order_id'],
                 'return_price': '5320.00', 'reason': '拍错/不想要',
-                'remarks': '第三方', 'afterSales_info[0][order_id]': returnOrderId,
+                'remarks': '第三方', 'afterSales_info[0][order_id]': return_order_id,
                 'afterSales_info[0][danjia]': '2660.00',
                 'afterSales_info[0][sku_name]': '男士塑身背心',
                 'afterSales_info[0][sku_detail]': '黑色 98',
@@ -227,12 +228,12 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
                 """
                 logging.debug("test_3_NoDiscountNoScoreSimple_ReturnOther")
                 if globals()['shopping_order_id'] is not None:
-                    returnOrderId = globals()['shopping_order_id'] + "_2"
-                    returnOrderIdb = globals()['shopping_order_id'] + "_1"
+                    return_order_id = globals()['shopping_order_id'] + "_2"
+                    return_order_id_b = globals()['shopping_order_id'] + "_1"
 
-                    ReturnOther_param = {
+                    return_other_param = {
                         'main_order_id': globals()['shopping_order_id'], 'return_price': '12288.00',
-                        'reason': '15天无理由退货', 'remarks': '撒旦发', 'afterSales_info[0][order_id]': returnOrderId,
+                        'reason': '15天无理由退货', 'remarks': '撒旦发', 'afterSales_info[0][order_id]': return_order_id,
                         'afterSales_info[0][danjia]': '6400.00',
                         'afterSales_info[0][sku_name]': '孟伟组合商品', 'afterSales_info[0][sku_detail]': '2件商品',
                         'afterSales_info[0][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[0][kuanhao]': '',
@@ -240,7 +241,7 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
                         'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
                         'afterSales_info[0][aftersale_num]': '1', 'afterSales_info[0][aftersale_money]': '6144.00',
                         'afterSales_info[0][goods_type]': '2',
-                        'afterSales_info[1][order_id]': returnOrderIdb, 'afterSales_info[1][danjia]': '6400.000',
+                        'afterSales_info[1][order_id]': return_order_id_b, 'afterSales_info[1][danjia]': '6400.000',
                         'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品',
                         'afterSales_info[1][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
                         'afterSales_info[1][sku_id]': '5955',
@@ -248,7 +249,7 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
                         'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00',
                         'afterSales_info[1][goods_type]': '2'
                     }
-                    market_service.return_order(ReturnOther_param)
+                    market_service.return_order(return_other_param)
                     # 更新充值后的验证数据
                     self._test_data.update_post_verify_data()
                     # 封装验证值

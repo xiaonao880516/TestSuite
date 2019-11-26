@@ -209,11 +209,11 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
                 """
                 logging.debug("test_3_recharge_return_other")
                 if globals()['shopping_order_id'] is not None:
-                    exchangeOrderd = market_service.find_order_id(globals()['shopping_order_id'],
+                    exchange_order = market_service.find_order_id(globals()['shopping_order_id'],
                                                                                 self._customer.member_number)
-                    exchangeOrderIda = exchangeOrderd + '_0'
+                    exchange_order_id =  exchange_order + '_0'
                     recharge_param = {
-                      'sub_order_id': exchangeOrderIda, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货','remarks': '哈哈', 'type': '2',
+                      'sub_order_id': exchange_order_id, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货','remarks': '哈哈', 'type': '2',
                       'goods_list':'[{"num":"2","sku_id":"4878","sku_name":"腰背夹","sku_detail":"深蓝色 58","tiaoma":"M216C237C0458","kuanhao":"M216C237","danjia":"3380.00","img":"https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg"}]'
 
                     }
@@ -263,11 +263,11 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
                 """
                 logging.debug("test_3_recharge_return_other")
                 if globals()['shopping_order_id'] is not None:
-                    exchangeOrderd = market_service.find_order_id(globals()['shopping_order_id'],
+                    exchange_order = market_service.find_order_id(globals()['shopping_order_id'],
                                                                                 self._customer.member_number)
-                    exchangeOrderIda = exchangeOrderd + '_0'
+                    exchange_order_id = exchange_order + '_0'
                     recharge_param = {
-                      'sub_order_id': exchangeOrderIda, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货','remarks': '哈哈', 'type': '2',
+                      'sub_order_id': exchange_order_id, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货','remarks': '哈哈', 'type': '2',
                       'goods_list':'[{"num":2,"sku_id":"4879","sku_name":"腰背夹","sku_detail":"深蓝色 64","tiaoma":"M216C237C0464","kuanhao":"M216C237","danjia":"3380.00","img":"https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg"}]'
 
                     }
@@ -318,14 +318,14 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
         """
         logging.debug("test_return_2pieces")
         if globals()['shopping_order_id'] is not None:
-            returnOrderIda = globals()['shopping_order_id']
-            returnOrderIdb = globals()['shopping_order_id'] + "_2"
-            returnOrderIdc = globals()['shopping_order_id'] + "_1"
+            return_order_a = globals()['shopping_order_id']
+            return_order_b = globals()['shopping_order_id'] + "_2"
+            return_order_c = globals()['shopping_order_id'] + "_1"
             recharge_param={
-                'main_order_id': returnOrderIda, 'return_price':'12288.00', 'reason': '拍错/不想要', 'remarks': 'gg', 'afterSales_info[0][order_id]': returnOrderIdb, 'afterSales_info[0][danjia]': '6400.00',
+                'main_order_id': return_order_a, 'return_price':'12288.00', 'reason': '拍错/不想要', 'remarks': 'gg', 'afterSales_info[0][order_id]': return_order_b, 'afterSales_info[0][danjia]': '6400.00',
                         'afterSales_info[0][sku_name]': '孟伟组合商品', 'afterSales_info[0][sku_detail]': '2件商品', 'afterSales_info[0][tiaoma]':'ZH02B215190T796242', 'afterSales_info[0][kuanhao]': '',
                         'afterSales_info[0][sku_id]': '5955', 'afterSales_info[0][img]':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg', 'afterSales_info[0][aftersale_num]': '1',
-                        'afterSales_info[0][aftersale_money]': '6144.00', 'afterSales_info[0][goods_type]': '2', 'afterSales_info[1][order_id]':returnOrderIdc, 'afterSales_info[1][danjia]': '6400.00',
+                        'afterSales_info[0][aftersale_money]': '6144.00', 'afterSales_info[0][goods_type]': '2', 'afterSales_info[1][order_id]':return_order_c, 'afterSales_info[1][danjia]': '6400.00',
                         'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品', 'afterSales_info[1][tiaoma]':'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
                         'afterSales_info[1][sku_id]': '5955', 'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg', 'afterSales_info[1][aftersale_num]': '1',
                         'afterSales_info[1][aftersale_money]': '6144.00', 'afterSales_info[1][goods_type]': '2'
@@ -377,13 +377,13 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
                 """
                 logging.debug("test_3_recharge_return_other")
                 if globals()['shopping_order_id'] is not None:
-                    exchangeOrderd = market_service.find_order_id(globals()['shopping_order_id'],
+                    exchange_order = market_service.find_order_id(globals()['shopping_order_id'],
                                                                                 self._customer.member_number)
-                    exchangeOrderIda = exchangeOrderd + '_0'
+                    exchange_order_a = exchange_order + '_0'
 
                     recharge_param = {
-                      'main_order_id': exchangeOrderd, 'return_price':'6489.60', 'reason': '拍错/不想要', 'remarks': '',
-                        'afterSales_info[0][order_id]': exchangeOrderIda, 'afterSales_info[0][danjia]': '3380.00',
+                      'main_order_id': exchange_order, 'return_price':'6489.60', 'reason': '拍错/不想要', 'remarks': '',
+                        'afterSales_info[0][order_id]': exchange_order_a, 'afterSales_info[0][danjia]': '3380.00',
                         'afterSales_info[0][sku_name]': '腰背夹', 'afterSales_info[0][sku_detail]': '深蓝色 64',
                         'afterSales_info[0][tiaoma]':'M216C237C0464', 'afterSales_info[0][kuanhao]': 'M216C237',
                         'afterSales_info[0][sku_id]': '4879', 'afterSales_info[0][img]':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg',

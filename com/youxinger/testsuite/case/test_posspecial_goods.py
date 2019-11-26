@@ -173,9 +173,9 @@ class TestSpecialGoods(BaseCase):
         logging.debug("test_2_return_sameCodeAndBar_order")
 
 
-        returnOrderIda = globals()['shopping_order_id'] + "_0"
-        returnOrderIdb =globals()['shopping_order_id'] + "_1"
-        returnOrderIdc =  globals()['shopping_order_id'] + "_2"
+        return_order_id_a = globals()['shopping_order_id'] + "_0"
+        return_order_id_b =globals()['shopping_order_id'] + "_1"
+        return_order_id_c =  globals()['shopping_order_id'] + "_2"
 
 
         order_param = {
@@ -183,7 +183,7 @@ class TestSpecialGoods(BaseCase):
             'return_price': '18432.00',
            'reason':'15天无理由退货',
                 'remarks': 'fff',
-        'afterSales_info[0][order_id]': returnOrderIdc,
+        'afterSales_info[0][order_id]': return_order_id_c,
         'afterSales_info[0][danjia]': '6400.00',
         'afterSales_info[0][sku_name]': '孟伟组合商品',
         'afterSales_info[0][sku_detail]': '2件商品',
@@ -194,7 +194,7 @@ class TestSpecialGoods(BaseCase):
         'afterSales_info[0][aftersale_num]': '1',
         'afterSales_info[0][aftersale_money]': '6144.00',
         'afterSales_info[0][goods_type]': '2',
-        'afterSales_info[1][order_id]': returnOrderIdb,
+        'afterSales_info[1][order_id]': return_order_id_b,
         'afterSales_info[1][danjia]': '6400.00',
         'afterSales_info[1][sku_name]': '孟伟组合商品',
         'afterSales_info[1][sku_detail]': '2件商品',
@@ -205,7 +205,7 @@ class TestSpecialGoods(BaseCase):
         'afterSales_info[1][aftersale_num]': '1',
         'afterSales_info[1][aftersale_money]': '6144.00',
         'afterSales_info[1][goods_type]': '2',
-        'afterSales_info[2][order_id]': returnOrderIda,
+        'afterSales_info[2][order_id]': return_order_id_a,
         'afterSales_info[2][danjia]': '6400.00',
         'afterSales_info[2][sku_name]': '孟伟组合商品',
         'afterSales_info[2][sku_detail]': '2件商品',

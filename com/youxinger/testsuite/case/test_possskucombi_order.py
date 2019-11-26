@@ -3,7 +3,7 @@ from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
 
-class TestPosSameSkuGoods(BaseCase):
+class TestPosCombinationAndCommonGoods(BaseCase):
     """
    组合商品与普通商品
     """
@@ -22,12 +22,12 @@ class TestPosSameSkuGoods(BaseCase):
     def tearDown(self):
         super().tearDown()
 
-    def test_1_possskucombi_order(self):
+    def test_1_pos_Combination_and_common_order(self):
         """
        组合商品与普通商品pos下单（两件组合商品和一件普通商品)
         :return:
         """
-        logging.debug("test_1_possskucombi_order")
+        logging.debug("test_1_pos_Combination_and_common_order")
         params={
             'price': '19560.00', 'discount_money': '782.40', 'real_pay': '18777.60',
             'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
@@ -146,16 +146,16 @@ class TestPosSameSkuGoods(BaseCase):
         # 验证数据
         self._data_assertion()
 
-    def test_2_possskucombi_exchange_part(self):
+    def test_2_pos_Combination_and_common_exchange_part(self):
         """
        组合商品与普通商品pos订单，部分换货(普通商品)
         :return:
         """
         logging.debug("test_2_possskucombi_return_part")
         if globals()['shopping_order_id'] is not None:
-            exchangeOrderId = globals()['shopping_order_id'] + "_0"
+            exchange_order_id = globals()['shopping_order_id'] + "_0"
             pos_param={
-                'sub_order_id': exchangeOrderId,
+                'sub_order_id': exchange_order_id,
                 'goods_num':'1','goods_total_price':'3244.80',
                 'reason':'30天无理由换货',
                 'remarks':'哈哈','type':'2' ,
@@ -205,20 +205,19 @@ class TestPosSameSkuGoods(BaseCase):
 
 
 
-    def test_3_possskucombi_return_part(self):
+    def test_3_Combination_and_common_return_part(self):
                 """
                换的商品退货
                 :return:
                 """
                 logging.debug("test_3_recharge_return_other")
                 if globals()['shopping_order_id'] is not None:
-
-                    exchangeOrderd = market_service.find_order_id(globals()['shopping_order_id'],
+                    exchange_order_id = market_service.find_order_id(globals()['shopping_order_id'],
                                                                                  self._customer.member_number)
-                    exchangeOrderIda=exchangeOrderd +'_0'
-                    returnExchange = {
-                        'main_order_id': exchangeOrderd,  'return_price':'3244.80',
-                        'reason':'拍错/不想要',  'remarks':'',  'afterSales_info[0][order_id]':exchangeOrderIda,
+                    exchange_order_id_a=exchange_order_id +'_0'
+                    return_exchange = {
+                        'main_order_id': exchange_order_id,  'return_price':'3244.80',
+                        'reason':'拍错/不想要',  'remarks':'',  'afterSales_info[0][order_id]':exchange_order_id_a,
                         'afterSales_info[0][danjia]':'3380.00',
                         'afterSales_info[0][sku_name]':'腰背夹',  'afterSales_info[0][sku_detail]':'深蓝色 64',
                         'afterSales_info[0][tiaoma]':'M216C237C0464',  'afterSales_info[0][kuanhao]':'M216C237',  'afterSales_info[0][sku_id]':'4879',
@@ -227,7 +226,7 @@ class TestPosSameSkuGoods(BaseCase):
                         'afterSales_info[0][goods_type]':'1',
 
                     }
-                    market_service.return_order(returnExchange)
+                    market_service.return_order(return_exchange)
                     # 更新充值后的验证数据
                     self._test_data.update_post_verify_data()
                     # 封装验证值
@@ -265,20 +264,20 @@ class TestPosSameSkuGoods(BaseCase):
                     # 验证数据
                     self._data_assertion()
 
-    def test_4_possskucombi_return_other(self):
+    def test_4_Combination_and_common_return_other(self):
         """
         组合商品与普通商品posd订单，其余商品退货
         :return:
         """
-        logging.debug("test_4_possskucombi_return_other")
+        logging.debug("test_4_Combination_and_common_return_other")
         if globals()['shopping_order_id'] is not None:
-            returnOrderId = globals()['shopping_order_id'] + "_2"
-            returnOrderIda = globals()['shopping_order_id'] + "_1"
-            returnOrderIdc = globals()['shopping_order_id'] + "_0"
+            return_order_id = globals()['shopping_order_id'] + "_2"
+            return_order_id_a = globals()['shopping_order_id'] + "_1"
+            return_order_id_b = globals()['shopping_order_id'] + "_0"
 
-            returnother = {
+            return_other = {
     'main_order_id': globals()['shopping_order_id'], 'return_price': '15532.80',
-    'reason': '缺货', 'remarks': '', 'afterSales_info[0][order_id]': returnOrderId,
+    'reason': '缺货', 'remarks': '', 'afterSales_info[0][order_id]': return_order_id,
     'afterSales_info[0][danjia]': '6400.00',
     'afterSales_info[0][sku_name]': '孟伟组合商品', 'afterSales_info[0][sku_detail]': '2件商品',
     'afterSales_info[0][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[0][kuanhao]': '',
@@ -286,13 +285,13 @@ class TestPosSameSkuGoods(BaseCase):
     'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
     'afterSales_info[0][aftersale_num]': '1', 'afterSales_info[0][aftersale_money]': '6144.00',
     'afterSales_info[0][goods_type]': '2',
-    'afterSales_info[1][order_id]': returnOrderIda, 'afterSales_info[1][danjia]': '6400.00',
+    'afterSales_info[1][order_id]': return_order_id_a, 'afterSales_info[1][danjia]': '6400.00',
     'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品',
     'afterSales_info[1][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
     'afterSales_info[1][sku_id]': '5955',
     'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
     'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00',
-    'afterSales_info[1][goods_type]': '2', 'afterSales_info[2][order_id]': returnOrderIdc,
+    'afterSales_info[1][goods_type]': '2', 'afterSales_info[2][order_id]':  return_order_id_b,
     'afterSales_info[2][danjia]': '3380.00',
     'afterSales_info[2][sku_name]': '腰背夹', 'afterSales_info[2][sku_detail]': '深蓝色 58',
     'afterSales_info[2][tiaoma]': 'M216C237C0458', 'afterSales_info[2][kuanhao]': 'M216C237',
@@ -303,7 +302,7 @@ class TestPosSameSkuGoods(BaseCase):
     'afterSales_info[2][goods_type]': '1'
 
             }
-            market_service.return_order(returnother)
+            market_service.return_order(return_other)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
             # 封装验证值
