@@ -226,7 +226,7 @@ def find_order_id(shopping_order_id, member_number):
         logging.error("新单号获取失败, %s" % e)
         return False
 
-def set_no_discount_no_score_product():
+def set_no_discount_no_score_product(product):
     """
     设置商品不折扣不积分
     :return:
@@ -236,7 +236,7 @@ def set_no_discount_no_score_product():
                'tid': variables.backgroundTID,
                'Content-Type': 'application/json'}
 
-    data = {'discount_switch': 'on', 'score_switch': 'on', 'tiaoma':  ["M316J232B0198", "M316J232B0190", "M316J232B0182", "M316J232B0176", "M316J232B01106"]}
+    data = {'discount_switch': 'on', 'score_switch': 'on', 'tiaoma':  product}
     json_str = json.dumps(data)
     resp = requests.post(url, json_str, headers=headers)
     json_data = resp.json()
