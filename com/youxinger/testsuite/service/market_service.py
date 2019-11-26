@@ -1,6 +1,7 @@
 import logging
 from com.youxinger.testsuite.utils import constant, variables, util
 import requests
+import json
 
 
 def pos_order(order_parms):
@@ -61,7 +62,10 @@ def recharge_order(order_parms):
     json_data = resp.json()
     try:
         shopping_order_id = json_data['data']['order_id']
-        recharge_order_pay(shopping_order_id)
+        #recharge_order_pay(shopping_order_id)
+        if recharge_order_pay(shopping_order_id) is True:
+            good_shipped(shopping_order_id)
+
         return shopping_order_id
     except Exception as e:
         logging.error("余额下单失败, %s" % e)
@@ -222,3 +226,22 @@ def find_order_id(shopping_order_id, member_number):
         logging.error("新单号获取失败, %s" % e)
         return False
 
+def set_no_discount_no_score_product():
+    """
+    设置商品不折扣不积分
+    :return:
+    """
+    url = constant.DOMAIN + "/backStage/baseinfo/goods/set-act-tag"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+               'Content-Type': 'application/json'}
+
+    data = {'discount_switch': 'on', 'score_switch': 'on', 'tiaoma':  ["M316J232B0198", "M316J232B0190", "M316J232B0182", "M316J232B0176", "M316J232B01106"]}
+    json_str = json.dumps(data)
+    resp = requests.post(url, json_str, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('设置商品不折扣不积分成功')
+
+    else:
+        logging.info('设置商品不折扣不积分失败')
