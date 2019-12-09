@@ -18,7 +18,6 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 
 
-
 class TestData(IDataVerify):
     """
     测试数据封装类
@@ -98,7 +97,6 @@ class BaseCase(unittest.TestCase):
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
         cls._test_data.customers.append(cls._customer)
-
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
         cls._store.add_platform(cls._platform)

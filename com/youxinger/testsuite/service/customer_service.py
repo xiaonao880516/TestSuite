@@ -199,7 +199,7 @@ def __charge_order_pay(charge_order_id):
     order_data = {'order_id': charge_order_id}
     resp = requests.post(url, order_data)
     json_data = resp.json()
-    if json_data['msg'] == 'ok':
+    if json_data['msg'] == 'OK':
         pass
     else:
         raise Exception('会员充值失败')

@@ -62,7 +62,6 @@ def recharge_order(order_parms):
     json_data = resp.json()
     try:
         shopping_order_id = json_data['data']['order_id']
-        #recharge_order_pay(shopping_order_id)
         if recharge_order_pay(shopping_order_id) is True:
             good_shipped(shopping_order_id)
 
@@ -226,6 +225,7 @@ def find_order_id(shopping_order_id, member_number):
         logging.error("新单号获取失败, %s" % e)
         return False
 
+
 def set_no_discount_no_score_product(product):
     """
     设置商品不折扣不积分
@@ -235,13 +235,97 @@ def set_no_discount_no_score_product(product):
     headers = {'Accept': 'application/json, text/plain, */*',
                'tid': variables.backgroundTID,
                'Content-Type': 'application/json'}
-
     data = {'discount_switch': 'on', 'score_switch': 'on', 'tiaoma':  product}
     json_str = json.dumps(data)
     resp = requests.post(url, json_str, headers=headers)
     json_data = resp.json()
     if json_data['msg'] == '操作成功':
         logging.info('设置商品不折扣不积分成功')
-
     else:
         logging.info('设置商品不折扣不积分失败')
+
+
+def set_pre_sale_product(sku_id, num):
+    """
+    设置预售商品发售不发售
+    :return:
+    """
+    url = constant.DOMAIN + "/backStage/baseinfo/goods/sale"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+               'Content-Type': 'application/json'}
+    data = {'id': sku_id, 'on_sale': num}
+    json_str = json.dumps(data)
+    resp = requests.post(url, json_str, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('成功')
+    else:
+        logging.info('失败')
+
+
+def presell_pos(order_parms):
+    """
+    生成预售订单
+    """
+    logging.info(u"pos订单")
+    json_str = json.dumps(order_parms)
+    url = constant.DOMAIN + "/frontStage/orders/presale/ordain"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID,
+               'Content-Type': 'application/json'}
+    resp = requests.post(url, json_str, headers=headers)
+    json_data = resp.json()
+    try:
+        shopping_order_id = json_data['data']['record_id']
+        real_pay = json_data['data']['price'].replace(".", "")
+        pos_order_pay(shopping_order_id, real_pay)
+        return shopping_order_id
+    except Exception as e:
+        logging.error("pos下单失败, %s" % e)
+        return False
+
+
+def choose_size(param):
+    """
+    生成预售转订单
+    """
+    logging.info(u"预售选码")
+    json_str = json.dumps(param)
+    url = constant.DOMAIN + "/frontStage/orders/presale/new-orders"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID,
+               'Content-Type': 'application/json'}
+    resp = requests.post(url, json_str, headers=headers)
+    json_data = resp.json()
+    order_id = json_data['data']['order_id']
+    recharge_order_pay(order_id)
+    good_shipped(order_id)
+    return order_id
+
+
+def cancel_booking(param):
+    logging.info(u"取消预售订单")
+    url = constant.DOMAIN + "/frontStage/orders/presale/cancel-presale"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID}
+    resp = requests.post(url, param, headers=headers)
+    json_data = resp.json()
+
+
+def jifen(param):
+    """
+    更新会员的验证数据
+    :param is_operated: True：执行操作之后， False：执行操作之前
+    :param customer: 会员对象
+    :return:
+    """
+    logging.info(u"查找会员，更新操作执行数据")
+    url = constant.DOMAIN + "/frontStage/vip/search-byphone"
+    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
+    resp = requests.get(url, params=param, headers=headers)
+    json_data = resp.json()
+    customer_array = json_data['data'][0]['swap_score']
+    return customer_array
+
+
