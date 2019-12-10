@@ -209,7 +209,7 @@ class TestGeneralGoods(BaseCase):
                             'afterSales_info[0][order_id]': return_order_id0, 'afterSales_info[0][danjia]': '6400.00', 'afterSales_info[0][sku_name]': '孟伟组合商品',
                             'afterSales_info[0][sku_detail]': '2件商品', 'afterSales_info[0][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[0][kuanhao]': '', 'afterSales_info[0][sku_id]': '5955',
                             'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg','afterSales_info[0][aftersale_num]': '1',
-                            'afterSales_info[0][aftersale_money]':'6144.00', 'afterSales_info[0][goods_type]': '2',
+                            'afterSales_info[0][aftersale_money]': '6144.00', 'afterSales_info[0][goods_type]': '2',
                             'afterSales_info[1][order_id]': return_order_id1, 'afterSales_info[1][danjia]': '6400.00',
                             'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品', 'afterSales_info[1][tiaoma]':'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
                             'afterSales_info[1][sku_id]': '5955', 'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
