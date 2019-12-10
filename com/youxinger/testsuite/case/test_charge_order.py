@@ -1,7 +1,7 @@
-
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+
 
 class TestChargeGoods(BaseCase):
     """
@@ -28,7 +28,7 @@ class TestChargeGoods(BaseCase):
         :return:
         """
         logging.debug("recharge_shopping_order")
-        params={
+        params = {
             'price': '19200.00', 'discount_money': '768.00', 'real_pay': '18432.00',
             'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
             'receive_sheng': self._customer.province, 'receive_shi': self._customer.city,
@@ -122,9 +122,8 @@ class TestChargeGoods(BaseCase):
             'goods_list[5][zh_com_out_num]': '0', 'goods_list[5][zh_tiaoma]:': 'ZH02B215190T796242',
             'goods_list[5][zh_mark]': '3', 'goods_list[5][zh_no_discount]': '0',
             'goods_list[5][zh_no_score]': '0', 'pay_type': 'recharge'
-
         }
-        globals()['shopping_order_id']= market_service.recharge_order(params)
+        globals()['shopping_order_id'] = market_service.recharge_order(params)
         print(globals()['shopping_order_id'])
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
@@ -132,7 +131,7 @@ class TestChargeGoods(BaseCase):
         self.expectedData(18432 # 会员消费额
                           , 0  # 会员积分
                           , 2  # 会员卡等级
-                          ,  -18432  # 会员余额
+                          , -18432  # 会员余额
                           , 0  # 总揽到店次数
                           , 0  # 总揽新增会员数
                           , 2  # 总揽订单数
@@ -170,21 +169,21 @@ class TestChargeGoods(BaseCase):
         """
         logging.debug("test_return_2pieces")
         if globals()['shopping_order_id'] is not None:
-            return_order_id= globals()['shopping_order_id'] + "_2"
-            recharge_param={
-                'main_order_id':globals()['shopping_order_id'],
-                'return_price':'6144.00','reason':'15天无理由退货',
-                'remarks':'撒旦发','afterSales_info[0][order_id]':return_order_id ,
-                'afterSales_info[0][danjia]':'6400.00',
-                'afterSales_info[0][sku_name]':'孟伟组合商品',
-                'afterSales_info[0][sku_detail]':'2件商品',
-                'afterSales_info[0][tiaoma]':'ZH02B215190T796242',
-                'afterSales_info[0][kuanhao]':'',
-                'afterSales_info[0][sku_id]':'5955',
-                'afterSales_info[0][img]':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg','afterSales_info[0][aftersale_num]':'1',
-                'afterSales_info[0][aftersale_money]':'6144.00',
-                'afterSales_info[0][goods_type]':'2'
-
+            return_order_id = globals()['shopping_order_id'] + "_2"
+            recharge_param = {
+                'main_order_id': globals()['shopping_order_id'],
+                'return_price': '6144.00', 'reason': '15天无理由退货',
+                'remarks': '撒旦发', 'afterSales_info[0][order_id]': return_order_id,
+                'afterSales_info[0][danjia]': '6400.00',
+                'afterSales_info[0][sku_name]': '孟伟组合商品',
+                'afterSales_info[0][sku_detail]': '2件商品',
+                'afterSales_info[0][tiaoma]': 'ZH02B215190T796242',
+                'afterSales_info[0][kuanhao]': '',
+                'afterSales_info[0][sku_id]': '5955',
+                'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
+                'afterSales_info[0][aftersale_num]': '1',
+                'afterSales_info[0][aftersale_money]': '6144.00',
+                'afterSales_info[0][goods_type]': '2'
             }
             market_service.return_order(recharge_param)
             # 更新充值后的验证数据
@@ -224,81 +223,72 @@ class TestChargeGoods(BaseCase):
             # 验证数据
             self._data_assertion()
 
-
-
-
-
     def test_3_recharge_return_other(self):
-                """
-                同条码同SKU，其余部分退货
-                :return:
-                """
-                logging.debug("test_3_recharge_return_other")
-                if globals()['shopping_order_id'] is not None:
-                    return_order_id = globals()['shopping_order_id'] + "_1"
-                    return_order_id_b=globals()['shopping_order_id'] + "_0"
-                    recharge_param = {
-                        'main_order_id':globals()['shopping_order_id'],  'return_price':'12288.00',
-                        'reason':'拍错/不想要',  'remarks':'哈哈哈',
-                        'afterSales_info[0][order_id]':return_order_id,
-                        'afterSales_info[0][danjia]':'6400.00',
-                        'afterSales_info[0][sku_name]':'孟伟组合商品',
-                        'afterSales_info[0][sku_detail]':'2件商品',
-                        'afterSales_info[0][tiaoma]':'ZH02B215190T796242',
-                        'afterSales_info[0][kuanhao]':'',  'afterSales_info[0][sku_id]':'5955',
-                        'afterSales_info[0][img]':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
-                        'afterSales_info[0][aftersale_num]':'1','afterSales_info[0][aftersale_money]':'6144.00','afterSales_info[0][goods_type]':'2',
-                        'afterSales_info[1][order_id]': return_order_id_b, 'afterSales_info[1][danjia]': '6400.00',
-                        'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品',
-                        'afterSales_info[1][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
-                        'afterSales_info[1][sku_id]': '5955',
-                        'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
-                        'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00',
-                        'afterSales_info[1][goods_type]': '2',
-
-                    }
-                    market_service.return_order(recharge_param)
-                    # 更新充值后的验证数据
-                    self._test_data.update_post_verify_data()
-                    # 封装验证值
-                    self.expectedData(-12288  # 会员消费额
-                                      , 0 # 会员积分
-                                      , 2  # 会员卡等级
-                                      , 12288  # 会员余额
-                                      , 0  # 总揽到店次数
-                                      , 0  # 总揽新增会员数
-                                      , 0  # 总揽订单数
-                                      , 1  # 总揽退单数
-                                      , -12288  # 总揽销售总额
-                                      , 0  # M216C237C0458总仓库存
-                                      , 0  # M216C237C0464总仓库存
-                                      , 0  # M116E248B0158总仓库存
-                                      , 0  # M116E248B0164总仓库存
-                                      , 0  # M316J232B01106总仓库存
-                                      , 0  # M316J232B0176总仓库存
-                                      , 2  # ZH02B215190T796242总仓库存
-                                      , -1.23  # 验证值
-                                      , 6  # M216C237C0458门店库存
-                                      , 0  # M216C237C0464门店库存
-                                      , 2  # M116E248B0158门店库存
-                                      , 0  # M116E248B0164门店库存
-                                      , 0  # M316J232B01106门店库存
-                                      , 0  # M316J232B0176门店库存
-                                      , 0  # ZH02B215190T796242门店库存
-                                      , 0  # 门店到店次数期待增加值
-                                      , 0  # 门店新增会员数期待增加值
-                                      , 0  # 门店订单数期待增加值
-                                      , 2  # 门店退单数期待增加值
-                                      , -12288  # 门店销售总额期待增加值
-                                      , -12288  # 门店平台销售总额期待增加值
-                                      )
-                    # 验证数据
-                    self._data_assertion()
-
-
-
-
-
+        """
+        同条码同SKU，其余部分退货
+        :return:
+        """
+        logging.debug("test_3_recharge_return_other")
+        if globals()['shopping_order_id'] is not None:
+            return_order_id = globals()['shopping_order_id'] + "_1"
+            return_order_id_b = globals()['shopping_order_id'] + "_0"
+            recharge_param = {
+                'main_order_id': globals()['shopping_order_id'],  'return_price': '12288.00',
+                'reason': '拍错/不想要',  'remarks': '哈哈哈',
+                'afterSales_info[0][order_id]': return_order_id,
+                'afterSales_info[0][danjia]': '6400.00',
+                'afterSales_info[0][sku_name]': '孟伟组合商品',
+                'afterSales_info[0][sku_detail]': '2件商品',
+                'afterSales_info[0][tiaoma]': 'ZH02B215190T796242',
+                'afterSales_info[0][kuanhao]': '',  'afterSales_info[0][sku_id]': '5955',
+                'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
+                'afterSales_info[0][aftersale_num]': '1', 'afterSales_info[0][aftersale_money]': '6144.00',
+                'afterSales_info[0][goods_type]': '2',
+                'afterSales_info[1][order_id]': return_order_id_b, 'afterSales_info[1][danjia]': '6400.00',
+                'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品',
+                'afterSales_info[1][tiaoma]': 'ZH02B215190T796242', 'afterSales_info[1][kuanhao]': '',
+                'afterSales_info[1][sku_id]': '5955',
+                'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
+                'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00',
+                'afterSales_info[1][goods_type]': '2',
+            }
+            market_service.return_order(recharge_param)
+            # 更新充值后的验证数据
+            self._test_data.update_post_verify_data()
+            # 封装验证值
+            self.expectedData(-12288  # 会员消费额
+                              , 0 # 会员积分
+                              , 2  # 会员卡等级
+                              , 12288  # 会员余额
+                              , 0  # 总揽到店次数
+                              , 0  # 总揽新增会员数
+                              , 0  # 总揽订单数
+                              , 1  # 总揽退单数
+                              , -12288  # 总揽销售总额
+                              , 0  # M216C237C0458总仓库存
+                              , 0  # M216C237C0464总仓库存
+                              , 0  # M116E248B0158总仓库存
+                              , 0  # M116E248B0164总仓库存
+                              , 0  # M316J232B01106总仓库存
+                              , 0  # M316J232B0176总仓库存
+                              , 2  # ZH02B215190T796242总仓库存
+                              , -1.23  # 验证值
+                              , 6  # M216C237C0458门店库存
+                              , 0  # M216C237C0464门店库存
+                              , 2  # M116E248B0158门店库存
+                              , 0  # M116E248B0164门店库存
+                              , 0  # M316J232B01106门店库存
+                              , 0  # M316J232B0176门店库存
+                              , 0  # ZH02B215190T796242门店库存
+                              , 0  # 门店到店次数期待增加值
+                              , 0  # 门店新增会员数期待增加值
+                              , 0  # 门店订单数期待增加值
+                              , 2  # 门店退单数期待增加值
+                              , -12288  # 门店销售总额期待增加值
+                              , -12288  # 门店平台销售总额期待增加值
+                              )
+            # 验证数据
+            self._data_assertion
 
 
 

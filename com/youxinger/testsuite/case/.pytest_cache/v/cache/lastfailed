@@ -6,6 +6,15 @@
   "test_lanchao_app.py::TestHello::test": true,
   "test_lanchao_app.py::TestHello::test_add": true,
   "test_lanchao_app.py::TestHello::test_say_hello": true,
+  "test_posspecial_goods.py::TestSpecialGoods::test_1_recharge_shopping_order": true,
+  "test_posspecial_goods.py::TestSpecialGoods::test_2_return_sameCodeAndBar_order": true,
+  "test_possskucombi_order.py::TestPosCombinationAndCommonGoods::test_1_pos_Combination_and_common_order": true,
+  "test_possskucombi_order.py::TestPosCombinationAndCommonGoods::test_2_pos_Combination_and_common_exchange_part": true,
+  "test_possskucombi_order.py::TestPosCombinationAndCommonGoods::test_3_Combination_and_common_return_part": true,
+  "test_possskucombi_order.py::TestPosCombinationAndCommonGoods::test_4_Combination_and_common_return_other": true,
+  "test_presell_post.py::TestGeneralGoods::test_3_changer_10pieces": true,
+  "test_presell_post.py::TestGeneralGoods::test_3_return_10pieces": true,
+  "test_presell_post.py::TestGeneralGoods::test_4_return_10pieces": true,
   "test_return.py::TestGeneralGoods::test_1_pos_shopping_order": true,
   "test_sku_post.py::TestGeneralGoods::test_1_sku_post_order": true
 }

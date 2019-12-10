@@ -1,5 +1,3 @@
 [
-  "test_oneandsku_post.py::TestGeneralGoods::test_1_sku_post_order",
-  "test_oneandsku_post.py::TestGeneralGoods::test_2_return_some",
-  "test_oneandsku_post.py::TestGeneralGoods::test_3_return_other"
+  "test_jifen.py::TestGeneralGoods::test_1_pos_shopping_order"
 ]
