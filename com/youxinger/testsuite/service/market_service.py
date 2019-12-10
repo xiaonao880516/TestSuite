@@ -279,7 +279,10 @@ def presell_pos(order_parms):
     try:
         shopping_order_id = json_data['data']['record_id']
         real_pay = json_data['data']['price'].replace(".", "")
-        pos_order_pay(shopping_order_id, real_pay)
+        if list(order_parms.values())[5] == "recharge":
+            recharge_order_pay(shopping_order_id)
+        else:
+            pos_order_pay(shopping_order_id, real_pay)
         return shopping_order_id
     except Exception as e:
         logging.error("pos下单失败, %s" % e)
@@ -327,5 +330,85 @@ def jifen(param):
     json_data = resp.json()
     customer_array = json_data['data'][0]['swap_score']
     return customer_array
+
+
+def rewards_order(order_parms):
+    """
+    积分商城下单
+    """
+    logging.info(u" 积分商城下单")
+    url = constant.DOMAIN + "/frontStage/pointsmall/order/new-orders"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID,
+               'Content-Type': 'application/x-www-form-urlencoded'}
+    resp = requests.post(url, order_parms, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '下单成功':
+        logging.info('下单成功')
+        reward = json_data['data']['order_id']
+
+        if rewards_order_pay(reward) is True:
+            rewards_order_success(reward)
+        return  reward
+    else:
+        logging.info('下单失败')
+
+def rewards_order_pay(order_parms):
+    """
+    纯积分兑换
+    """
+    logging.info(u"  纯积分兑换")
+    url = constant.DOMAIN + "/frontStage/pointsmall/order/score-exchange"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID,
+               'Content - Type': 'application / x - www - form - urlencoded'
+              }
+    delivery_parms = dict(order_id=order_parms)
+    resp = requests.post(url, delivery_parms, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '兑换成功':
+        logging.info('兑换成功')
+        return True
+
+    else:
+        logging.info('兑换失败')
+
+def rewards_order_success(order_id):
+    """
+    积分商城发货
+    """
+    logging.info(u"   积分商城发货")
+    url = constant.DOMAIN + "/backStage/pointsmall/update-tracking-number"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.foregroundTID,
+               'Content - Type': 'application / x - www - form - urlencoded'
+              }
+    delivery_parms = dict(order_id=order_id,tracking_number=12313)
+    resp = requests.post(url, delivery_parms, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '已发货':
+        logging.info('已发货成功')
+
+    else:
+        logging.info('已发货失败')
+
+def rewards_order_refund(order_id):
+    """
+    积分商城退货
+    """
+    logging.info(u"  积分商城退货")
+    url = constant.DOMAIN + "/backStage/pointsmall/aftersale/refund"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+               'Content - Type': 'application / x - www - form - urlencoded'
+              }
+    delivery_parms = dict(order_id=order_id,beizhu=12313,type=1)
+    resp = requests.post(url, delivery_parms, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('退货成功')
+
+    else:
+        logging.info('退货失败')
 
 
