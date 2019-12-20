@@ -25,6 +25,7 @@ class TestRewardGoods(BaseCase):
     def test_1_Reward_shopping_order(self):
         """
         积分商城积分下单测试
+        ‘hmr普通商品’ 1件
         :return:
         """
         logging.debug("test_1_Reward_shopping_order")

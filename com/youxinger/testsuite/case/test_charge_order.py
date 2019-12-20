@@ -24,7 +24,11 @@ class TestChargeGoods(BaseCase):
 
     def test_1_recharge_shopping_order(self):
         """
-        余额方式门店总仓混合下单(三件组合商品)
+        charge下单
+        '孟伟组合商品'：ZH02B215190T796242   3件
+        组合商品包含： 包臀内裤 数量（1）黑色 58 M116E248B0158
+                      腰背夹 数量（3）深蓝色 58 M216C237C0458
+        门店自提数量2件，公司发货1件
         :return:
         """
         logging.debug("recharge_shopping_order")

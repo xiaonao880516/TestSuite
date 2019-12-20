@@ -24,7 +24,11 @@ class TestSpecialGoods(BaseCase):
 
     def test_1_recharge_shopping_order(self):
         """
-        pos方式门店总仓混合下相同条款款号的商品（3件组合商品）
+        pos方式门店混合下单相同条款款号的商品（3件组合商品）
+        '孟伟组合商品'：‘ZH02B215190T796242’ 门店发货3件，
+        组合商品子商品：
+        包臀内裤 数量（1）黑色 58 M116E248B0158
+        腰背夹 数量（3）深蓝色 58 M216C237C0458
         :return:
         """
         logging.debug("recharge_shopping_order")
@@ -166,6 +170,7 @@ class TestSpecialGoods(BaseCase):
     def test_2_return_sameCodeAndBar_order(self):
         """
          pos方式门店总仓混合下单退全部相同条款款号的商品
+         3件组合商品全退
         :return:
         """
         logging.debug("test_2_return_sameCodeAndBar_order")
