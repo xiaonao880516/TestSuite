@@ -24,7 +24,9 @@ class TestChargeSameSkuGoods(BaseCase):
 
     def test_1_recharge_different_sku_st_order(self):
         """
-       同条码不同SKU余额方式门店总仓混合下单
+         同条码不同SKU余额方式门店总仓混合下单
+       ‘孟伟组合商品’：ZH02B215190T796242  4件商品
+         公司2件，门店2件
         :return:
         """
         logging.debug("test_1_recharge_different_sku_st_order")
@@ -195,7 +197,7 @@ class TestChargeSameSkuGoods(BaseCase):
 
     def test_2_recharge_different_sku_st_return_part(self):
         """
-       同条码不同SKU，部分退货
+       同条码不同SKU，退1件组合货
         :return:
         """
         logging.debug("test_2_recharge_different_sku_st_return_part")

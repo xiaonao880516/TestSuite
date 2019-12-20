@@ -28,7 +28,9 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
 
     def test_1_NoDiscountNoScoreSimple_order(self):
         """
-        不折扣不积分与普通商品pos混合下单
+        不折扣不积分与普通商品pos混合下单（2件组合商品，1件普通商品)
+        '孟伟组合商品'：'ZH02B215190T796242' 2件 累计积分，打折扣
+        '男士塑身背心'：'M316J232B0198'  总仓发货2件 ,不折扣不积分
         :return:
         """
         logging.debug("test_1_NoDiscountNoScoreSimple_order")
@@ -151,7 +153,7 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
 
     def test_2_NoDiscountNoScoreSimple_ReturnPart(self):
         """
-        不折扣不积分商品退货
+        不折扣不积分商品，'男士塑身背心'，退货
         :return:
         """
         logging.debug("test_2_NoDiscountNoScoreSimple_ReturnPart")
@@ -212,7 +214,7 @@ class TestPosNoDiscountNoScoreSimpleGoods(BaseCase):
 
     def test_3_NoDiscountNoScoreSimple_ReturnOther(self):
         """
-        不折扣不积分与普通商品pos混合下单，剩余商品退货
+        剩余商品退货
         :return:
         """
         logging.debug("test_3_NoDiscountNoScoreSimple_ReturnOther")

@@ -24,7 +24,9 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_1_ChargeSimpleAndComplex_order(self):
         """
-       组合商品与普通商品余额方式门店总仓混合下单
+         组合商品与普通商品余额方式门店混合下单
+       ‘孟伟组合商品’：ZH02B215190T796242    门店自提2件
+       ‘腰背夹’：M216C237C0458   门店自提2件
         :return:
         """
         logging.debug("test_1_rechargesskuds_order")
@@ -145,7 +147,8 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_2_ChargeSimpleAndComplex_Exchange_part(self):
         """
-       组合商品与普通商品余额方式门店总仓混合，普通商品2件换货58换64
+       组合商品与普通商品余额方式门店混合
+       普通商品腰背夹’：M216C237C0458 2件换货58换64
         :return:
         """
         logging.debug("test_2_ChargeSimpleAndComplex_Exchange_part")
@@ -195,7 +198,8 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_3_ChargeSimpleAndComplex_Exchange_other(self):
         """
-        组合商品与普通商品余额方式门店总仓混合，普通商品2件换货64换58,
+        组合商品与普通商品余额方式门店混合，
+        普通商品腰背夹’：M216C237C0458 2件换货64换58,
         :return:
         """
         logging.debug("test_3_recharge_return_other")
@@ -246,7 +250,8 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_4_ChargeSimpleAndComplex_Exchange_other3(self):
         """
-        组合商品与普通商品余额方式门店总仓混合，普通商品2件换货58换64
+        组合商品与普通商品余额方式门店混合，
+        普通商品腰背夹’：M216C237C0458 2件换货58换64
         :return:
         """
         logging.debug("test_3_recharge_return_other")
@@ -297,7 +302,8 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_5_ChargeSimpleAndComplex_Return_part(self):
         """
-        组合商品与普通商品余额方式门店总仓混合，部分退货（退2件组合商品)
+        组合商品与普通商品余额方式门店混合
+        部分退货（退2件组合商品‘孟伟组合商品’：ZH02B215190T796242)
         :return:
         """
         logging.debug("test_return_2pieces")
@@ -353,7 +359,7 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
 
     def test_6_ChargeSimpleAndComplex_Exchange_other(self):
         """
-        组合商品与普通商品余额方式门店总仓混合，换的部分退货
+        组合商品与普通商品余额方式门店混合，换的部分退货
         :return:
         """
         logging.debug("test_3_recharge_return_other")

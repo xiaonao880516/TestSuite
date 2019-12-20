@@ -24,7 +24,10 @@ class TestChargeSameSkuGoods(BaseCase):
 
     def test_1_recharge_same_sku_dt_order(self):
         """
-         不同条码同SKU余额下单
+         charge下单
+        ‘孟伟组合商品’：ZH02B215190T796242   2件
+        ‘自动化测试勿删’：ZH02B215190T264284   2件
+         门店自提数量3件，公司发货1件
         :return:
         """
         logging.debug("test_1_recharge_same_sku_dt_order")
@@ -194,7 +197,7 @@ class TestChargeSameSkuGoods(BaseCase):
 
     def test_2_recharge_same_sku_dt_return_part(self):
         """
-       不同条码同SKU，部分退货
+       不同条码同SKU，退一件组合商品
         :return:
         """
         logging.debug("test_2_rechargesskuds_return_part")
@@ -255,7 +258,7 @@ class TestChargeSameSkuGoods(BaseCase):
 
     def test_3_recharge_same_sku_return_other(self):
         """
-        同条码不同SKU，其余部分退货
+        同条码不同SKU，退3件组合商品
         :return:
         """
         logging.debug("test_3_recharge_return_other")
