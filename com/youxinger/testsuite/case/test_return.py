@@ -140,11 +140,11 @@ class TestGeneralGoods(BaseCase):
         member_number = self._customer.member_number
         exchangeOrderId = market_service.find_order_id(shopping_order_id,member_number)
         return_order_id = exchangeOrderId + "_0"
-        return_param = {'main_order_id': exchangeOrderId, 'return_price': '31096.00', 'reason': '15天无理由退货', 'remarks': '退货10件',
+        return_param = {'main_order_id': exchangeOrderId, 'return_price': '0.00', 'reason': '15天无理由退货', 'remarks': '退货10件',
                         'afterSales_info[0][order_id]': return_order_id, 'afterSales_info[0][danjia]': '3380.00', 'afterSales_info[0][sku_name]':'腰背夹',
                         'afterSales_info[0][sku_detail]': '深蓝色 64', 'afterSales_info[0][tiaoma]': 'M216C237C0464', 'afterSales_info[0][kuanhao]': 'M216C237',
                         'afterSales_info[0][sku_id]': '4879', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg',
-                        'afterSales_info[0][aftersale_num]': '10', 'afterSales_info[0][aftersale_money]':  '31096.00', 'afterSales_info[0][goods_type]': '1'}
+                        'afterSales_info[0][aftersale_num]': '10', 'afterSales_info[0][aftersale_money]':  '0.00', 'afterSales_info[0][goods_type]': '1'}
         market_service.return_order(return_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
