@@ -140,10 +140,10 @@ class TestGeneralGoods(BaseCase):
         member_number = self._customer.member_number
         exchangeOrderId = market_service.find_order_id(shopping_order_id, member_number)
         return_order_id0 = exchangeOrderId + "_0"
-        return_param = {'main_order_id': exchangeOrderId, 'return_price': '2660.00', 'reason': '拍错/不想要', 'remarks': '非', 'afterSales_info[0][order_id]': return_order_id0, 'afterSales_info[0][danjia]': '2660.00',
+        return_param = {'main_order_id': exchangeOrderId, 'return_price': '0.00', 'reason': '拍错/不想要', 'remarks': '非', 'afterSales_info[0][order_id]': return_order_id0, 'afterSales_info[0][danjia]': '2660.00',
                         'afterSales_info[0][sku_name]': '男士塑身背心', 'afterSales_info[0][sku_detail]': '黑色 76', 'afterSales_info[0][tiaoma]': 'M316J232B0176', 'afterSales_info[0][kuanhao]': 'M316J232',
                         'afterSales_info[0][sku_id]': '4997', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010526413875910.jpg', 'afterSales_info[0][aftersale_num]': '1',
-                        'afterSales_info[0][aftersale_money]': '2660.00', 'afterSales_info[0][goods_type]': '1'}
+                        'afterSales_info[0][aftersale_money]': '0.00', 'afterSales_info[0][goods_type]': '1'}
         market_service.return_order(return_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
