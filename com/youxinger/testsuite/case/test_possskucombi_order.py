@@ -25,6 +25,8 @@ class TestPosCombinationAndCommonGoods(BaseCase):
     def test_1_pos_Combination_and_common_order(self):
         """
         组合商品与普通商品pos下单（两件组合商品和一件普通商品)
+        ‘孟伟组合商品’： ‘ZH02B215190T796242’ 公司发货2件
+        ‘腰背夹’： ‘M216C237C0458’ '深蓝色 58' 公司发货2件
         :return:
         """
         logging.debug("test_1_pos_Combination_and_common_order")
@@ -148,6 +150,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
     def test_2_pos_Combination_and_common_exchange_part(self):
         """
         组合商品与普通商品pos订单，部分换货(普通商品)
+        ‘腰背夹’：'深蓝色 58'换 "深蓝色 64"
         :return:
         """
         logging.debug("test_2_possskucombi_return_part")

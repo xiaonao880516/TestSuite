@@ -156,13 +156,20 @@ def create_return_order(order_params):
     创建退货订单
     :return:
     """
+    order_params['is_confirm'] = '0'
     return_url = constant.DOMAIN + "/frontStage/aftersale/apply-return"
     return_headers = {'Accept': 'application/json, text/plain, */*',
                       'tid': variables.foregroundTID}
     resp = requests.post(return_url, order_params, headers=return_headers)
     json_data = resp.json()
-    after_sale_id = json_data['data']['aftersale_id']
-    return after_sale_id
+    request_refund_result = json_data['msg']
+    if request_refund_result == "SUCCESS":
+        order_params['is_confirm'] = '1'
+        resp = requests.post(return_url, order_params, headers=return_headers)
+        json_data = resp.json()
+        after_sale_id = json_data['data']['aftersale_id']
+        return after_sale_id
+
 
 
 def after_sale_review(review_type, after_sale_id):

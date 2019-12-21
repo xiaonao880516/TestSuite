@@ -27,7 +27,8 @@ class TestChargePreSaleGoods(BaseCase):
 
     def test_1_ChargePreSaleGoods_order(self):
         """
-       预售商品下单(两件子商品，公司发货)
+       预售商品下单
+       ‘何明锐预售’：YS6789N838655 公司发货 1件 累计积分
         :return:
         """
         logging.debug("test_1_rechargesskuds_order")
