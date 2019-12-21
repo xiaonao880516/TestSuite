@@ -179,13 +179,13 @@ class TestSpecialGoods(BaseCase):
         return_order_id_c = globals()['shopping_order_id'] + "_2"
         order_param = {'main_order_id': globals()['shopping_order_id'], 'return_price': '18432.00', 'reason': '15天无理由退货', 'remarks': 'fff', 'afterSales_info[0][order_id]': return_order_id_c,
                        'afterSales_info[0][danjia]': '6400.00', 'afterSales_info[0][sku_name]': '孟伟组合商品', 'afterSales_info[0][sku_detail]': '2件商品', 'afterSales_info[0][tiaoma]': 'ZH02B215190T796242',
-                       'afterSales_info[0][kuanhao]': '', 'afterSales_info[0][sku_id]': '5955', 'afterSales_info[0][img]': 'https: // lchapp.oss - cn - beijing.aliyuncs.com / 2019080310765489321.jpg',
+                       'afterSales_info[0][kuanhao]': '', 'afterSales_info[0][sku_id]': '5955', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
                        'afterSales_info[0][aftersale_num]': '1', 'afterSales_info[0][aftersale_money]': '6144.00', 'afterSales_info[0][goods_type]': '2', 'afterSales_info[1][order_id]': return_order_id_b,
                        'afterSales_info[1][danjia]': '6400.00', 'afterSales_info[1][sku_name]': '孟伟组合商品', 'afterSales_info[1][sku_detail]': '2件商品', 'afterSales_info[1][tiaoma]': 'ZH02B215190T796242',
-                       'afterSales_info[1][kuanhao]': '', 'afterSales_info[1][sku_id]': '5955', 'afterSales_info[1][img]': 'https: // lchapp.oss - cn - beijing.aliyuncs.com / 2019080310765489321.jpg',
+                       'afterSales_info[1][kuanhao]': '', 'afterSales_info[1][sku_id]': '5955', 'afterSales_info[1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
                        'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00', 'afterSales_info[1][goods_type]': '2', 'afterSales_info[2][order_id]': return_order_id_a,
                        'afterSales_info[2][danjia]': '6400.00', 'afterSales_info[2][sku_name]': '孟伟组合商品', 'afterSales_info[2][sku_detail]': '2件商品', 'afterSales_info[2][tiaoma]': 'ZH02B215190T796242',
-                       'afterSales_info[2][kuanhao]': '', 'afterSales_info[2][sku_id]': '5955', 'afterSales_info[2][img]': 'https: // lchapp.oss - cn - beijing.aliyuncs.com / 2019080310765489321.jpg',
+                       'afterSales_info[2][kuanhao]': '', 'afterSales_info[2][sku_id]': '5955', 'afterSales_info[2][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019080310765489321.jpg',
                        'afterSales_info[2][aftersale_num]': '1', 'afterSales_info[2][aftersale_money]': '6144.00', 'afterSales_info[2][goods_type]': '2',
                        }
         market_service.return_order(order_param)
@@ -221,7 +221,7 @@ class TestSpecialGoods(BaseCase):
                           , 0  # 门店新增会员数期待增加值
                           , 0  # 门店订单数期待增加值
                           , 0  # 门店退单数期待增加值
-                          , -18432  # 门店销售总额期待增加值
+                          , -18432 # 门店销售总额期待增加值
                           , -18432  # 门店平台销售总额期待增加值
                           )
 
