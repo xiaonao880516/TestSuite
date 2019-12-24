@@ -196,117 +196,13 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
             # 验证数据
             self._data_assertion()
 
-    def test_3_ChargeSimpleAndComplex_Exchange_other(self):
-        """
-        组合商品与普通商品余额方式门店混合，
-        普通商品腰背夹’：M216C237C0458 2件换货64换58,
-        :return:
-        """
-        logging.debug("test_3_recharge_return_other")
-        if globals()['shopping_order_id'] is not None:
-            exchange_order = market_service.find_order_id(globals()['shopping_order_id'], self._customer.member_number)
-            exchange_order_id = exchange_order + '_0'
-            recharge_param = {
-              'sub_order_id': exchange_order_id, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货', 'remarks': '哈哈', 'type': '2',
-              'goods_list': '[{"num":"2","sku_id":"4878","sku_name":"腰背夹","sku_detail":"深蓝色 58","tiaoma":"M216C237C0458","kuanhao":"M216C237","danjia":"3380.00","img":"https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg"}]'
-            }
-            market_service.exchange_order(recharge_param)
-            # 更新充值后的验证数据
-            self._test_data.update_post_verify_data()
-            # 封装验证值
-            self.expectedData(0  # 会员消费额
-                              , 0  # 会员积分
-                              , 2  # 会员卡等级
-                              , 0 # 会员余额
-                              , 0  # 总揽到店次数
-                              , 0  # 总揽新增会员数
-                              , 0  # 总揽订单数
-                              , 0  # 总揽退单数
-                              , 0  # 总揽销售总额
-                              , 0  # M216C237C0458总仓库存
-                              , 0  # M216C237C0464总仓库存
-                              , 0  # M116E248B0158总仓库存
-                              , 0  # M116E248B0164总仓库存
-                              , 0  # M316J232B01106总仓库存
-                              , 0  # M316J232B0176总仓库存
-                              , 0  # ZH02B215190T796242总仓库存
-                              , 0  # 验证值
-                              , -2  # M216C237C0458门店库存
-                              , 2  # M216C237C0464门店库存
-                              , 0  # M116E248B0158门店库存
-                              , 0  # M116E248B0164门店库存
-                              , 0  # M316J232B01106门店库存
-                              , 0  # M316J232B0176门店库存
-                              , 0  # ZH02B215190T796242门店库存
-                              , 0  # 门店到店次数期待增加值
-                              , 0  # 门店新增会员数期待增加值
-                              , 1  # 门店订单数期待增加值
-                              , 0  # 门店退单数期待增加值
-                              , 0  # 门店销售总额期待增加值
-                              , 0  # 门店平台销售总额期待增加值
-                              )
-            # 验证数据
-            self._data_assertion()
-
-    def test_4_ChargeSimpleAndComplex_Exchange_other3(self):
-        """
-        组合商品与普通商品余额方式门店混合，
-        普通商品腰背夹’：M216C237C0458 2件换货58换64
-        :return:
-        """
-        logging.debug("test_3_recharge_return_other")
-        if globals()['shopping_order_id'] is not None:
-            exchange_order = market_service.find_order_id(globals()['shopping_order_id'], self._customer.member_number)
-            exchange_order_id = exchange_order + '_0'
-            recharge_param = {
-              'sub_order_id': exchange_order_id, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货', 'remarks': '哈哈', 'type': '2',
-              'goods_list': '[{"num":2,"sku_id":"4879","sku_name":"腰背夹","sku_detail":"深蓝色 64","tiaoma":"M216C237C0464","kuanhao":"M216C237","danjia":"3380.00","img":"https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg"}]'
-            }
-            market_service.exchange_order(recharge_param)
-            # 更新充值后的验证数据
-            self._test_data.update_post_verify_data()
-            # 封装验证值
-            self.expectedData(0  # 会员消费额
-                              , 0  # 会员积分
-                              , 2  # 会员卡等级
-                              , 0 # 会员余额
-                              , 0  # 总揽到店次数
-                              , 0  # 总揽新增会员数
-                              , 0  # 总揽订单数
-                              , 0  # 总揽退单数
-                              , 0  # 总揽销售总额
-                              , 0  # M216C237C0458总仓库存
-                              , 0  # M216C237C0464总仓库存
-                              , 0  # M116E248B0158总仓库存
-                              , 0  # M116E248B0164总仓库存
-                              , 0  # M316J232B01106总仓库存
-                              , 0  # M316J232B0176总仓库存
-                              , 0  # ZH02B215190T796242总仓库存
-                              , 0  # 验证值
-                              , 2  # M216C237C0458门店库存
-                              , -2  # M216C237C0464门店库存
-                              , 0  # M116E248B0158门店库存
-                              , 0  # M116E248B0164门店库存
-                              , 0  # M316J232B01106门店库存
-                              , 0  # M316J232B0176门店库存
-                              , 0  # ZH02B215190T796242门店库存
-                              , 0  # 门店到店次数期待增加值
-                              , 0  # 门店新增会员数期待增加值
-                              , 1  # 门店订单数期待增加值
-                              , 0  # 门店退单数期待增加值
-                              , 0  # 门店销售总额期待增加值
-                              , 0  # 门店平台销售总额期待增加值
-                              )
-            # 验证数据
-            self._data_assertion()
-
     def test_5_ChargeSimpleAndComplex_Return_part(self):
         """
         组合商品与普通商品余额方式门店混合
         部分退货（退2件组合商品‘孟伟组合商品’：ZH02B215190T796242)
         :return:
         """
-        logging.debug("test_return_2pieces")
+        logging.debug("test_5_ChargeSimpleAndComplex_Return_part")
         if globals()['shopping_order_id'] is not None:
             return_order_a = globals()['shopping_order_id']
             return_order_b = globals()['shopping_order_id'] + "_2"
@@ -362,19 +258,19 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
         组合商品与普通商品余额方式门店混合，换的部分退货
         :return:
         """
-        logging.debug("test_3_recharge_return_other")
+        logging.debug("test_6_ChargeSimpleAndComplex_Exchange_other")
         if globals()['shopping_order_id'] is not None:
             exchange_order = market_service.find_order_id(globals()['shopping_order_id'], self._customer.member_number)
             exchange_order_a = exchange_order + '_0'
 
             recharge_param = {
-              'main_order_id': exchange_order, 'return_price': '6489.60', 'reason': '拍错/不想要', 'remarks': '',
+              'main_order_id': exchange_order, 'return_price': '0.00', 'reason': '拍错/不想要', 'remarks': '',
               'afterSales_info[0][order_id]': exchange_order_a, 'afterSales_info[0][danjia]': '3380.00',
               'afterSales_info[0][sku_name]': '腰背夹', 'afterSales_info[0][sku_detail]': '深蓝色 64',
               'afterSales_info[0][tiaoma]': 'M216C237C0464', 'afterSales_info[0][kuanhao]': 'M216C237',
               'afterSales_info[0][sku_id]': '4879', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg',
               'afterSales_info[0][aftersale_num]': '2',
-              'afterSales_info[0][aftersale_money]': '6489.60', 'afterSales_info[0][goods_type]': '1',
+              'afterSales_info[0][aftersale_money]': '0.00', 'afterSales_info[0][goods_type]': '1',
             }
             market_service.return_order(recharge_param)
             # 更新充值后的验证数据
