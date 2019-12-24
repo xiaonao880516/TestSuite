@@ -256,59 +256,6 @@ class TestGeneralGoods(BaseCase):
         # 验证
         self._data_assertion()
 
-    def test_4_changer_other(self):
-        """
-        换货2件商品数据
-        腰背夹M216C237，深蓝色，64 换2个 腰背夹M216C237C0464， 深蓝色，58
-        :return:
-        """
-        logging.debug("test_4_changer_other")
-        shopping_order_id = globals()['shopping_order_id']
-        member_number = self._customer.member_number
-        globals()['exchangeOrderId'] = market_service.find_order_id(shopping_order_id, member_number)
-        exchange_order_id = globals()['exchangeOrderId'] + "_0"
-        params = {'sub_order_id': exchange_order_id, 'goods_num': '2', 'goods_total_price': '6489.60', 'reason': '30天无理由换货', 'remarks': '哈哈', 'type': '2',
-                  'goods_list': '[{"num":2,"sku_id":"4878","sku_name":"腰背夹","sku_detail":"深蓝色 58","tiaoma":"M216C237C0458","kuanhao":"M216C237","danjia":"3380.00","img":"https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg"}]'
-                  }
-
-        market_service.exchange_order(params)
-        # 更新充值后的验证数据
-        self._test_data.update_post_verify_data()
-         # 验证值
-        self.expectedData(0 # 会员消费额
-                          , 0 # 会员积分
-                          , 2 # 会员卡等级
-                          , 0 # 会员余额
-                          , 0 # 总揽到店次数
-                          , 0 # 总揽新增会员数
-                          , 1 # 总揽订单数
-                          , 0 # 总揽退单数
-                          , 0 # 总揽销售总额
-                          , 0 # M216C237C0458总仓库存
-                          , 0 # M216C237C0464总仓库存
-                          , 0 # M116E248B0158总仓库存
-                          , 0 # M116E248B0164总仓库存
-                          , 0 # M316J232B01106总仓库存
-                          , 0 # M316J232B0176总仓库存
-                          , 0 # ZH02B215190T796242总仓库存
-                          , 0 # 验证值
-                          , -2 # M216C237C0458门店库存
-                          , 2 # M216C237C0464门店库存
-                          , 0 # M116E248B0158门店库存
-                          , 0 # M116E248B0164门店库存
-                          , 0 # M316J232B01106门店库存
-                          , 0 # M316J232B0176门店库存
-                          , 0 # ZH02B215190T796242门店库存
-                          , 0 # 门店到店次数期待增加值
-                          , 0 # 门店新增会员数期待增加值
-                          , 1 # 门店订单数期待增加值
-                          , 0 # 门店退单数期待增加值
-                          , 0 # 门店销售总额期待增加值
-                          , 0 # 门店平台销售总额期待增加值
-                          )
-        # 验证数据
-        self._data_assertion()
-
     def test_5_return_other(self):
         """
         退货2件商品
@@ -320,10 +267,10 @@ class TestGeneralGoods(BaseCase):
         member_number = self._customer.member_number
         exchangeOrderId = market_service.find_order_id(shopping_order_id, member_number)
         return_order_id0 = exchangeOrderId + "_0"
-        return_param = {'main_order_id': exchangeOrderId, 'return_price': '6489.60', 'reason': '拍错/不想要', 'remarks': '电视', 'afterSales_info[0][order_id]': return_order_id0, 'afterSales_info[0][danjia]': '3380.00',
-                        'afterSales_info[0][sku_name]': '腰背夹', 'afterSales_info[0][sku_detail]': '深蓝色 58','afterSales_info[0][tiaoma]':'M216C237C0458', 'afterSales_info[0][kuanhao]': 'M216C237',
-                        'afterSales_info[0][sku_id]': '4878', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg', 'afterSales_info[0][aftersale_num]': '2',
-                        'afterSales_info[0][aftersale_money]': '6489.60', 'afterSales_info[0][goods_type]': '1'}
+        return_param = {'main_order_id': exchangeOrderId, 'return_price': '0.00', 'reason': '拍错/不想要', 'remarks': '电视', 'afterSales_info[0][order_id]': return_order_id0, 'afterSales_info[0][danjia]': '3380.00',
+                        'afterSales_info[0][sku_name]': '腰背夹', 'afterSales_info[0][sku_detail]': '深蓝色 64','afterSales_info[0][tiaoma]':'M216C237C0464', 'afterSales_info[0][kuanhao]': 'M216C237',
+                        'afterSales_info[0][sku_id]': '4879', 'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg', 'afterSales_info[0][aftersale_num]': '2',
+                        'afterSales_info[0][aftersale_money]': '0.00', 'afterSales_info[0][goods_type]': '1'}
 
         market_service.return_order(return_param)
         # 更新充值后的验证数据
@@ -346,8 +293,8 @@ class TestGeneralGoods(BaseCase):
                           , 0 # M316J232B0176总仓库存
                           , 0 # ZH02B215190T796242总仓库存
                           , -0.65 # 验证值
-                          , 2 # M216C237C0458门店库存
-                          , 0 # M216C237C0464门店库存
+                          , 0 # M216C237C0458门店库存
+                          , 2 # M216C237C0464门店库存
                           , 0 # M116E248B0158门店库存
                           , 0 # M116E248B0164门店库存
                           , 0 # M316J232B01106门店库存

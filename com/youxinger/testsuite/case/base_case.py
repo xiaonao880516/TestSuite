@@ -79,6 +79,15 @@ class BaseCase(unittest.TestCase):
     _area: Area = None
     _store: Store = None
     _store_repo = None
+    _testCount = 0
+
+    @classmethod
+    def getCustomer(cls):
+        _testCount = cls._testCount + 1
+        # CUSTOMER['name'] = CUSTOMER['name'] + cls.__class__.__name__
+        CUSTOMER['phone'] = str(int(CUSTOMER['phone']) + _testCount)
+        CUSTOMER['openid'] = CUSTOMER['openid'] + str(_testCount)
+        return CUSTOMER
 
     @classmethod
     def setUpClass(cls):
@@ -95,7 +104,7 @@ class BaseCase(unittest.TestCase):
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
-        cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
+        cls._customer = Customer.register(cls.getCustomer(), cls._employee, cls._platform)
         cls._test_data.customers.append(cls._customer)
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
@@ -118,7 +127,7 @@ class BaseCase(unittest.TestCase):
         """
         logging.debug(u"tearDownClass")
         # 删除会员
-        cls._customer.delete()
+        # cls._customer.delete()
         variables.foregroundTID = ""
         variables.backgroundTID = ""
 
@@ -145,7 +154,7 @@ class BaseCase(unittest.TestCase):
                      , M216C237C0458QuantityRepo, M216C237C0464QuantityRepo, M116E248B0158QuantityRepo, M116E248B0164QuantityRepo, M316J232B01106QuantityRepo, M316J232B0176QuantityRepo, ZH02B215190T796242QuantityRepo
                      , i_store_arrive_store_num, i_store_newvip_num, i_store_order_num, i_store_refund_num, f_store_sale_num, f_store_plat_sale_num):
         self._customer.expectedData = CustomerVerifyData.expected_data(total_consume, swap_score, card_level, remainder)  # 更新会员验证值
-        # self._global.expectedData = LCGlobalVerifyData.expected_data(global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num)  # 更新总览验证值
+        #self._global.expectedData = LCGlobalVerifyData.expected_data(global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num)  # 更新总览验证值
 
         expected_global_repo = {'M216C237C0458': M216C237C0458MainStoreQuantityRepo, 'M216C237C0464': M216C237C0464MainStoreQuantityRepo, 'M116E248B0158': M116E248B0158MainStoreQuantityRepo, 'M116E248B0164': M116E248B0164MainStoreQuantityRepo,
                                 'M316J232B01106': M316J232B01106MainStoreQuantityRepo, 'M316J232B0176': M316J232B0176MainStoreQuantityRepo, 'ZH02B215190T796242': ZH02B215190T796242MainStoreQuantityRepo}

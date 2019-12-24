@@ -205,12 +205,12 @@ class TestPosCombinationAndCommonGoods(BaseCase):
         logging.debug("test_3_recharge_return_other")
         if globals()['shopping_order_id'] is not None:
             exchange_order_id = market_service.find_order_id(globals()['shopping_order_id'], self._customer.member_number)
-            exchange_order_id_a = exchange_order_id + '_0'
-            return_exchange = {'main_order_id': exchange_order_id,  'return_price': '3244.80', 'reason': '拍错/不想要', 'remarks': '',  'afterSales_info[0][order_id]': exchange_order_id_a,
+            exchange_order_id_a = exchange_order_id + '_0'                #3244.80
+            return_exchange = {'main_order_id': exchange_order_id,  'return_price': '0.00', 'reason': '拍错/不想要', 'remarks': '',  'afterSales_info[0][order_id]': exchange_order_id_a,
                                'afterSales_info[0][danjia]': '3380.00', 'afterSales_info[0][sku_name]': '腰背夹', 'afterSales_info[0][sku_detail]': '深蓝色 64',
                                'afterSales_info[0][tiaoma]': 'M216C237C0464',  'afterSales_info[0][kuanhao]': 'M216C237',  'afterSales_info[0][sku_id]': '4879',
                                'afterSales_info[0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg', 'afterSales_info[0][aftersale_num]': '1',
-                               'afterSales_info[0][aftersale_money]': '3244.80', 'afterSales_info[0][goods_type]': '1',
+                               'afterSales_info[0][aftersale_money]': '0.00', 'afterSales_info[0][goods_type]': '1','s_confirm':'1'
                                }
             market_service.return_order(return_exchange)
             # 更新充值后的验证数据
