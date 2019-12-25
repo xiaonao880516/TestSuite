@@ -79,6 +79,15 @@ class BaseCase(unittest.TestCase):
     _area: Area = None
     _store: Store = None
     _store_repo = None
+    _testCount = 0
+
+    @classmethod
+    def getCustomer(cls):
+        _testCount = cls._testCount + 1
+        # CUSTOMER['name'] = CUSTOMER['name'] + cls.__class__.__name__
+        CUSTOMER['phone'] = str(int(CUSTOMER['phone']) + _testCount)
+        CUSTOMER['openid'] = CUSTOMER['openid'] + str(_testCount)
+        return CUSTOMER
 
     @classmethod
     def setUpClass(cls):
@@ -95,7 +104,7 @@ class BaseCase(unittest.TestCase):
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
-        cls._customer = Customer.register(CUSTOMER, cls._employee, cls._platform)
+        cls._customer = Customer.register(cls.getCustomer(), cls._employee, cls._platform)
         cls._test_data.customers.append(cls._customer)
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
@@ -118,7 +127,7 @@ class BaseCase(unittest.TestCase):
         """
         logging.debug(u"tearDownClass")
         # 删除会员
-        cls._customer.delete()
+        # cls._customer.delete()
         variables.foregroundTID = ""
         variables.backgroundTID = ""
 
