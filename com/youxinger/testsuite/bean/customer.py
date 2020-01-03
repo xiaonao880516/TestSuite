@@ -82,6 +82,15 @@ class Customer(IDataVerify):
         from com.youxinger.testsuite.service import customer_service
         customer_service.recharge_customer(self, remainder)
 
+    def top_up(self, remainde, referral):
+        """
+        会员充值,填写转介绍
+        :param remainder:
+        :return:
+        """
+        from com.youxinger.testsuite.service import customer_service
+        customer_service.top_up_customer(self, remainde, referral)
+
     @staticmethod
     def register(customer_info, employee: Employee, platform: Platform):
         """
@@ -96,6 +105,20 @@ class Customer(IDataVerify):
             return customer_service.register_customer(customer_info, employee, platform)
         except Exception as e:
             logging.error("注册会员失败, %s" % e)
+
+    @staticmethod
+    def inquire(referral):
+        """
+        会员查询
+        :param referral:转介绍人的手机号
+        :return:
+        """
+        try:
+            from com.youxinger.testsuite.service import customer_service
+            return customer_service.get_customer_by_phone(referral)
+        except Exception as e:
+            logging.error("查询失败, %s" % e)
+
 
     @staticmethod
     def require(phone):

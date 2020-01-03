@@ -1,3 +1,4 @@
 [
-  "test_jifen.py::TestGeneralGoods::test_1_pos_shopping_order"
+  "test_post_cancellation.py::TestGeneralGoods::test_1_pos_shopping_order",
+  "test_post_cancellation.py::TestGeneralGoods::test_2_cancellation_order"
 ]

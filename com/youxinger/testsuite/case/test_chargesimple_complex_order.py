@@ -198,7 +198,7 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
             # 验证数据
             self._data_assertion()
 
-    def test_5_ChargeSimpleAndComplex_Return_part(self):
+    def test_3_ChargeSimpleAndComplex_Return_part(self):
         """
         组合商品与普通商品余额方式门店混合
         部分退货（退2件组合商品‘孟伟组合商品’：ZH02B215190T796242)
@@ -255,7 +255,7 @@ class TestChargeSimpleAndComplexGoods(BaseCase):
             # 验证数据
             self._data_assertion()
 
-    def test_6_ChargeSimpleAndComplex_Exchange_other(self):
+    def test_4_ChargeSimpleAndComplex_Exchange_other(self):
         """
         组合商品与普通商品余额方式门店混合，换的部分退货
         :return:

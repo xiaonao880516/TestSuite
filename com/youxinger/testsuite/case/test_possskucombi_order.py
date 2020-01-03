@@ -1,3 +1,4 @@
+from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
@@ -18,6 +19,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
         super().setUp()
         # 更新充值前的验证数据
         self._test_data.update_pre_verify_data()
+        self._referral.update_pre_verify_data()
 
     def tearDown(self):
         super().tearDown()
@@ -27,6 +29,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
         组合商品与普通商品pos下单（两件组合商品和一件普通商品)
         ‘孟伟组合商品’： ‘ZH02B215190T796242’ 公司发货2件
         ‘腰背夹’： ‘M216C237C0458’ '深蓝色 58' 公司发货2件
+        填写转介绍人
         :return:
         """
         logging.debug("test_1_pos_Combination_and_common_order")
@@ -107,11 +110,12 @@ class TestPosCombinationAndCommonGoods(BaseCase):
             'goods_list[4][zh_com_out_num]': '1', 'goods_list[4][zh_tiaoma]:': 'ZH02B215190T796242',
             'goods_list[4][zh_mark]': '3', 'goods_list[4][zh_no_discount]': '0',
             'goods_list[4][zh_no_score]': '0',
-            'pay_type': 'pos'
+            'pay_type': 'pos', 'referral_phone': '17151800001'
         }
         globals()['shopping_order_id'] = market_service.pos_order(params)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        self._referral.update_post_verify_data()
         # 封装验证值
         self.expectedData(18778  # 会员消费额
                           , 18778  # 会员积分
@@ -144,6 +148,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
                           , 18778  # 门店销售总额期待增加值
                           , 18778  # 门店平台销售总额期待增加值
                           )
+        self._referral.expectedData = CustomerVerifyData.expected_data(0, 18778, 5, 0)
         # 验证数据
         self._data_assertion()
 
@@ -162,6 +167,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
             market_service.exchange_order(pos_param)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
+            self._referral.update_post_verify_data()
             # 封装验证值
             self.expectedData(0  # 会员消费额
                               , 0  # 会员积分
@@ -194,6 +200,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
                               , 0  # 门店销售总额期待增加值
                               , 0  # 门店平台销售总额期待增加值
                               )
+            self._referral.expectedData = CustomerVerifyData.expected_data(0, 0, 5, 0)
             # 验证数据
             self._data_assertion()
 
@@ -215,6 +222,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
             market_service.return_order(return_exchange)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
+            self._referral.update_post_verify_data()
             # 封装验证值
             self.expectedData(-3244  # 会员消费额
                               , -3244  # 会员积分
@@ -245,14 +253,15 @@ class TestPosCombinationAndCommonGoods(BaseCase):
                               , 0  # 门店订单数期待增加值
                               , 0  # 门店退单数期待增加值
                               , -3244  # 门店销售总额期待增加值
-                              ,-3244  # 门店平台销售总额期待增加值
+                              , -3244  # 门店平台销售总额期待增加值
                               )
+            self._referral.expectedData = CustomerVerifyData.expected_data(0, -3244, 5, 0)
             # 验证数据
             self._data_assertion()
 
     def test_4_Combination_and_common_return_other(self):
         """
-        组合商品与普通商品posd订单，其余商品退货
+        组合商品与普通商品pos订单，其余商品退货
         :return:
         """
         logging.debug("test_4_Combination_and_common_return_other")
@@ -289,6 +298,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
             market_service.return_order(return_other)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
+            self._referral.update_post_verify_data()
             # 封装验证值
             self.expectedData(-15532  # 会员消费额
                               , -15532  # 会员积分
@@ -321,6 +331,7 @@ class TestPosCombinationAndCommonGoods(BaseCase):
                               , -15532  # 门店销售总额期待增加值
                               , -15532  # 门店平台销售总额期待增加值
                               )
+            self._referral.expectedData = CustomerVerifyData.expected_data(0, -15532, 5, 0)
             # 验证数据
             self._data_assertion()
 

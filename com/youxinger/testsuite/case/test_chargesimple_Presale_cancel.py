@@ -1,8 +1,6 @@
-
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-
 
 
 class TestChargePreSaleGoodsCancel(BaseCase):
@@ -19,7 +17,6 @@ class TestChargePreSaleGoodsCancel(BaseCase):
         # 会员充值40000
         cls._customer.recharge(40000)
 
-
     def setUp(self):
         super().setUp()
         # 更新充值前的验证数据
@@ -35,7 +32,7 @@ class TestChargePreSaleGoodsCancel(BaseCase):
         :return:
         """
         logging.debug("test_1_rechargesskuds_order")
-        params={
+        params = {
                           'member_id': self._customer.member_number, 'member_name': self._customer.name,
                           'member_phone': self._customer.phone,
                           'plateform_id': self._customer.platform.platform_id,
@@ -46,7 +43,7 @@ class TestChargePreSaleGoodsCancel(BaseCase):
 
         # 预售余额下单
         globals()['shopping_order_id']= market_service.presell_pos(params)
-        #取消预售（转订单之前)
+        # 取消预售（转订单之前)
         market_service.cancel_booking( globals()['shopping_order_id'])
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()

@@ -188,6 +188,25 @@ def recharge_customer(customer: Customer, remainder):
         __charge_order_pay(charge_order_id)
 
 
+def top_up_customer(customer: Customer, remainder, referral):
+    """
+    会员充值, 创建充值订单, 填写转介绍
+    :param customer: 会员对象
+    :param remainder: 充值额
+    :return:
+    """
+    logging.info(u"会员充值， 创建充值订单")
+    if customer is not None:
+        url = constant.DOMAIN + "/frontStage/recharge/generate-order"
+        headers = {'Accept': 'application/json, text/plain, */*',
+                   'tid': variables.foregroundTID}
+        recharge_data = {'amount': remainder, 'channel': 'pos', 'member_number': customer.member_number, 'introduce_phone':referral}
+        resp = requests.post(url, recharge_data, headers=headers)
+        json_data = resp.json()
+        charge_order_id = json_data['data']
+        __charge_order_pay(charge_order_id)
+
+
 def __charge_order_pay(charge_order_id):
     """
     充值订单付款
