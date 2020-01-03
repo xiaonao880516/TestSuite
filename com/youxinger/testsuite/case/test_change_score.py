@@ -2,9 +2,6 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-from com.youxinger.testsuite.utils.constant import MEMBER_NUMBER_RE
-
-
 class TestChangeScore(BaseCase):
     """
      会员增加积分和减少积分测试用例
@@ -31,7 +28,7 @@ class TestChangeScore(BaseCase):
         """
         logging.debug("recharge_shopping_order")
         param={
-            'member_number': MEMBER_NUMBER_RE,
+            'member_number': self._customer_re.member_number,
             'direction': '2',
             'score': '10000',
             'reason': '自动化扣减积分'
@@ -51,7 +48,7 @@ class TestChangeScore(BaseCase):
         """
         logging.debug("recharge_shopping_order")
         param={
-            'member_number': MEMBER_NUMBER_RE,
+            'member_number':  self._customer_re.member_number,
             'direction': '1',
             'score': '10000',
             'reason': '自动化增加积分'

@@ -12,7 +12,7 @@ from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service
 import logging
 from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE, \
-    REFERRAL_PHONE, TRANSFER_PHONE, Referral
+    REFERRAL_PHONE, Referral
 from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -83,7 +83,6 @@ class BaseCase(unittest.TestCase):
     _test_data = None
     _customer: Customer = None
     _customer_re: Customer = None
-    _customer_cu: Customer = None
     _employee: Employee = None
     _platform: Platform = None
     _global: LCGlobal = None
@@ -114,7 +113,6 @@ class BaseCase(unittest.TestCase):
         login_service.background_login()
         cls._test_data = TestData()
         cls._test_data_re = TestData()
-        cls._test_data_cu = TestData()
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
@@ -122,9 +120,7 @@ class BaseCase(unittest.TestCase):
         cls._referral = Customer.inquire(Referral)
         cls._test_data.customers.append(cls._referral)
         cls._customer_re = Customer.require(REFERRAL_PHONE)
-        cls._customer_cu = Customer.require(TRANSFER_PHONE)
         # 只验证会员信息
-        cls._test_data_cu.customers.append(cls._customer_cu)
         cls._test_data.customers.append(cls._customer)
         cls._test_data_re.customers.append(cls._customer_re)
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
@@ -172,9 +168,6 @@ class BaseCase(unittest.TestCase):
 
     def _data_assertion_re(self):
         self._test_data_re.data_verify_re()
-
-    def _data_assertion_cu(self):
-        self._test_data_cu.data_verify_re()
 
     def expectedData(self, total_consume, swap_score, card_level, remainder, global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num, M216C237C0458MainStoreQuantityRepo, M216C237C0464MainStoreQuantityRepo
                      , M116E248B0158MainStoreQuantityRepo, M116E248B0164MainStoreQuantityRepo, M316J232B01106MainStoreQuantityRepo, M316J232B0176MainStoreQuantityRepo, ZH02B215190T796242MainStoreQuantityRepo, verify
