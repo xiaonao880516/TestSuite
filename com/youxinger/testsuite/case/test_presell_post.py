@@ -1,6 +1,8 @@
+from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+from com.youxinger.testsuite.utils.constant import REFERRAL_PHONE
 
 
 class TestGeneralGoods(BaseCase):
@@ -18,6 +20,7 @@ class TestGeneralGoods(BaseCase):
         super().setUp()
         # 更新充值前的验证数据
         self._test_data.update_pre_verify_data()
+        self._test_data_re.update_pre_verify_data()
 
     def tearDown(self):
         super().tearDown()
@@ -25,7 +28,7 @@ class TestGeneralGoods(BaseCase):
     def test_1_presell_post_order(self):
         """
         pos下单
-        YS5130N748574 预售商品
+        YS5130N748574 预售商品 不累计积分
         """
         logging.debug("test_1_presell_post_order")
         market_service.set_pre_sale_product('6430', '2')
@@ -37,6 +40,7 @@ class TestGeneralGoods(BaseCase):
         globals()['shopping_order_id'] = market_service.presell_pos(recharge_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        self._test_data_re.update_post_verify_data()
         # 验证值
         self.expectedData(0  # 会员消费额
                           , 0  # 会员积分
@@ -69,8 +73,10 @@ class TestGeneralGoods(BaseCase):
                           , 0  # 门店销售总额期待增加值
                           , 0  # 门店平台销售总额期待增加值
                           )
+
         # 验证数据
         self._data_assertion()
+
 
     def test_2_zero_pay_order(self):
         """
@@ -83,14 +89,17 @@ class TestGeneralGoods(BaseCase):
         market_service.set_pre_sale_product('6430', '1')
         param = {'record_id': globals()['shopping_order_id'], 'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone, 'beizhu': '',
                  'com_out_num': '0', 'receive_sheng': self._customer.province, 'receive_shi': self._customer.city, 'receive_diqu': self._customer.area, 'receive_address': self._customer.address, 'repo_out_num': '1',
-                 'referral_phone': '', 'goods_info': [{"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878", "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
+                 'referral_phone':REFERRAL_PHONE, 'goods_info': [{"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878", "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg", "repo_out_num": 1, "com_out_num":0},
                                                       {"danjia": "0.01", "sku_num": 1, "sku_name": "包臀内裤", "price": "0.01", "sku_id": "4701", "tiaoma": "M116E248B0158", "kuanhao": "M116E248", "sku_detail": "黑色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010568310459721.jpg", "repo_out_num": 1, "com_out_num":0}]
                  }
-        globals()['order_id'] = market_service.choose_size(param)
+        # 0,1表示发货与否，1表示发货，0表示不发货
+        id = 1
+        globals()['order_id'] = market_service.choose_size(param,id)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        self._test_data_re.update_post_verify_data()
         # 验证值
         self.expectedData(1000  # 会员消费额
                           , 0  # 会员积分
@@ -123,8 +132,11 @@ class TestGeneralGoods(BaseCase):
                           , 1000  # 门店销售总额期待增加值
                           , 1000 # 门店平台销售总额期待增加值
                           )
+        # 封装验证值
+        self._customer_re.expectedData = CustomerVerifyData.expected_data(0, 0, 0, 0)  # 更新转介绍会员验证值
         # 验证数据
         self._data_assertion()
+        self._data_assertion_re()
 
     def test_3_changer_pieces(self):
         """
@@ -143,6 +155,7 @@ class TestGeneralGoods(BaseCase):
             market_service.exchange_order(params)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
+            self._test_data_re.update_post_verify_data()
             # 验证值
             self.expectedData(0 # 会员消费额
                               , 0 # 会员积分
@@ -175,8 +188,11 @@ class TestGeneralGoods(BaseCase):
                               , 0 # 门店销售总额期待增加值
                               , 0 # 门店平台销售总额期待增加值
                               )
+            # 封装验证值
+            self._customer_re.expectedData = CustomerVerifyData.expected_data(0, 0, 0, 0)  # 更新转介绍会员验证值
             # 验证数据
             self._data_assertion()
+            self._data_assertion_re()
 
     def test_4_return_pieces(self):
         """
@@ -195,6 +211,7 @@ class TestGeneralGoods(BaseCase):
         market_service.return_order(return_param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        self._test_data_re.update_post_verify_data()
         # 验证值
         self.expectedData(-1000 # 会员消费额
                           , 0 # 会员积分
@@ -227,6 +244,8 @@ class TestGeneralGoods(BaseCase):
                           , -1000.00 # 门店销售总额期待增加值
                           , -1000.00 # 门店平台销售总额期待增加值
                           )
+        # 封装验证值
+        self._customer_re.expectedData = CustomerVerifyData.expected_data(0, 0, 0, 0)  # 更新转介绍会员验证值
         # 验证数据
         self._data_assertion()
-
+        self._data_assertion_re()

@@ -73,7 +73,7 @@ class Area(IDataVerify):
     def data_verify(self):
         if self.expectedData is not None:
             assert abs(
-                self.postVerifyData.f_area_sales_amount - self.expectedData.f_area_sales_amount - self.preVerifyData.f_area_sales_amount) < 0.02, \
+                self.postVerifyData.f_area_sales_amount - self.expectedData.f_area_sales_amount - self.preVerifyData.f_area_sales_amount) < 2, \
                 "大区销售额检测失败,期待增加值:%d, 当前值:%d, 之前值:%d" % (
                     self.expectedData.f_area_sales_amount, self.postVerifyData.f_area_sales_amount, self.preVerifyData.f_area_sales_amount)
         else:

@@ -157,7 +157,9 @@ class TestChargeSameSkuGoods(BaseCase):
             'goods_list[7][zh_no_score]': '0',
             'pay_type': 'recharge'
         }
-        globals()['shopping_order_id'] = market_service.recharge_order(params)
+        # 0,1表示发货与否，1表示发货，0表示不发货
+        id = 1
+        globals()['shopping_order_id'] = market_service.recharge_order(params,id)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
