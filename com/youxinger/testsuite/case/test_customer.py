@@ -1,5 +1,6 @@
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
+from com.youxinger.testsuite.utils.constant import Referral
 import logging
 
 
@@ -35,11 +36,14 @@ class TestCustomer(BaseCase):
         logging.debug(u"test_after_customer_recharge")
         # 更新充值前的验证数据
         self._customer.update_pre_verify_data()
+        self._referral.update_pre_verify_data()
         # 充值操作
-        self._customer.recharge(40000)
+        self._customer.top_up(40000, Referral)
         # 更新充值后的验证数据
         self._customer.update_post_verify_data()
+        self._referral.update_post_verify_data()
         # 封装验证值
         self._customer.expectedData = CustomerVerifyData.expected_data(0, 40000, 2, 40000)
+        self._referral.expectedData = CustomerVerifyData.expected_data(0, 40000, 5, 0)
         # 验证数据
         self._data_assertion()

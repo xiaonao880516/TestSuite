@@ -25,12 +25,12 @@ class TestRewardGoods(BaseCase):
     def test_1_Reward_shopping_order(self):
         """
         积分商城积分下单测试
-        纯积分下单
         ‘hmr组合商品’ 1件
+        积分和pos 混合兑换
         :return:
         """
         logging.debug("test_1_Reward_shopping_order")
-        recharge_param = {'exchange_type': 'score', 'total_score': '121', 'total_mix_score': '0','total_mix_price': '0',
+        recharge_param = {'exchange_type': 'mix', 'total_score': '0', 'total_mix_score': '121','total_mix_price': '1222.00',
                           'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
                           'receive_sheng': self._customer.province, 'receive_shi': self._customer.city,
                           'receive_diqu': '', 'receive_address': self._customer.address,
@@ -38,7 +38,7 @@ class TestRewardGoods(BaseCase):
                           'member_phone': self._customer.phone,
                           'plateform_id': self._customer.platform.platform_id,
                           'special_employee_id': self._customer.employee.employee_id,
-                          'pay_type': '', 'goods_info[sku_num]': '1', 'beizhu': '',
+                          'pay_type': 'pos', 'goods_info[sku_num]': '1', 'beizhu': '',
                           'goods_info[sku_name]': '何明锐组合', 'goods_info[sku_id]': '506',
                           'goods_info[tiaoma]': 'ZH02B9797T638168','goods_info[kuanhao]':'',
                           'goods_info[sku_detail]': '2件商品',
@@ -56,7 +56,7 @@ class TestRewardGoods(BaseCase):
                           'goods_info[sub_goods][1][kuanhao]': 'M619D294', 'goods_info[sub_goods][1][kuanhao_id]': 'styleNun1804',
                           'goods_info[sub_goods][1][sku_detail]': '豆沙紫 64',
                           'goods_info[sub_goods][1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019112810238741596.jpg'}
-        globals()['shopping_order_id'] = market_service.rewards_order(recharge_param)
+        globals()['shopping_order_id'] = market_service.rewards_order_2(recharge_param)
 
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
@@ -144,15 +144,3 @@ class TestRewardGoods(BaseCase):
 
         # 验证数据
         self._data_assertion()
-
-
-
-
-
-
-
-
-
-
-
-
