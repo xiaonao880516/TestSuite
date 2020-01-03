@@ -11,7 +11,8 @@ from com.youxinger.testsuite.bean.platform import Platform, PlatVerifyData
 from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service
 import logging
-from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE
+from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE, \
+    REFERRAL_PHONE, TRANSFER_PHONE
 from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -39,6 +40,15 @@ class TestData(IDataVerify):
 
         if self.lc_global is not None:
             self.lc_global.data_verify()
+
+    def data_verify_re(self):
+         """
+         只验证会员数据操作
+         :return:
+         """
+         if self.customers is not None:
+            for customer in self.customers:
+                customer.data_verify()
 
     def update_pre_verify_data(self):
         """
@@ -72,6 +82,8 @@ class BaseCase(unittest.TestCase):
     # 封装测试数据
     _test_data = None
     _customer: Customer = None
+    _customer_re: Customer = None
+    _customer_cu: Customer = None
     _employee: Employee = None
     _platform: Platform = None
     _global: LCGlobal = None
@@ -101,11 +113,18 @@ class BaseCase(unittest.TestCase):
         # 后台登陆
         login_service.background_login()
         cls._test_data = TestData()
+        cls._test_data_re = TestData()
+        cls._test_data_cu = TestData()
         # 注册新会员
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls._customer = Customer.register(cls.getCustomer(), cls._employee, cls._platform)
+        cls._customer_re = Customer.require(REFERRAL_PHONE)
+        cls._customer_cu = Customer.require(TRANSFER_PHONE)
+        #只验证会员信息
+        cls._test_data_cu.customers.append(cls._customer_cu)
         cls._test_data.customers.append(cls._customer)
+        cls._test_data_re.customers.append(cls._customer_re)
         cls._store_repo = Repository(STORE['name'], variables.foregroundTID, GOODS_CODE)
         cls._store = Store(STORE['name'], STORE['store_id'])
         cls._store.add_platform(cls._platform)
@@ -148,6 +167,10 @@ class BaseCase(unittest.TestCase):
 
     def _data_assertion(self):
         self._test_data.data_verify()
+    def _data_assertion_re(self):
+        self._test_data_re.data_verify_re()
+    def _data_assertion_cu(self):
+        self._test_data_cu.data_verify_re()
 
     def expectedData(self, total_consume, swap_score, card_level, remainder, global_arrive_store_num, global_newvip_num, global_order_num, global_refund_num, global_sale_num, M216C237C0458MainStoreQuantityRepo, M216C237C0464MainStoreQuantityRepo
                      , M116E248B0158MainStoreQuantityRepo, M116E248B0164MainStoreQuantityRepo, M316J232B01106MainStoreQuantityRepo, M316J232B0176MainStoreQuantityRepo, ZH02B215190T796242MainStoreQuantityRepo, verify

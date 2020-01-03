@@ -1,11 +1,14 @@
-
+from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+from com.youxinger.testsuite.utils.constant import REFERRAL_PHONE
+
 
 class TestChargePreSaleGoods(BaseCase):
     """
     预售商品余额支付（一件预售商品 公司发货）
+    转订单之后，添加转介绍人，验证转介绍人会员积分情况
     """
 
     @classmethod
@@ -21,6 +24,7 @@ class TestChargePreSaleGoods(BaseCase):
         super().setUp()
         # 更新充值前的验证数据
         self._test_data.update_pre_verify_data()
+        self._test_data_re.update_pre_verify_data()
 
     def tearDown(self):
         super().tearDown()
@@ -51,7 +55,7 @@ class TestChargePreSaleGoods(BaseCase):
                  'receive_phone': self._customer.phone, 'beizhu': '',
                  'com_out_num': '1', 'receive_sheng': self._customer.province, 'receive_shi': self._customer.city,
                  'receive_diqu': self._customer.area, 'receive_address': self._customer.address, 'repo_out_num': '0',
-                 'referral_phone': '', 'goods_info': [
+                 'referral_phone': REFERRAL_PHONE, 'goods_info': [
                 {"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878",
                  "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg", "repo_out_num": 0,
@@ -61,9 +65,12 @@ class TestChargePreSaleGoods(BaseCase):
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010568310459721.jpg", "repo_out_num": 0,
                  "com_out_num": 1}]
                  }
-        globals()['order_shopping_id'] =market_service.choose_size(param)
+        # 0,1表示发货与否，1表示发货，0表示不发货
+        id = 1
+        globals()['order_shopping_id'] =market_service.choose_size(param,id)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        self._test_data_re.update_post_verify_data()
         # 封装验证值
         self.expectedData(1234  # 会员消费额
                           , 0  # 会员积分
@@ -96,8 +103,11 @@ class TestChargePreSaleGoods(BaseCase):
                           , 1234  # 门店销售总额期待增加值
                           , 1234 # 门店平台销售总额期待增加值
                           )
+        # 封装验证值
+        self._customer_re.expectedData = CustomerVerifyData.expected_data(0, 1234, 0, 0)  # 更新转介绍会员验证值
         # 验证数据
         self._data_assertion()
+        self._data_assertion_re()
 
     def test_2_ChargePreSaleGoods_Exchange_part(self):
         """
@@ -117,6 +127,7 @@ class TestChargePreSaleGoods(BaseCase):
             market_service.exchange_order(recharge_param)
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
+            self._test_data_re.update_post_verify_data()
             # 封装验证值
             self.expectedData(0 # 会员消费额
                               , 0  # 会员积分
@@ -149,12 +160,11 @@ class TestChargePreSaleGoods(BaseCase):
                               , 0  # 门店销售总额期待增加值
                               , 0  # 门店平台销售总额期待增加值
                               )
+            # 封装验证值
+            self._customer_re.expectedData = CustomerVerifyData.expected_data(0, 0, 0, 0)  # 更新转介绍会员验证值
             # 验证数据
             self._data_assertion()
-
-
-
-
+            self._data_assertion_re()
 
     def test_3_ChargePreSaleGoods_Exchange_other(self):
                 """
@@ -182,6 +192,7 @@ class TestChargePreSaleGoods(BaseCase):
                     market_service.return_order(recharge_param)
                     # 更新充值后的验证数据
                     self._test_data.update_post_verify_data()
+                    self._test_data_re.update_post_verify_data()
                     # 封装验证值
                     self.expectedData(-1234  # 会员消费额
                                       , 0  # 会员积分
@@ -214,6 +225,9 @@ class TestChargePreSaleGoods(BaseCase):
                                       , -1234  # 门店销售总额期待增加值
                                       , -1234  # 门店平台销售总额期待增加值
                                       )
+                    # 封装验证值
+                    self._customer_re.expectedData = CustomerVerifyData.expected_data(0, -1234, 0, 0)  # 更新转介绍会员验证值
                     # 验证数据
                     self._data_assertion()
+                    self._data_assertion_re()
 

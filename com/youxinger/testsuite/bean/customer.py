@@ -97,6 +97,21 @@ class Customer(IDataVerify):
         except Exception as e:
             logging.error("注册会员失败, %s" % e)
 
+    @staticmethod
+    def require(phone):
+        """
+        会员查询
+        :param customer_info:
+        :param employee:
+        :param platform:
+        :return:
+        """
+        try:
+            from com.youxinger.testsuite.service import customer_service
+            return customer_service.get_customer_by_phone(phone)
+        except Exception as e:
+            logging.error("查找会员失败, %s" % e)
+
     def delete(self):
         from com.youxinger.testsuite.service import customer_service
         customer_service.del_customer(self)
