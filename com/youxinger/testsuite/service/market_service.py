@@ -3,6 +3,8 @@ from com.youxinger.testsuite.utils import constant, variables, util
 import requests
 import json
 
+from com.youxinger.testsuite.utils.constant import  CUSTOMER_PLATFORM_SALE
+
 
 def pos_order(order_parms):
     """
@@ -18,7 +20,7 @@ def pos_order(order_parms):
         shopping_order_id = json_data['data']['order_id']
         real_pay = json_data['data']['real_pay'].replace(".", "")
         if pos_order_pay(shopping_order_id, real_pay) is True:
-            good_shipped(shopping_order_id)
+             good_shipped(shopping_order_id)
         return shopping_order_id
     except Exception as e:
         logging.error("pos下单失败, %s" % e)
@@ -48,7 +50,7 @@ def pos_order_pay(shopping_order_id, real_pay):
     return resp.text.__contains__('成功')
 
 
-def recharge_order(order_parms):
+def recharge_order(order_parms,id):
     """
     余额付款订单
     :param order_parms:
@@ -63,8 +65,8 @@ def recharge_order(order_parms):
     try:
         shopping_order_id = json_data['data']['order_id']
         if recharge_order_pay(shopping_order_id) is True:
-            good_shipped(shopping_order_id)
-
+            if id ==1:
+             good_shipped(shopping_order_id)
         return shopping_order_id
     except Exception as e:
         logging.error("余额下单失败, %s" % e)
@@ -87,7 +89,7 @@ def no_recharge_order(order_parms):
     return shopping_order_id
 
 
-def cancellation_of_order(return_param):
+def cancellation_of_order(order_id):
     """
     余额取消订单
     :param order_parms:
@@ -97,8 +99,13 @@ def cancellation_of_order(return_param):
     url = constant.DOMAIN + "/frontStage/orders/cancel-orders"
     headers = {'Accept': 'application/json, text/plain, */*',
                'tid': variables.foregroundTID}
-    resp = requests.post(url, return_param, headers=headers)
+    delivery_parms = dict(order_id=order_id)
+    resp = requests.post(url,delivery_parms, headers=headers)
     json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('取消成功')
+    else:
+        logging.info('取消失败')
 
 
 def recharge_order_pay(shopping_order_id):
@@ -296,7 +303,7 @@ def presell_pos(order_parms):
         return False
 
 
-def choose_size(param):
+def choose_size(param,id):
     """
     生成预售转订单
     """
@@ -310,17 +317,24 @@ def choose_size(param):
     json_data = resp.json()
     order_id = json_data['data']['order_id']
     recharge_order_pay(order_id)
-    good_shipped(order_id)
+    if id ==1:
+       good_shipped(order_id)
     return order_id
 
 
-def cancel_booking(param):
+def cancel_booking(record_id):
     logging.info(u"取消预售订单")
     url = constant.DOMAIN + "/frontStage/orders/presale/cancel-presale"
     headers = {'Accept': 'application/json, text/plain, */*',
                'tid': variables.foregroundTID}
-    resp = requests.post(url, param, headers=headers)
+    delivery_parms = dict(record_id=record_id)
+    resp = requests.post(url, delivery_parms, headers=headers)
     json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('取消预售成功')
+
+    else:
+        logging.info('取消预售失败')
 
 
 def jifen(param):
@@ -417,5 +431,78 @@ def rewards_order_refund(order_id):
 
     else:
         logging.info('退货失败')
+
+def cash_refund(param):
+    """
+    会员余额提现
+    """
+    logging.info(u"  会员余额提现")
+    url = constant.DOMAIN + "/backStage/vip/vipcardmanage/cash-out"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+              }
+
+    resp = requests.post(url, param, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('提现成功')
+
+    else:
+        logging.info('提现失败')
+def remainder_roll_out(param):
+    """
+    会员余额转出
+    """
+    logging.info(u"   会员余额转出")
+    url = constant.DOMAIN + "/backStage/vip/vipcardmanage/remainder-roll-out"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+              }
+    resp = requests.post(url, param, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('转出成功')
+
+    else:
+        logging.info('转出失败')
+def change_score(param):
+    """
+    会员积分改变
+    """
+    logging.info(u"   会员积分改变")
+    url = constant.DOMAIN + "/backStage/vip/vipinfo/change-score"
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+              }
+    resp = requests.post(url, param, headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '操作成功':
+        logging.info('会员积分改变成功')
+
+    else:
+        logging.info('会员积分改变失败')
+def find_repository():
+    """
+    后台获取销售余额
+    """
+    logging.info(u"  后台获取销售余额")
+    url = constant.DOMAIN + "/backStage/stores/platform/getlist?"+CUSTOMER_PLATFORM_SALE
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'tid': variables.backgroundTID,
+              }
+    resp = requests.get(url,headers=headers)
+    json_data = resp.json()
+    if json_data['msg'] == '返回列表成功':
+        logging.info('查找成功')
+        repository =json_data['data']['rows']
+        if int(float(repository[0]["remainder"])) == 0.00:
+            return repository[0]["debt_remainder"]
+        return repository[0]["remainder"]
+
+
+    else:
+        logging.info('查找失败')
+
+
 
 

@@ -1,7 +1,7 @@
 from com.youxinger.testsuite.bean.area import AreaVerifyData
 from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.bean.employee import EmployeeVerifyData
-from com.youxinger.testsuite.bean.lc_global import LCGlobalVerifyData
+
 from com.youxinger.testsuite.bean.platform import PlatVerifyData
 from com.youxinger.testsuite.bean.store import StoreVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
