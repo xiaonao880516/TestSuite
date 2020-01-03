@@ -1,11 +1,12 @@
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+from com.youxinger.testsuite.utils.constant import WAREHOUSE, STORE
 
 
-class TestRewardGoods(BaseCase):
+class TestGeneralGoods(BaseCase):
     """
-     积分商城积分下单测试
+    一般商品测试
     """
 
     @classmethod
@@ -18,56 +19,38 @@ class TestRewardGoods(BaseCase):
         super().setUp()
         # 更新充值前的验证数据
         self._test_data.update_pre_verify_data()
+        # 仓库变更为标准仓
+        market_service.edit_the_warehouse(WAREHOUSE, 1, 1, 1000000000, STORE['store_id'])
+        globals()['yeq'] = market_service.balance_of_warehouse(WAREHOUSE['repository_id'])
+        globals()['spq'] = market_service.search_information('M216C237C0458')
 
     def tearDown(self):
         super().tearDown()
 
-    def test_1_Reward_shopping_order(self):
+    def test_1_add_the_warehouse(self):
         """
-        积分商城积分下单测试
-        纯积分下单
-        ‘hmr组合商品’ 1件
+         门店申请补仓 补5个M216C237C0458
+         补货成功 确认收货
         :return:
         """
-        logging.debug("test_1_Reward_shopping_order")
-        recharge_param = {'exchange_type': 'score', 'total_score': '121', 'total_mix_score': '0','total_mix_price': '0',
-                          'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone,
-                          'receive_sheng': self._customer.province, 'receive_shi': self._customer.city,
-                          'receive_diqu': '', 'receive_address': self._customer.address,
-                          'member_id': self._customer.member_number, 'member_name': self._customer.name,
-                          'member_phone': self._customer.phone,
-                          'plateform_id': self._customer.platform.platform_id,
-                          'special_employee_id': self._customer.employee.employee_id,
-                          'pay_type': '', 'goods_info[sku_num]': '1', 'beizhu': '',
-                          'goods_info[sku_name]': '何明锐组合', 'goods_info[sku_id]': '506',
-                          'goods_info[tiaoma]': 'ZH02B9797T638168','goods_info[kuanhao]':'',
-                          'goods_info[sku_detail]': '2件商品',
-                          'goods_info[img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019121824561739108.jpg',
-                          'goods_info[type]': '2','goods_info[sub_goods][0][sku_num]': '1',
-                          'goods_info[sub_goods][0][sku_name]': '运动文胸',
-                          'goods_info[sub_goods][0][sku_id]': '175',
-                          'goods_info[sub_goods][0][tiaoma]': 'M819A334B01_A75',
-                          'goods_info[sub_goods][0][kuanhao]': 'M819A334',
-                          'goods_info[sub_goods][0][kuanhao_id]': 'styleNun5523',
-                          'goods_info[sub_goods][0][sku_detail]': 'A 黑色 75',
-                          'goods_info[sub_goods][0][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019112819237451086.jpg',
-                          'goods_info[sub_goods][1][sku_num]': '1','goods_info[sub_goods][1][sku_name]': '防走光裤',
-                          'goods_info[sub_goods][1][sku_id]': '192','goods_info[sub_goods][1][tiaoma]': 'M619D294E0264',
-                          'goods_info[sub_goods][1][kuanhao]': 'M619D294', 'goods_info[sub_goods][1][kuanhao_id]': 'styleNun1804',
-                          'goods_info[sub_goods][1][sku_detail]': '豆沙紫 64',
-                          'goods_info[sub_goods][1][img]': 'https://lchapp.oss-cn-beijing.aliyuncs.com/2019112810238741596.jpg'}
-        globals()['shopping_order_id'] = market_service.rewards_order(recharge_param)
-
+        logging.debug("test_1_recharge_shopping_order")
+        param = {'goods_list[0][tiaoma]': 'M216C237C0458',
+                 'goods_list[0][goods_name]': '腰背夹',
+                 'goods_list[0][num]': '5'}
+        # 提交补仓申请
+        globals()['application_id'] = market_service.standard_request(param)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
+        sph = market_service.search_information('M216C237C0458')
+        yeh = market_service.balance_of_warehouse(WAREHOUSE['repository_id'])
         # 封装验证值
         self.expectedData(0  # 会员消费额
-                          , -121  # 会员积分
+                          , 0  # 会员积分
                           , 2  # 会员卡等级
                           , 0  # 会员余额
-                          , 1  # 总揽到店次数
+                          , 0  # 总揽到店次数
                           , 0  # 总揽新增会员数
-                          , 1  # 总揽订单数
+                          , 0  # 总揽订单数
                           , 0  # 总揽退单数
                           , 0  # 总揽销售总额
                           , 0  # M216C237C0458总仓库存
@@ -78,56 +61,7 @@ class TestRewardGoods(BaseCase):
                           , 0  # M316J232B0176总仓库存
                           , 0  # ZH02B215190T796242总仓库存
                           , 0  # 验证值
-                          , 0  # M216C237C0458门店库存
-                          , 0  # M216C237C0464门店库存
-                          , 0  # M116E248B0158门店库存
-                          , 0  # M116E248B0164门店库存
-                          , 0  # M316J232B01106门店库存
-                          , 0  # M316J232B0176门店库存
-                          , 0  # ZH02B215190T796242门店库存
-                          , 1  # 门店到店次数期待增加值
-                          , 0  # 门店新增会员数期待增加值
-                          , 0  # 门店订单数期待增加值
-                          , 0  # 门店退单数期待增加值
-                          , 0  # 门店销售总额期待增加值
-                          , 0  # 门店平台销售总额期待增加值
-                          )
-        # 验证数据
-        self._data_assertion()
-
-    def test_2_Reward_shopping_order_refund(self):
-        """
-         后台退积分商品
-         ‘hmr组合商品’ 1件
-        :return:
-        """
-        logging.debug("test_2_return_sameCodeAndBar_order")
-
-        market_service.rewards_order_refund(globals()['shopping_order_id'] )
-        # market_service.return_order_success(aftersaleid)
-
-        # 更新充值后的验证数据
-        self._test_data.update_post_verify_data()
-
-        # 封装期待值
-        self.expectedData(0  # 会员消费额
-                          ,121 # 会员积分
-                          , 2  # 会员卡等级
-                          , 0  # 会员余额
-                          , 0  # 总揽到店次数
-                          , 0  # 总揽新增会员数
-                          , 0  # 总揽订单数
-                          , 1  # 总揽退单数
-                          , 0  # 总揽销售总额
-                          , 0  # M216C237C0458总仓库存
-                          , 0  # M216C237C0464总仓库存
-                          , 0  # M116E248B0158总仓库存
-                          , 0  # M116E248B0164总仓库存
-                          , 0  # M316J232B01106总仓库存
-                          , 0  # M316J232B0176总仓库存
-                          , 0 # ZH02B215190T796242总仓库存
-                          , 0  # 验证值
-                          , 0  # M216C237C0458门店库存
+                          , 5  # M216C237C0458门店库存
                           , 0  # M216C237C0464门店库存
                           , 0  # M116E248B0158门店库存
                           , 0  # M116E248B0164门店库存
@@ -141,18 +75,89 @@ class TestRewardGoods(BaseCase):
                           , 0  # 门店销售总额期待增加值
                           , 0  # 门店平台销售总额期待增加值
                           )
-
         # 验证数据
         self._data_assertion()
+        a = int(yeh) - int(globals()['yeq'])
+        if a == -16900:
+            logging.info('可补货金额正确')
+            return True
+        else:
+            logging.info('可补货金额失败')
+            print(a)
+        b = int(sph) - int(globals()['sph'])
+        if b == 5:
+            logging.info('M216C237C0458库存正确')
+            return True
+        else:
+            logging.info('M216C237C0458库存错误')
+            print(b)
 
-
-
-
-
-
-
-
-
-
-
-
+    def test_2_return_the_warehouse(self):
+        """
+        仓库申请退5个 M216C237C0458
+        审核通过，退货成功
+        :return:
+        """
+        logging.debug("test_1_recharge_shopping_order")
+        param = {'goods_list[0][tiaoma]': 'M216C237C0458',
+                 'goods_list[0][goods_name]': '腰背夹',
+                 'goods_list[0][num]': '5'}
+        return_id = market_service.return_request(param)
+        sub_return_id = return_id + "_0"
+        params = {"update_data": {"周测试二店仓库": [{"return_id": return_id, "sub_return_id": sub_return_id, "brand_name": "Makebody", "category_name": "背夹",
+                  "tiaoma": "M216C237C0458", "goods_name": "腰背夹", "return_num": "5", "received_num": 5, "refused_num": 0, "price": "3380.00", "kucun": "4668",
+                  "img":"", "return_goods_price": "16900.00", "received_goods_price": "0.00", "refused_goods_price": "0.00", "sku_info": " 深蓝色  58 ",
+                  "repository_id":"zjh002", "store_id": "zjh002", "repo_num": "0", "type": "2", "repository_name": "周测试二店仓库"}]}, "refused_reason": ""}
+        market_service.examine_and_approve(params)
+        # 更新充值后的验证数据
+        self._test_data.update_post_verify_data()
+        sph = market_service.search_information('M216C237C0458')
+        yeh = market_service.balance_of_warehouse(WAREHOUSE['repository_id'])
+        # 封装验证值
+        self.expectedData(0  # 会员消费额
+                          , 0  # 会员积分
+                          , 2  # 会员卡等级
+                          , 0  # 会员余额
+                          , 0  # 总揽到店次数
+                          , 0  # 总揽新增会员数
+                          , 0  # 总揽订单数
+                          , 0  # 总揽退单数
+                          , 0  # 总揽销售总额
+                          , 0  # M216C237C0458总仓库存
+                          , 0  # M216C237C0464总仓库存
+                          , 0  # M116E248B0158总仓库存
+                          , 0  # M116E248B0164总仓库存
+                          , 0  # M316J232B01106总仓库存
+                          , 0  # M316J232B0176总仓库存
+                          , 0  # ZH02B215190T796242总仓库存
+                          , 0  # 验证值
+                          , -5  # M216C237C0458门店库存
+                          , 0  # M216C237C0464门店库存
+                          , 0  # M116E248B0158门店库存
+                          , 0  # M116E248B0164门店库存
+                          , 0  # M316J232B01106门店库存
+                          , 0  # M316J232B0176门店库存
+                          , 0  # ZH02B215190T796242门店库存
+                          , 0  # 门店到店次数期待增加值
+                          , 0  # 门店新增会员数期待增加值
+                          , 0  # 门店订单数期待增加值
+                          , 0  # 门店退单数期待增加值
+                          , 0  # 门店销售总额期待增加值
+                          , 0  # 门店平台销售总额期待增加值
+                          )
+        # 验证数据
+        self._data_assertion()
+        a = int(yeh) - int(globals()['yeq'])
+        if a == 16900:
+            logging.info('可补货金额正确')
+            return True
+        else:
+            logging.info('可补货金额失败')
+            print(a)
+        b = int(sph) - int(globals()['sph'])
+        if b == -5:
+            logging.info('M216C237C0458库存正确')
+            return True
+        else:
+            logging.info('M216C237C0458库存错误')
+            print(b)
