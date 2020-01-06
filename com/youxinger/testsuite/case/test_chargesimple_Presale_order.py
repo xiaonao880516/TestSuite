@@ -2,8 +2,6 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-from com.youxinger.testsuite.utils.constant import REFERRAL_PHONE
-
 
 class TestChargePreSaleGoods(BaseCase):
     """
@@ -55,7 +53,7 @@ class TestChargePreSaleGoods(BaseCase):
                  'receive_phone': self._customer.phone, 'beizhu': '',
                  'com_out_num': '1', 'receive_sheng': self._customer.province, 'receive_shi': self._customer.city,
                  'receive_diqu': self._customer.area, 'receive_address': self._customer.address, 'repo_out_num': '0',
-                 'referral_phone': REFERRAL_PHONE, 'goods_info': [
+                 'referral_phone': self._customer_re.phone, 'goods_info': [
                 {"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878",
                  "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg", "repo_out_num": 0,
@@ -66,8 +64,8 @@ class TestChargePreSaleGoods(BaseCase):
                  "com_out_num": 1}]
                  }
         # 0,1表示发货与否，1表示发货，0表示不发货
-        id = 1
-        globals()['order_shopping_id'] =market_service.choose_size(param,id)
+        switch = 1
+        globals()['order_shopping_id'] =market_service.choose_size(param,switch)
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         self._test_data_re.update_post_verify_data()
