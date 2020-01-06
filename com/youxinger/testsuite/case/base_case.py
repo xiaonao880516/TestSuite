@@ -6,13 +6,13 @@ from com.youxinger.testsuite.bean.repository import Repository
 from com.youxinger.testsuite.bean.store import Store, StoreVerifyData
 from com.youxinger.testsuite.bean.area import Area, AreaVerifyData
 from com.youxinger.testsuite.bean.employee import Employee, EmployeeVerifyData
-from com.youxinger.testsuite.bean.lc_global import LCGlobal, LCGlobalVerifyData
+from com.youxinger.testsuite.bean.lc_global import LCGlobal
 from com.youxinger.testsuite.bean.platform import Platform, PlatVerifyData
 from com.youxinger.testsuite.utils import variables
 from com.youxinger.testsuite.service import login_service
 import logging
 from com.youxinger.testsuite.utils.constant import GOODS_CODE, EMPLOYEE, PLATFORM, CUSTOMER, AREA, STORE, \
-    REFERRAL_PHONE, Referral
+    REFERRAL_PHONE
 from com.youxinger.testsuite.service.customer_service import Customer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -117,7 +117,7 @@ class BaseCase(unittest.TestCase):
         cls._employee = Employee(EMPLOYEE['employee_name'], EMPLOYEE['employee_id'], EMPLOYEE['employee_phone'], EMPLOYEE['employee_password'])
         cls._platform = Platform(PLATFORM['name'], PLATFORM['platform_id'])
         cls._customer = Customer.register(cls.getCustomer(), cls._employee, cls._platform)
-        cls._referral = Customer.inquire(Referral)
+        cls._referral = Customer.require(REFERRAL_PHONE)
         cls._test_data.customers.append(cls._referral)
         cls._customer_re = Customer.require(REFERRAL_PHONE)
         # 只验证会员信息

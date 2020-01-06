@@ -12,8 +12,6 @@ CUSTOMER = dict(name="周先生", sex="M", birthday="1997-12-02",  phone="171518
                 address='林河大街17号', area='顺义区', city='北京市', province='北京市', consignee='周先生', is_default='1')
 # 转介绍会员初始化信息, 何喵喵,会员在平台之下
 REFERRAL_PHONE = 15877801465
-# 转介绍会员
-Referral = "17151800001"
 # 商品条码信息
 GOODS_CODE = ['M216C237C0458', 'M216C237C0464', 'M116E248B0158', 'M116E248B0164', 'M316J232B01106', 'M316J232B0176', 'ZH02B215190T796242']
 # 员工信息

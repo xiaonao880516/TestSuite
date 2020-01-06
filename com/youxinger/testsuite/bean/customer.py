@@ -106,27 +106,12 @@ class Customer(IDataVerify):
         except Exception as e:
             logging.error("注册会员失败, %s" % e)
 
-    @staticmethod
-    def inquire(referral):
-        """
-        会员查询
-        :param referral:转介绍人的手机号
-        :return:
-        """
-        try:
-            from com.youxinger.testsuite.service import customer_service
-            return customer_service.get_customer_by_phone(referral)
-        except Exception as e:
-            logging.error("查询失败, %s" % e)
-
 
     @staticmethod
     def require(phone):
         """
         会员查询
-        :param customer_info:
-        :param employee:
-        :param platform:
+        :param referral:转介绍人的手机号
         :return:
         """
         try:
