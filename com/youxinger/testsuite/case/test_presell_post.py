@@ -2,6 +2,8 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+
+
 class TestGeneralGoods(BaseCase):
     """
     一般商品测试
@@ -73,7 +75,6 @@ class TestGeneralGoods(BaseCase):
 
         # 验证数据
         self._data_assertion()
-
 
     def test_2_zero_pay_order(self):
         """

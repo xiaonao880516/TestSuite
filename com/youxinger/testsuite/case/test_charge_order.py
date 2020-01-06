@@ -127,7 +127,7 @@ class TestChargeGoods(BaseCase):
             'goods_list[5][zh_mark]': '3', 'goods_list[5][zh_no_discount]': '0',
             'goods_list[5][zh_no_score]': '0', 'pay_type': 'recharge'
         }
-        #操作之前获取销售余额
+        # 操作之前获取销售余额
         before=market_service.find_repository()
         # 0,1表示发货与否，1表示发货，0表示不发货
         switch = 1

@@ -1,4 +1,4 @@
 [
-  "test_post_cancellation.py::TestGeneralGoods::test_1_pos_shopping_order",
-  "test_post_cancellation.py::TestGeneralGoods::test_2_cancellation_order"
+  "test_standard_warehouse.py::TestGeneralGoods::test_1_add_the_warehouse",
+  "test_standard_warehouse.py::TestGeneralGoods::test_2_return_the_warehouse"
 ]

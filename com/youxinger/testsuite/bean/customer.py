@@ -106,7 +106,6 @@ class Customer(IDataVerify):
         except Exception as e:
             logging.error("注册会员失败, %s" % e)
 
-
     @staticmethod
     def require(phone):
         """

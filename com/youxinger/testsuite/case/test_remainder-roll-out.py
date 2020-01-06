@@ -2,6 +2,8 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+
+
 class TestCashWithdrawal(BaseCase):
     """
      会员余额转出,会员：15877801465转到
