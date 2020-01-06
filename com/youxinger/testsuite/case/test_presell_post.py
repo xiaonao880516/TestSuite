@@ -2,9 +2,6 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-from com.youxinger.testsuite.utils.constant import REFERRAL_PHONE
-
-
 class TestGeneralGoods(BaseCase):
     """
     一般商品测试
@@ -89,7 +86,7 @@ class TestGeneralGoods(BaseCase):
         market_service.set_pre_sale_product('6430', '1')
         param = {'record_id': globals()['shopping_order_id'], 'receive_name': self._customer.consignee, 'receive_phone': self._customer.phone, 'beizhu': '',
                  'com_out_num': '0', 'receive_sheng': self._customer.province, 'receive_shi': self._customer.city, 'receive_diqu': self._customer.area, 'receive_address': self._customer.address, 'repo_out_num': '1',
-                 'referral_phone':REFERRAL_PHONE, 'goods_info': [{"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878", "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
+                 'referral_phone':self._customer_re.phone, 'goods_info': [{"danjia": "0.01", "sku_num": 1, "sku_name": "腰背夹", "price": "0.01", "sku_id": "4878", "tiaoma": "M216C237C0458", "kuanhao": "M216C237", "sku_detail": "深蓝色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010579241063815.jpg", "repo_out_num": 1, "com_out_num":0},
                                                       {"danjia": "0.01", "sku_num": 1, "sku_name": "包臀内裤", "price": "0.01", "sku_id": "4701", "tiaoma": "M116E248B0158", "kuanhao": "M116E248", "sku_detail": "黑色 58",
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010568310459721.jpg", "repo_out_num": 1, "com_out_num":0}]

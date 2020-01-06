@@ -10,13 +10,8 @@ BACKGROUND_USER = dict(username='admin', password='123456')
 # 会员初始化信息, 周先生， 男，业务顾问：周二，周测试平台
 CUSTOMER = dict(name="周先生", sex="M", birthday="1997-12-02",  phone="17151800009", openid="customer_money_lady",
                 address='林河大街17号', area='顺义区', city='北京市', province='北京市', consignee='周先生', is_default='1')
-# 转介绍会员初始化信息, 何喵喵,两会员在平台之下
+# 转介绍会员初始化信息, 何喵喵,会员在平台之下
 REFERRAL_PHONE = 15877801465
-MEMBER_NUMBER_RE ='46a1add730'
-# 会员余额转入人电话
-TRANSFER_PHONE = 15877801463
-# 转介绍会员
-Referral = "17151800001"
 # 商品条码信息
 GOODS_CODE = ['M216C237C0458', 'M216C237C0464', 'M116E248B0158', 'M116E248B0164', 'M316J232B01106', 'M316J232B0176', 'ZH02B215190T796242']
 # 员工信息

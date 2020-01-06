@@ -130,8 +130,8 @@ class TestChargeGoods(BaseCase):
         }
 
         # 0,1表示发货与否，1表示发货，0表示不发货
-        id = 0
-        globals()['shopping_order_id'] = market_service.recharge_order(params,id)
+        switch = 0
+        globals()['shopping_order_id'] = market_service.recharge_order(params,switch)
         # 操作之前获取销售余额
         before = market_service.find_repository()
         market_service.cancellation_of_order(globals()['shopping_order_id'])

@@ -70,7 +70,7 @@ def pos_order_pay(shopping_order_id, real_pay):
     return resp.text.__contains__('成功')
 
 
-def recharge_order(order_parms,id):
+def recharge_order(order_parms,switch):
     """
     余额付款订单
     :param order_parms:
@@ -85,7 +85,7 @@ def recharge_order(order_parms,id):
     try:
         shopping_order_id = json_data['data']['order_id']
         if recharge_order_pay(shopping_order_id) is True:
-            if id ==1:
+            if switch ==1:
              good_shipped(shopping_order_id)
         return shopping_order_id
     except Exception as e:
@@ -112,7 +112,7 @@ def no_recharge_order(order_parms):
 def cancellation_of_order(order_id):
     """
     余额取消订单
-    :param order_parms:
+    :param :
     :return:
     """
     logging.info(u"余额取消订单")
@@ -132,7 +132,7 @@ def recharge_order_pay(shopping_order_id):
     """
     余额订单付款
     :param shopping_order_id: 订单编号
-    :param real_pay: 订单金额
+    real_pay: 订单金额
     :return:是否付款成功
     """
     logging.info(u"余额订单付款")
@@ -322,7 +322,7 @@ def presell_pos(order_parms):
         return False
 
 
-def choose_size(param,id):
+def choose_size(param,switch):
     """
     生成预售转订单
     """
@@ -336,7 +336,7 @@ def choose_size(param,id):
     json_data = resp.json()
     order_id = json_data['data']['order_id']
     recharge_order_pay(order_id)
-    if id ==1:
+    if switch ==1:
        good_shipped(order_id)
     return order_id
 
@@ -359,8 +359,8 @@ def cancel_booking(record_id):
 def jifen(param):
     """
     更新会员的验证数据
-    :param is_operated: True：执行操作之后， False：执行操作之前
-    :param customer: 会员对象
+    :param : True：执行操作之后， False：执行操作之前
+    customer: 会员对象
     :return:
     """
     logging.info(u"查找会员，更新操作执行数据")

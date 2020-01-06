@@ -2,7 +2,7 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
-from com.youxinger.testsuite.utils.constant import MEMBER_NUMBER_RE
+
 
 
 class TestCashWithdrawal(BaseCase):
@@ -31,7 +31,7 @@ class TestCashWithdrawal(BaseCase):
         """
         logging.debug("recharge_shopping_order")
         param={
-            'member_number': MEMBER_NUMBER_RE,
+            'member_number': self._customer_re.member_number,
             'amount': '100',
             'score': '100',
             'minus_introducer_score': '2',

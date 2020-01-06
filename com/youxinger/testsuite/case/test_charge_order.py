@@ -130,8 +130,8 @@ class TestChargeGoods(BaseCase):
         #操作之前获取销售余额
         before=market_service.find_repository()
         # 0,1表示发货与否，1表示发货，0表示不发货
-        id = 1
-        globals()['shopping_order_id'] = market_service.recharge_order(params,id)
+        switch = 1
+        globals()['shopping_order_id'] = market_service.recharge_order(params,switch)
         print(globals()['shopping_order_id'])
         # 操作之后获取销售余额
         after=market_service.find_repository()
