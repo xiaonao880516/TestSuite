@@ -3,6 +3,7 @@ from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
 
+
 class TestChargePreSaleGoods(BaseCase):
     """
     预售商品余额支付（一件预售商品 公司发货）
@@ -16,7 +17,6 @@ class TestChargePreSaleGoods(BaseCase):
 
         # 会员充值40000
         cls._customer.recharge(40000)
-
 
     def setUp(self):
         super().setUp()
@@ -42,11 +42,11 @@ class TestChargePreSaleGoods(BaseCase):
                           'pay_type': 'recharge',
                           'goods_info':{'sku_num':'1','sku_name':'何明锐预售','sku_id':'6434','tiaoma':'YS6789N838655','price':'1234.00','kuanhao':'','img':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019112758736210149.png','sku_detail':''}
         }
-        #设置商品不发售
+        # 设置商品不发售
         product_id =6434
         market_service.set_pre_sale_product(product_id,2)
         globals()['shopping_order_id']= market_service.presell_pos(params)
-        #设置商品发售
+        # 设置商品发售
         market_service.set_pre_sale_product(product_id,1)
         # 选择商品转订单
         param = {'record_id': globals()['shopping_order_id'], 'receive_name': self._customer.consignee,

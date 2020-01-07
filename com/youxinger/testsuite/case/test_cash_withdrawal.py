@@ -4,7 +4,6 @@ import logging
 from com.youxinger.testsuite.service import market_service
 
 
-
 class TestCashWithdrawal(BaseCase):
     """
      会员余额提现,积分提现100，余额提现100
