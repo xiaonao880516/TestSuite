@@ -2,6 +2,8 @@ from com.youxinger.testsuite.bean.customer import CustomerVerifyData
 from com.youxinger.testsuite.case.base_case import BaseCase
 import logging
 from com.youxinger.testsuite.service import market_service
+
+
 class TestChargePreSaleGoodsCancel(BaseCase):
     """
     预售商品余额支付（一件预售商品 公司发货）
@@ -15,7 +17,6 @@ class TestChargePreSaleGoodsCancel(BaseCase):
 
         # 会员充值40000
         cls._customer.recharge(40000)
-
 
     def setUp(self):
         super().setUp()
@@ -41,11 +42,11 @@ class TestChargePreSaleGoodsCancel(BaseCase):
                           'pay_type': 'recharge',
                           'goods_info':{'sku_num':'1','sku_name':'何明锐预售','sku_id':'6434','tiaoma':'YS6789N838655','price':'1234.00','kuanhao':'','img':'https://lchapp.oss-cn-beijing.aliyuncs.com/2019112758736210149.png','sku_detail':''}
         }
-        #设置商品不发售
+        # 设置商品不发售
         product_id =6434
         market_service.set_pre_sale_product(product_id,2)
         globals()['shopping_order_id']= market_service.presell_pos(params)
-        #设置商品发售
+        # 设置商品发售
         market_service.set_pre_sale_product(product_id,1)
         # 选择商品转订单
         param = {'record_id': globals()['shopping_order_id'], 'receive_name': self._customer.consignee,
@@ -62,10 +63,10 @@ class TestChargePreSaleGoodsCancel(BaseCase):
                  "img": "https://lchapp.oss-cn-beijing.aliyuncs.com/2019010568310459721.jpg", "repo_out_num": 0,
                  "com_out_num": 1}]
                  }
-        #0,1表示发货与否，1表示发货，0表示不发货
+        # 0,1表示发货与否，1表示发货，0表示不发货
         switch =0
         globals()['order_shopping_id'] =market_service.choose_size(param,switch)
-        #取消订单
+        # 取消订单
         market_service.cancellation_of_order(globals()['order_shopping_id'])
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
