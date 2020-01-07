@@ -3,7 +3,7 @@ from com.youxinger.testsuite.utils import constant, variables, util
 import requests
 import json
 
-from com.youxinger.testsuite.utils.constant import CUSTOMER_PLATFORM_SALE
+from com.youxinger.testsuite.utils.constant import PLATFORM
 
 
 def pos_order(order_parms):
@@ -356,22 +356,6 @@ def cancel_booking(record_id):
         logging.info('取消预售失败')
 
 
-def jifen(param):
-    """
-    更新会员的验证数据
-    :param : True：执行操作之后， False：执行操作之前
-    customer: 会员对象
-    :return:
-    """
-    logging.info(u"查找会员，更新操作执行数据")
-    url = constant.DOMAIN + "/frontStage/vip/search-byphone"
-    headers = {'Accept': 'application/json, text/plain, */*', 'tid': variables.foregroundTID}
-    resp = requests.get(url, params=param, headers=headers)
-    json_data = resp.json()
-    customer_array = json_data['data'][0]['swap_score']
-    return customer_array
-
-
 def rewards_order(order_parms):
     """
     积分商城下单
@@ -533,12 +517,12 @@ def change_score(param):
         logging.info('会员积分改变失败')
 
 
-def find_repository():
+def find_sales_amount():
     """
     后台获取销售余额
     """
     logging.info(u"  后台获取销售余额")
-    url = constant.DOMAIN + "/backStage/stores/platform/getlist?"+CUSTOMER_PLATFORM_SALE
+    url = constant.DOMAIN + "/backStage/stores/platform/getlist?page_size=15&page_num=1&platform_id="+PLATFORM['platform_id']
     headers = {'Accept': 'application/json, text/plain, */*',
                'tid': variables.backgroundTID,
               }

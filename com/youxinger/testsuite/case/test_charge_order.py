@@ -128,13 +128,13 @@ class TestChargeGoods(BaseCase):
             'goods_list[5][zh_no_score]': '0', 'pay_type': 'recharge'
         }
         # 操作之前获取销售余额
-        before=market_service.find_repository()
+        before=market_service.find_sales_amount()
         # 0,1表示发货与否，1表示发货，0表示不发货
         switch = 1
         globals()['shopping_order_id'] = market_service.recharge_order(params,switch)
         print(globals()['shopping_order_id'])
         # 操作之后获取销售余额
-        after=market_service.find_repository()
+        after=market_service.find_sales_amount()
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
@@ -197,9 +197,9 @@ class TestChargeGoods(BaseCase):
                 'afterSales_info[0][aftersale_money]': '6144.00',
                 'afterSales_info[0][goods_type]': '2'
             }
-            before = market_service.find_repository()
+            before = market_service.find_sales_amount()
             market_service.return_order(recharge_param)
-            after = market_service.find_repository()
+            after = market_service.find_sales_amount()
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
             # 封装验证值
@@ -267,9 +267,9 @@ class TestChargeGoods(BaseCase):
                 'afterSales_info[1][aftersale_num]': '1', 'afterSales_info[1][aftersale_money]': '6144.00',
                 'afterSales_info[1][goods_type]': '2',
             }
-            before = market_service.find_repository()
+            before = market_service.find_sales_amount()
             market_service.return_order(recharge_param)
-            after = market_service.find_repository()
+            after = market_service.find_sales_amount()
             # 更新充值后的验证数据
             self._test_data.update_post_verify_data()
             # 封装验证值
