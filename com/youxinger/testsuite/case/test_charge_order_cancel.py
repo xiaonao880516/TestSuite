@@ -133,10 +133,10 @@ class TestChargeGoods(BaseCase):
         switch = 0
         globals()['shopping_order_id'] = market_service.recharge_order(params,switch)
         # 操作之前获取销售余额
-        before = market_service.find_repository()
+        before = market_service.find_sales_amount()
         market_service.cancellation_of_order(globals()['shopping_order_id'])
         # 操作之后获取销售余额
-        after=market_service.find_repository()
+        after=market_service.find_sales_amount()
         # 更新充值后的验证数据
         self._test_data.update_post_verify_data()
         # 封装验证值
